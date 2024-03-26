@@ -1,0 +1,115 @@
+/* variables for colour scheme affecting html element in place of :root */
+
+/* light theme */
+[data-theme="light"] {
+    --background-color-main: lightgrey;
+    --background-color-secondary: black;
+    --text-color-main: black;
+    --text-color-secondary: white;
+}
+
+/* dark theme */
+[data-theme="dark"] {
+    --background-color-main: black;
+    --background-color-secondary: lightgrey;
+    --text-color-main: white;
+    --text-color-secondary: black;
+}
+
+/* jiske theme I'll choose proper colours later */
+[data-theme="jiske"] {
+    --background-color-main: rgb(205, 24, 221);
+    --background-color-secondary: rgb(9, 241, 21);
+    --text-color-main: white;
+    --text-color-secondary: black;
+}
+
+/* abdikarim theme pick your colours and theme name */
+[data-theme="abdikarim"] {
+    --background-color-main: black;
+    --background-color-secondary: lightgrey;
+    --text-color-main: white;
+    --text-color-secondary: black;
+}
+
+/* simon theme pick your colours and theme name */
+[data-theme="simon"] {
+    --background-color-main: black;
+    --background-color-secondary: lightgrey;
+    --text-color-main: white;
+    --text-color-secondary: black;
+}
+
+/* zadok theme pick your colours and theme name */
+[data-theme="zadok"] {
+    --background-color-main: black;
+    --background-color-secondary: lightgrey;
+    --text-color-main: white;
+    --text-color-secondary: black;
+}
+
+/* set 1rem to 10px to easily find values for the rest of the page (ie. 1.5rem is 15px, 2.0rem is 20px, etc.) */
+html {
+    font-size: 62.5%;
+}
+
+/* settings for the entire document (1 step below root/html) */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* Other settings for the whole document */
+body{
+    /* decide as a group */
+    /* font-family: ; */
+    font-size: 1.6rem;
+    color: var(--text-color-main);
+    background-color: var(--background-color-main);
+}
+
+/* base/universal h values */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-color-main);
+    font-weight: 700;
+}
+
+/* specific text values */
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+}
+
+/* just so everyone knows explaining the earlier bit */
+/* p { */
+    /* font-size: 1.6rem; -DON'T NEED TO SPECIFY- */
+/* } */
+
+/* always wrap images in div */
+img {
+    width: 100%;
+}
