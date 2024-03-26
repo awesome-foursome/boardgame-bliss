@@ -1,0 +1,55 @@
+Minimum Viable Product.
+
+Homepage: 
+
+Header which contains:
+Working theme selector with at least one colour scheme from each team member in addition to a standard light and dark mode which persists across all pages.
+A title and sub heading.
+A quick link navigation with a dropdown input to navigate to each page.
+
+Main which contains:
+An introduction paragraph explaining the page and functionality.
+A navigation area on the left with links to different pages and brief descriptions of their content.
+An image area on the right with a generic image which changes to match the links in the area on the left on hover.
+
+Footer which contains:
+The names of the project creaters which link to their respective github pages.
+
+
+
+Game Page(Chess):
+
+Header which contains:
+Working theme selector with at least one colour scheme from each team member in addition to a standard light and dark mode which persists across all pages.
+A title and subheading.
+A quick link navigation with a dropdown input to navigate to each page.
+
+Main which contains:
+A chess background image which matches the hover effect from the homepage.
+A form within which the user enters a username, the required depth(number of moves into the future calculated by api) and input for previous moves which then go to xxx api.
+The output from xxx api is then retrieved and sent to yyy api.
+A field which generates elements to display showing the moves as received from yyy api.
+
+Footer which contains:
+The names of the project creaters which link to their respective github pages.
+
+
+
+Rules Page(Chess):
+Header which contains:
+Working theme selector with at least one colour scheme from each team member in addition to a standard light and dark mode which persists across all pages.
+A title and subheading.
+A quick link navigation with a dropdown input to navigate to each page.
+
+Main which contains:
+A description of the rules of the games including multiple paragraphs based around topics such as object of the game, turn sequence, movement/functionality of pieces etc.
+
+Footer which contains:
+The names of the project creaters which link to their respective github pages.
+
+
+Potential next steps after MVP:
+
+Adding a page with a virtual chessboard that allows the functionality to play directly through your gui.
+
+Additional pages both game and rules for subsequent games. Potential games could include checkers, sudoku etc.
