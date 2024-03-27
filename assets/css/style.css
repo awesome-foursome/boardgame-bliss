@@ -16,6 +16,16 @@
     --text-color-secondary: black;
 }
 
+/* abdikarim theme pick your colours and theme name */
+/* when you change data-theme=" " you'll also have to change 
+the value and option text content on the html to match */
+[data-theme="abdikarim"] {
+    --background-color-main: rgb(60, 204, 17);
+    --background-color-secondary: rgb(14, 27, 207);
+    --text-color-main: white;
+    --text-color-secondary: black;
+}
+
 /* jiske theme I'll choose proper colours later */
 [data-theme="jiske"] {
     --background-color-main: rgb(205, 24, 221);
@@ -24,26 +34,22 @@
     --text-color-secondary: black;
 }
 
-/* abdikarim theme pick your colours and theme name */
-[data-theme="abdikarim"] {
-    --background-color-main: black;
-    --background-color-secondary: lightgrey;
-    --text-color-main: white;
-    --text-color-secondary: black;
-}
-
 /* simon theme pick your colours and theme name */
+/* when you change data-theme=" " you'll also have to change 
+the value and option text content on the html to match */
 [data-theme="simon"] {
-    --background-color-main: black;
-    --background-color-secondary: lightgrey;
+    --background-color-main: rgb(15, 206, 240);
+    --background-color-secondary: rgb(204, 247, 49);
     --text-color-main: white;
     --text-color-secondary: black;
 }
 
 /* zadok theme pick your colours and theme name */
+/* when you change data-theme=" " you'll also have to change 
+the value and option text content on the html to match */
 [data-theme="zadok"] {
-    --background-color-main: black;
-    --background-color-secondary: lightgrey;
+    --background-color-main: rgb(91, 10, 240);
+    --background-color-secondary: rgb(187, 184, 184);
     --text-color-main: white;
     --text-color-secondary: black;
 }
