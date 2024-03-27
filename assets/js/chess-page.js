@@ -23,17 +23,47 @@ const getBestMove = function (event) {
 	// debug log
 	console.log('requestGameStateUrl:', requestGameStateUrl);
 
-	// async fetch function
-	const fetchBestMove = async function () {
+	// async fetch function for current game states
+	const fetchCurrentGames = async function () {
 		const response = await fetch(requestGameStateUrl);
 		const data = await response.json();
 
-		return data
+		return data;
 	};
 
 	// execute async fetch function
-	fetchBestMove()
-		.then(data => console.log(data));
+	fetchCurrentGames()
+		.then((data) => {
+			// debug log
+			console.log(data)
+			
+			// loop through resultant games and pull FEN
+			for (const game of data.games) {
+				// debug log
+				console.log(game.fen);
+				
+				// encode FEN for URL
+				const encodedFen = encodeURI(game.fen);
+				
+				// set up request URL for best move
+				const requestBestMoveUrl = `https://stockfish.online/api/s/v2.php?fen=${encodedFen}&depth=${depth}`;
+				
+				// async fetch funtion for best move
+				const fetchBestMove = async function () {
+					const response = await fetch(requestBestMoveUrl);
+					const data = await response.json();
+
+					return data;
+				};
+
+				// execute async fetch function
+				fetchBestMove()
+					.then((data) => {
+						// debug log
+						console.log(data);
+					})
+			}
+		});
 
 };
 
