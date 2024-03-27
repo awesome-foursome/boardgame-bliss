@@ -17,25 +17,26 @@ const printBestMoves = function (data) {
 	const mate = data.mate;
 
 	// create heading element for game
-	resultsContainer.append($('<h3>').text(gameTitle));
+	// resultsContainer.append($('<h3>').text(gameTitle));
 	// append gameUrl link beneath gameTitle
-	resultsContainer.append($('<a>').attr('href', gameUrl).text(gameUrl));
+	// resultsContainer.append($('<a>').attr('href', gameUrl).text(gameUrl));
 
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
+	const cardTitleEl = $('<h3>').text(gameTitle);
 	const cardBodyEl = $('<div>').addClass('card-body');
+	const cardUrlEl = $('<a>').attr('href', gameUrl).text(`Game URL: ${gameUrl}`);
 	const bestMoveEl = $('<p>').text(bestMove);
 	const continuationEl = $('<p>').text(`Continuation: ${continuation}`);
 	const evaluationEl = $('<p>').text(`Evaluation: ${evaluation}`);
 	const mateEl = $('<p>').text(`Mate: ${mate}`);
 
 	// construct card
-	cardBodyEl.append(bestMoveEl, continuationEl, evaluationEl, mateEl);
-	cardEl.append(cardBodyEl);
+	cardBodyEl.append(cardUrlEl, bestMoveEl, continuationEl, evaluationEl, mateEl);
+	cardEl.append(cardTitleEl, cardBodyEl);
 
 	// append card to results-container
 	resultsContainer.append(cardEl);
-
 
 };
 
@@ -77,8 +78,6 @@ const getBestMove = function (event) {
 			for (const game of data.games) {
 				// debug log
 				console.log(game.fen);
-
-				
 
 				// debug log
 				console.log('gameTitle:', gameTitle);
