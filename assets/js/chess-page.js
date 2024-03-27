@@ -4,8 +4,40 @@ const usernameInput = $('#username-input');
 const depthInput = $('#depth-input');
 const resultsContainer = $('#results-container');
 
-// function to print best moves to results-container
-const printBestMoves = function () {};
+let gameTitle = '';
+let gameUrl = '';
+
+// function to print best moves to results-container (below gameTitle and gameUrl)
+const printBestMoves = function (data) {
+
+	// pull relevent information from 'data'
+	const bestMove = data.bestmove;
+	const continuation = data.continuation;
+	const evaluation = data.evaluation;
+	const mate = data.mate;
+
+	// create heading element for game
+	resultsContainer.append($('<h3>').text(gameTitle));
+	// append gameUrl link beneath gameTitle
+	resultsContainer.append($('<a>').attr('href', gameUrl).text(gameUrl));
+
+	// create card elements
+	const cardEl = $('<div>').addClass('card');
+	const cardBodyEl = $('<div>').addClass('card-body');
+	const bestMoveEl = $('<p>').text(bestMove);
+	const continuationEl = $('<p>').text(`Continuation: ${continuation}`);
+	const evaluationEl = $('<p>').text(`Evaluation: ${evaluation}`);
+	const mateEl = $('<p>').text(`Mate: ${mate}`);
+
+	// construct card
+	cardBodyEl.append(bestMoveEl, continuationEl, evaluationEl, mateEl);
+	cardEl.append(cardBodyEl);
+
+	// append card to results-container
+	resultsContainer.append(cardEl);
+
+
+};
 
 // function for form submit
 const getBestMove = function (event) {
@@ -46,20 +78,10 @@ const getBestMove = function (event) {
 				// debug log
 				console.log(game.fen);
 
-				// create game title
-				const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
-				const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
-				const gameUrl = game.url;
-
-				const gameTitle = `${gameWhite} vs ${gameBlack}`;
+				
 
 				// debug log
 				console.log('gameTitle:', gameTitle);
-
-				// create heading element for game
-				resultsContainer.append($('<h3>').text(gameTitle));
-				// append gameUrl link beneath gameTitle
-				resultsContainer.append($('<a>').attr('href', gameUrl).text(gameUrl));
 				
 				// encode FEN for URL
 				const encodedFen = encodeURI(game.fen);
@@ -80,6 +102,16 @@ const getBestMove = function (event) {
 					.then((data) => {
 						// debug log
 						console.log(data);
+
+						// create game title
+						const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
+						const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
+						
+						gameTitle = `${gameWhite} vs ${gameBlack}`;
+						gameUrl = game.url;
+
+						// print best move data to results container
+						printBestMoves(data);
 					})
 			}
 		});
