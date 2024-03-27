@@ -25,7 +25,7 @@ const printBestMoves = function (data) {
 	const cardEl = $('<div>').addClass('card');
 	const cardTitleEl = $('<h3>').text(gameTitle);
 	const cardBodyEl = $('<div>').addClass('card-body');
-	const cardUrlEl = $('<a>').attr('href', gameUrl).text(`Game URL: ${gameUrl}`);
+	const cardUrlEl = $('<a>').attr('href', gameUrl).text(gameUrl);
 	const bestMoveEl = $('<p>').text(bestMove);
 	const continuationEl = $('<p>').text(`Continuation: ${continuation}`);
 	const evaluationEl = $('<p>').text(`Evaluation: ${evaluation}`);
@@ -45,6 +45,9 @@ const getBestMove = function (event) {
 
 	// prevent default form behaviour
 	event.preventDefault();
+
+	// empty result-container before printing fresh results
+	resultsContainer.empty();
 
 	// pull username and depth from form
 	const username = usernameInput.val();
