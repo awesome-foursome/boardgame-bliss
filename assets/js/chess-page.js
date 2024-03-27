@@ -2,6 +2,10 @@ const chessForm = $('#chess-form');
 const submitBtn = $('#submit-btn');
 const usernameInput = $('#username-input');
 const depthInput = $('#depth-input');
+const resultsContainer = $('#results-container');
+
+// function to print best moves to results-container
+const printBestMoves = function () {};
 
 // function for form submit
 const getBestMove = function (event) {
@@ -41,6 +45,21 @@ const getBestMove = function (event) {
 			for (const game of data.games) {
 				// debug log
 				console.log(game.fen);
+
+				// create game title
+				const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
+				const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
+				const gameUrl = game.url;
+
+				const gameTitle = `${gameWhite} vs ${gameBlack}`;
+
+				// debug log
+				console.log('gameTitle:', gameTitle);
+
+				// create heading element for game
+				resultsContainer.append($('<h3>').text(gameTitle));
+				// append gameUrl link beneath gameTitle
+				resultsContainer.append($('<a>').attr('href', gameUrl).text(gameUrl));
 				
 				// encode FEN for URL
 				const encodedFen = encodeURI(game.fen);
