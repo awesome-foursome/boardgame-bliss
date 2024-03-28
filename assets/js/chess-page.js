@@ -87,10 +87,14 @@ const getBestMove = function (event) {
 				
 				// set up request URL for best move
 				const requestBestMoveUrl = `https://stockfish.online/api/s/v2.php?fen=${encodedFen}&depth=${depth}`;
+
+				// create abort controller for timeout
+				const abortController = new AbortController();
+				const timoutId = setTimeout(() => abortController.abort(), 10000);
 				
 				// async fetch funtion for best move
 				const fetchBestMove = async function () {
-					const response = await fetch(requestBestMoveUrl);
+					const response = await fetch(requestBestMoveUrl, { signal: abortController.signal });
 					console.log(response);
 					const data = await response.json();
 
