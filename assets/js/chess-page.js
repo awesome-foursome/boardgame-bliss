@@ -113,7 +113,7 @@ const getBestMove = function (event) {
 						// debug log
 						console.log('gameTitle:', gameTitle);
 
-						// print best move data to results container
+						// print best move data to results container  
 						printBestMoves(data);
 					})/* .catch(error => console.log(error)) */;
 			}
