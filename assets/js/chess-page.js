@@ -81,9 +81,6 @@ const getBestMove = function (event) {
 			for (const game of data.games) {
 				// debug log
 				console.log(game.fen);
-
-				// debug log
-				console.log('gameTitle:', gameTitle);
 				
 				// encode FEN for URL
 				const encodedFen = encodeURI(game.fen);
@@ -94,6 +91,7 @@ const getBestMove = function (event) {
 				// async fetch funtion for best move
 				const fetchBestMove = async function () {
 					const response = await fetch(requestBestMoveUrl);
+					console.log(response);
 					const data = await response.json();
 
 					return data;
@@ -111,13 +109,18 @@ const getBestMove = function (event) {
 						
 						gameTitle = `${gameWhite} vs ${gameBlack}`;
 						gameUrl = game.url;
+						
+						// debug log
+						console.log('gameTitle:', gameTitle);
 
 						// print best move data to results container
 						printBestMoves(data);
-					})
+					})/* .catch(error => console.log(error)) */;
 			}
 		});
-
+	
+	// clear form inputs
+	chessForm[0].reset();
 };
 
 // event handler for submit button
