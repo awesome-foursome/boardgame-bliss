@@ -76,22 +76,22 @@ const getBestMove = function (event) {
 		.then((data) => {
 			// debug log
 			console.log(data)
-			
+
 			// loop through resultant games and pull FEN
 			for (const game of data.games) {
 				// debug log
 				console.log(game.fen);
-				
+
 				// encode FEN for URL
 				const encodedFen = encodeURI(game.fen);
-				
+
 				// set up request URL for best move
 				const requestBestMoveUrl = `https://stockfish.online/api/s/v2.php?fen=${encodedFen}&depth=${depth}`;
 
 				// create abort controller for timeout
 				const abortController = new AbortController();
 				const timoutId = setTimeout(() => abortController.abort(), 10000);
-				
+
 				// async fetch funtion for best move
 				const fetchBestMove = async function () {
 					const response = await fetch(requestBestMoveUrl, { signal: abortController.signal });
@@ -110,10 +110,10 @@ const getBestMove = function (event) {
 						// create game title
 						const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
 						const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
-						
+
 						gameTitle = `${gameWhite} vs ${gameBlack}`;
 						gameUrl = game.url;
-						
+
 						// debug log
 						console.log('gameTitle:', gameTitle);
 
@@ -122,7 +122,7 @@ const getBestMove = function (event) {
 					})/* .catch(error => console.log(error)) */;
 			}
 		});
-	
+
 	// clear form inputs
 	chessForm[0].reset();
 };
