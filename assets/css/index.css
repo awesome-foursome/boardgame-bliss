@@ -1,0 +1,5 @@
+#left, #right {
+    box-sizing: border-box;
+    width: 50%;
+    background-color: var();
+}
