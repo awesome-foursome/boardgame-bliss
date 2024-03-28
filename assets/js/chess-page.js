@@ -11,7 +11,7 @@ let gameUrl = '';
 const printBestMoves = function (data) {
 
 	// pull relevent information from 'data'
-	const bestMove = data.bestmove;
+	const bestMove = data.bestmove.replace('bestmove', 'Best Move:');
 	const continuation = data.continuation;
 	const evaluation = data.evaluation;
 	const mate = data.mate;
