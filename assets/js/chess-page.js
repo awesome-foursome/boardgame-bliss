@@ -23,7 +23,7 @@ const printBestMoves = function (data) {
 
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
-	const cardTitleEl = $('<h3>').text(gameTitle);
+	const cardTitleEl = $('<h4>').text(gameTitle);
 	const cardBodyEl = $('<div>').addClass('card-body');
 	const cardUrlEl = $('<a>').attr('href', gameUrl).text(gameUrl);
 	const bestMoveEl = $('<p>').text(bestMove);
