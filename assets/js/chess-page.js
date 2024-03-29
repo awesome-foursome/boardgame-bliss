@@ -4,7 +4,7 @@ const usernameInput = $('#username-input');
 const depthInput = $('#depth-input');
 const resultsContainer = $('#results-container');
 
-// function to print error card 
+// function to print error card
 const printErrorCard = function (error, game) {
 
 	// create game title
