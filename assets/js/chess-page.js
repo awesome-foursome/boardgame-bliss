@@ -4,22 +4,55 @@ const usernameInput = $('#username-input');
 const depthInput = $('#depth-input');
 const resultsContainer = $('#results-container');
 
-let gameTitle = '';
-let gameUrl = '';
+// function to print error card
+const printErrorCard = function (error, game) {
+
+	// create game title
+	const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
+	const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
+
+	const gameTitle = `${gameWhite} vs ${gameBlack}`;
+	const gameUrl = game.url;
+
+	// debug log
+	console.log('gameTitle:', gameTitle);
+
+	// log error to conmsole
+	console.log(error);
+
+	// create card elements
+	const cardEl = $('<div>').addClass('card');
+	const cardTitleEl = $('<h4>').text(gameTitle);
+	const cardBodyEl = $('<div>').addClass('card-body');
+	const cardUrlEl = $('<a>').attr('href', gameUrl).text(gameUrl);
+	const errorMsgEl = $('<p>').text('Failed to retrieve best move data :(');
+
+	// construct card
+	cardBodyEl.append(cardUrlEl, errorMsgEl);
+	cardEl.append(cardTitleEl, cardBodyEl);
+
+	// append card to results-container
+	resultsContainer.prepend(cardEl);
+};
 
 // function to print best moves to results-container (below gameTitle and gameUrl)
-const printBestMoves = function (data) {
+const printBestMoves = function (data, game) {
+
+	// create game title
+	const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
+	const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
+
+	const gameTitle = `${gameWhite} vs ${gameBlack}`;
+	const gameUrl = game.url;
+
+	// debug log
+	console.log('gameTitle:', gameTitle);
 
 	// pull relevent information from 'data'
 	const bestMove = data.bestmove.replace('bestmove', 'Best Move:');
 	const continuation = data.continuation;
 	const evaluation = data.evaluation;
 	const mate = data.mate;
-
-	// create heading element for game
-	// resultsContainer.append($('<h3>').text(gameTitle));
-	// append gameUrl link beneath gameTitle
-	// resultsContainer.append($('<a>').attr('href', gameUrl).text(gameUrl));
 
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
@@ -36,7 +69,7 @@ const printBestMoves = function (data) {
 	cardEl.append(cardTitleEl, cardBodyEl);
 
 	// append card to results-container
-	resultsContainer.append(cardEl);
+	resultsContainer.prepend(cardEl);
 
 };
 
@@ -47,7 +80,7 @@ const getBestMove = function (event) {
 	event.preventDefault();
 
 	// empty result-container before printing fresh results
-	resultsContainer.empty();
+	// resultsContainer.empty();
 
 	// pull username and depth from form
 	const username = usernameInput.val();
@@ -107,19 +140,9 @@ const getBestMove = function (event) {
 						// debug log
 						console.log(data);
 
-						// create game title
-						const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
-						const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
-
-						gameTitle = `${gameWhite} vs ${gameBlack}`;
-						gameUrl = game.url;
-
-						// debug log
-						console.log('gameTitle:', gameTitle);
-
 						// print best move data to results container  
-						printBestMoves(data);
-					})/* .catch(error => console.log(error)) */;
+						printBestMoves(data, game);
+					}).catch(error => printErrorCard(error, game));
 			}
 		});
 
