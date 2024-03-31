@@ -6,47 +6,61 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Boardgame Bliss</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-	<link rel="stylesheet" href="./assets/css/style.css">
-	<link rel="stylesheet" href="./assets/css/chess-page.css">
+	<!-- <link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/chess-page.css"> -->
 </head>
 
-<body>
+<body class="">
 	<header>
 		<a href="index.html">Home</a>
 		<a href="rules-page.html">Rules Page</a>
 	</header>
-	<section>
-		<article>
-			<h3>Description</h3>
-			<p>Here you can enter the Chess.com username of anyone (including yourself!) and receive the best available
-				move calculated by the stockfish engine. You can select a depth of up to 15 to change the strength of
-				the best move calculations.</p>
-		</article>
-		<form id="chess-form">
-			<label for="username-input">Username:</label>
-			<input type="text" name="username-input" id="username-input" placeholder="Enter Chess.com username..">
-			<br>
-			<label for="depth-input">Depth</label>
-			<select name="depth-input" id="depth-input">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
-				<option value="13">13</option>
-				<option value="14">14</option>
-				<option value="15">15</option>
-			</select>
-			<button type="button" id="submit-btn">Submit</button>
-		</form>
-		<div id="results-container"></div>
+	<section class="section">
+		<div class="container">
+			<h3 class="title">Description</h3>
+			<p>Here you can enter a Chess.com username belonging to anyone (including yourself!) and receive the best
+				available move (calculated by the stockfish engine) for each of that user's ongoing Daily Games. You can
+				select a depth of up to 15 to change the strength of the best move calculations.</p>
+		</div>
+
+		<div class="container mt-4">
+			<form id="chess-form">
+				<div class="field">
+					<label for="username-input" class="label">Username:</label>
+					<div class="control">
+						<input class="input" type="text" name="username-input" id="username-input"
+							placeholder="Enter Chess.com username..">
+					</div>
+				</div>
+				<div class="field">
+					<label for="depth-input" class="label">Depth</label>
+					<div class="control">
+						<div class="select">
+							<select name="depth-input" id="depth-input">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<button class="button" id="submit-btn">Submit</button>
+			</form>
+		</div>
+
+		<div class="mt-4" id="results-container"></div>
 	</section>
 
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
