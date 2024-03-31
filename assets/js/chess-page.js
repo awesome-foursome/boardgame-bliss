@@ -22,14 +22,16 @@ const printErrorCard = function (error, game) {
 
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
-	const cardTitleEl = $('<h4>').text(gameTitle);
-	const cardBodyEl = $('<div>').addClass('card-body');
+	const cardHeaderEl = $('<div>').addClass('card-header');
+	const cardTitleEl = $('<h4>').addClass('card-header-title').text(gameTitle);
+	const cardBodyEl = $('<div>').addClass('card-body px-4 py-4');
 	const cardUrlEl = $('<a>').attr('href', gameUrl).text(gameUrl);
 	const errorMsgEl = $('<p>').text('Failed to retrieve best move data :(');
 
 	// construct card
+	cardHeaderEl.append(cardTitleEl);
 	cardBodyEl.append(cardUrlEl, errorMsgEl);
-	cardEl.append(cardTitleEl, cardBodyEl);
+	cardEl.append(cardHeaderEl, cardBodyEl);
 
 	// append card to results-container
 	resultsContainer.prepend(cardEl);
@@ -56,8 +58,9 @@ const printBestMoves = function (data, game) {
 
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
-	const cardTitleEl = $('<h4>').text(gameTitle);
-	const cardBodyEl = $('<div>').addClass('card-body');
+	const cardHeaderEl = $('<div>').addClass('card-header');
+	const cardTitleEl = $('<h4>').addClass('card-header-title').text(gameTitle);
+	const cardBodyEl = $('<div>').addClass('card-body px-4 py-4');
 	const cardUrlEl = $('<a>').attr('href', gameUrl).text(gameUrl);
 	const bestMoveEl = $('<p>').text(bestMove);
 	const continuationEl = $('<p>').text(`Continuation: ${continuation}`);
@@ -65,8 +68,9 @@ const printBestMoves = function (data, game) {
 	const mateEl = $('<p>').text(`Mate: ${mate}`);
 
 	// construct card
+	cardHeaderEl.append(cardTitleEl);
 	cardBodyEl.append(cardUrlEl, bestMoveEl, continuationEl, evaluationEl, mateEl);
-	cardEl.append(cardTitleEl, cardBodyEl);
+	cardEl.append(cardHeaderEl, cardBodyEl);
 
 	// append card to results-container
 	resultsContainer.prepend(cardEl);
