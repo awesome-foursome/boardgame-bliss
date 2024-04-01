@@ -1,3 +1,4 @@
+const requestBtn = $('#request-btn')
 const formContainer = $('#form-container');
 const chessForm = $('#chess-form');
 const submitBtn = $('#submit-btn');
@@ -174,9 +175,21 @@ submitBtn.on('click', getBestMove);
 
 // event handler for disclaimer checkbox
 disclaimerCheckbox.on('change', () => {
-	if (formContainer.hasClass('is-hidden')) {
-		formContainer.removeClass('is-hidden');
+	if (requestBtn.hasClass('is-hidden')) {
+		requestBtn.removeClass('is-hidden');
 	} else {
-		formContainer.addClass('is-hidden');
+		requestBtn.addClass('is-hidden');
 	}
+});
+
+// modal event handlers
+const modal = $('.modal');
+const modalBg = $('.modal-background');
+
+requestBtn.on('click', () => {
+	modal.addClass('is-active');
+});
+
+modalBg.on('click', () => {
+	modal.removeClass('is-active');
 });
