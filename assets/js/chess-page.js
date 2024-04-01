@@ -192,7 +192,7 @@ submitBtn.on('click', getBestMove);
 
 // event handler for disclaimer checkbox
 disclaimerCheckbox.on('change', () => {
-	if (requestBtn.hasClass('is-hidden')) {
+	if (disclaimerCheckbox.prop('checked')) {
 		requestBtn.removeClass('is-hidden');
 	} else {
 		requestBtn.addClass('is-hidden');
