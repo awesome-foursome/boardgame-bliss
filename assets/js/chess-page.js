@@ -17,7 +17,7 @@ const printErrorCard = function (error, game) {
 	// debug log
 	console.log('gameTitle:', gameTitle);
 
-	// log error to conmsole
+	// log error to console
 	console.log(error);
 
 	// create card elements
@@ -83,6 +83,9 @@ const getBestMove = function (event) {
 	// prevent default form behaviour
 	event.preventDefault();
 
+	// loading graphic for submit button
+	submitBtn.addClass('is-loading');
+
 	// empty result-container before printing fresh results
 	// resultsContainer.empty();
 
@@ -146,7 +149,17 @@ const getBestMove = function (event) {
 
 						// print best move data to results container  
 						printBestMoves(data, game);
-					}).catch(error => printErrorCard(error, game));
+
+						// remove loading graphic from submit button
+						submitBtn.removeClass('is-loading');
+
+					}).catch(error => {
+						printErrorCard(error, game);
+
+						// remove loading graphic from submit button
+						submitBtn.removeClass('is-loading');
+
+					});
 			}
 		});
 
