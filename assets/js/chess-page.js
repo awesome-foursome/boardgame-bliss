@@ -6,6 +6,8 @@ const usernameInput = $('#username-input');
 const depthInput = $('#depth-input');
 const resultsContainer = $('#results-container');
 const disclaimerCheckbox = $('#disclaimer-checkbox');
+const modal = $('.modal');
+const modalBg = $('.modal-background');
 
 // function to print error card
 const printErrorCard = function (error, game) {
@@ -156,11 +158,17 @@ const getBestMove = function (event) {
 						// remove loading graphic from submit button
 						submitBtn.removeClass('is-loading');
 
+						// hide modal once results have been printed
+						modal.removeClass('is-active');
+
 					}).catch(error => {
 						printErrorCard(error, game);
 
 						// remove loading graphic from submit button
 						submitBtn.removeClass('is-loading');
+
+						// hide modal once results have been printed
+						modal.removeClass('is-active');
 
 					});
 			}
@@ -183,9 +191,6 @@ disclaimerCheckbox.on('change', () => {
 });
 
 // modal event handlers
-const modal = $('.modal');
-const modalBg = $('.modal-background');
-
 requestBtn.on('click', () => {
 	modal.addClass('is-active');
 });
