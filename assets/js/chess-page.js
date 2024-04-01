@@ -88,6 +88,15 @@ const getBestMove = function (event) {
 	// prevent default form behaviour
 	event.preventDefault();
 
+	// form validation
+	if (usernameInput.val() === '') {
+		usernameInput.attr('placeholder', 'Please input a username');
+		return;
+	}
+
+	// reset placeholder for usernameInput to default
+	usernameInput.attr('placeholder', 'Enter Chess.com username..');
+
 	// loading graphic for submit button
 	submitBtn.addClass('is-loading');
 
