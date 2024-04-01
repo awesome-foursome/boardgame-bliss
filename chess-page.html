@@ -15,6 +15,7 @@
 		<a href="index.html">Home</a>
 		<a href="rules-page.html">Rules Page</a>
 	</header>
+
 	<section class="section">
 		<div class="container">
 			<h3 class="title">Description</h3>
@@ -23,7 +24,25 @@
 				select a depth of up to 15 to change the strength of the best move calculations.</p>
 		</div>
 
-		<div class="container mt-4">
+		<div class="container mt-3">
+			<h3 class="title is-size-6 mb-1">Disclaimer</h3>
+			<p>This page has been created for education purposes and is not intended to be used to cheat. That would
+				only serve to harm both your opponent and your own development. You would do much better to study our
+				highly detailed <a href="./rules-page.html">Rules Page</a>!</p>
+			<p class="has-text-weight-bold">To reveal the chess engine form please agree to the following declaration:
+			</p>
+			<p>I agree not to use the results to gain an advantage in my ongoing games.</p>
+			<div class="field has-text-centered">
+				<div class="control">
+					<label class="checkbox">
+						<input type="checkbox" id="disclaimer-checkbox">
+						I agree
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="container mt-4 is-hidden" id="form-container">
 			<form id="chess-form">
 				<div class="field">
 					<label for="username-input" class="label">Username:</label>

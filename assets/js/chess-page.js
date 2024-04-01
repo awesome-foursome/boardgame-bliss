@@ -1,8 +1,10 @@
+const formContainer = $('#form-container');
 const chessForm = $('#chess-form');
 const submitBtn = $('#submit-btn');
 const usernameInput = $('#username-input');
 const depthInput = $('#depth-input');
 const resultsContainer = $('#results-container');
+const disclaimerCheckbox = $('#disclaimer-checkbox');
 
 // function to print error card
 const printErrorCard = function (error, game) {
@@ -169,3 +171,12 @@ const getBestMove = function (event) {
 
 // event handler for submit button
 submitBtn.on('click', getBestMove);
+
+// event handler for disclaimer checkbox
+disclaimerCheckbox.on('change', () => {
+	if (formContainer.hasClass('is-hidden')) {
+		formContainer.removeClass('is-hidden');
+	} else {
+		formContainer.addClass('is-hidden');
+	}
+});
