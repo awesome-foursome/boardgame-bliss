@@ -139,7 +139,7 @@ const getBestMove = function (event) {
 				// encode FEN for URL
 				const encodedFen = encodeURI(game.fen);
 
-				// set up request URL for best move
+				// set up request URL for best move 
 				const requestBestMoveUrl = `https://stockfish.online/api/s/v2.php?fen=${encodedFen}&depth=${depth}`;
 
 				// create abort controller for timeout
