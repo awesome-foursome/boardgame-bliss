@@ -1,4 +1,6 @@
-const requestBtn = $('#request-btn')
+const requestContainer = $('#request-container');
+const requestBtn = $('#request-btn');
+const historyContainer = $('#history-container');
 const formContainer = $('#form-container');
 const chessForm = $('#chess-form');
 const submitBtn = $('#submit-btn');
@@ -8,6 +10,66 @@ const resultsContainer = $('#results-container');
 const disclaimerCheckbox = $('#disclaimer-checkbox');
 const modal = $('.modal');
 const modalBg = $('.modal-background');
+
+// function to add new item to search history
+const handleHistory = function (username, depth) {
+
+	// retrieve existing history from local storage
+	let history = JSON.parse(localStorage.getItem('history'));
+
+	// if no history exists assign empty array
+	if (!history) {
+		history = [];
+	}
+
+	// create new history object from provided data
+	const newHistoryObject = {
+		username: username,
+		depth: depth,
+	}
+
+	// loop through existing history to check for identical searches
+	for (const searchObj of history) {
+		const searchObjUsername = searchObj.username;
+		const searchObjDepth = searchObj.depth;
+
+		if (searchObjUsername === username && searchObjDepth === depth) {
+			return;
+		}
+	}
+
+	// add new object to history array
+	history.push(newHistoryObject);
+
+	// store updated history array
+	localStorage.setItem('history', JSON.stringify(history));
+
+};
+
+// function to print history buttons
+const printHistory = function () {
+
+	// empty existing history buttons
+	historyContainer.empty();
+
+	// retrieve existing history 
+	let history = JSON.parse(localStorage.getItem('history'));
+
+	// if no hsitory exist stop function
+	if (!history) {
+		return;
+	}
+
+	// loop through history elements and print buttons to historyConatiner
+	for (const searchObj of history) {
+		const historyBtn = $('<button>')
+			.addClass('button is-warning')
+			.text(`${searchObj.username} | ${searchObj.depth}`)
+			.attr('data-username', searchObj.username)
+			.attr('data-depth', searchObj.depth);
+		historyContainer.append(historyBtn);
+	}
+};
 
 // function to print error card
 const printErrorCard = function (error, game) {
@@ -111,6 +173,12 @@ const getBestMove = function (event) {
 	console.log('username:', username);
 	console.log('depth:', depth);
 
+	// add new search to localStorage
+	handleHistory(username, depth);
+
+	// print uodated history buttons
+	printHistory();
+
 	// set up request URL with username
 	const requestGameStateUrl = `https://api.chess.com/pub/player/${username}/games`
 
@@ -193,9 +261,9 @@ submitBtn.on('click', getBestMove);
 // event handler for disclaimer checkbox
 disclaimerCheckbox.on('change', () => {
 	if (disclaimerCheckbox.prop('checked')) {
-		requestBtn.removeClass('is-hidden');
+		requestContainer.removeClass('is-hidden');
 	} else {
-		requestBtn.addClass('is-hidden');
+		requestContainer.addClass('is-hidden');
 	}
 });
 
@@ -207,3 +275,6 @@ requestBtn.on('click', () => {
 modalBg.on('click', () => {
 	modal.removeClass('is-active');
 });
+
+// event handler for printing history on page load
+$(document).ready(printHistory);
