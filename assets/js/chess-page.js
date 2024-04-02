@@ -144,7 +144,7 @@ const getBestMove = function (event) {
 
 				// create abort controller for timeout
 				const abortController = new AbortController();
-				const timoutId = setTimeout(() => abortController.abort(), 10000);
+				setTimeout(() => abortController.abort(), 10000);
 
 				// async fetch funtion for best move
 				const fetchBestMove = async function () {
