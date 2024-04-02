@@ -1,8 +1,13 @@
+const requestBtn = $('#request-btn')
+const formContainer = $('#form-container');
 const chessForm = $('#chess-form');
 const submitBtn = $('#submit-btn');
 const usernameInput = $('#username-input');
 const depthInput = $('#depth-input');
 const resultsContainer = $('#results-container');
+const disclaimerCheckbox = $('#disclaimer-checkbox');
+const modal = $('.modal');
+const modalBg = $('.modal-background');
 
 // function to print error card
 const printErrorCard = function (error, game) {
@@ -17,19 +22,21 @@ const printErrorCard = function (error, game) {
 	// debug log
 	console.log('gameTitle:', gameTitle);
 
-	// log error to conmsole
+	// log error to console
 	console.log(error);
 
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
-	const cardTitleEl = $('<h4>').text(gameTitle);
-	const cardBodyEl = $('<div>').addClass('card-body');
+	const cardHeaderEl = $('<div>').addClass('card-header');
+	const cardTitleEl = $('<h4>').addClass('card-header-title').text(gameTitle);
+	const cardBodyEl = $('<div>').addClass('card-body px-4 py-4');
 	const cardUrlEl = $('<a>').attr('href', gameUrl).text(gameUrl);
 	const errorMsgEl = $('<p>').text('Failed to retrieve best move data :(');
 
 	// construct card
+	cardHeaderEl.append(cardTitleEl);
 	cardBodyEl.append(cardUrlEl, errorMsgEl);
-	cardEl.append(cardTitleEl, cardBodyEl);
+	cardEl.append(cardHeaderEl, cardBodyEl);
 
 	// append card to results-container
 	resultsContainer.prepend(cardEl);
@@ -56,8 +63,9 @@ const printBestMoves = function (data, game) {
 
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
-	const cardTitleEl = $('<h4>').text(gameTitle);
-	const cardBodyEl = $('<div>').addClass('card-body');
+	const cardHeaderEl = $('<div>').addClass('card-header');
+	const cardTitleEl = $('<h4>').addClass('card-header-title').text(gameTitle);
+	const cardBodyEl = $('<div>').addClass('card-body px-4 py-4');
 	const cardUrlEl = $('<a>').attr('href', gameUrl).text(gameUrl);
 	const bestMoveEl = $('<p>').text(bestMove);
 	const continuationEl = $('<p>').text(`Continuation: ${continuation}`);
@@ -65,8 +73,9 @@ const printBestMoves = function (data, game) {
 	const mateEl = $('<p>').text(`Mate: ${mate}`);
 
 	// construct card
+	cardHeaderEl.append(cardTitleEl);
 	cardBodyEl.append(cardUrlEl, bestMoveEl, continuationEl, evaluationEl, mateEl);
-	cardEl.append(cardTitleEl, cardBodyEl);
+	cardEl.append(cardHeaderEl, cardBodyEl);
 
 	// append card to results-container
 	resultsContainer.prepend(cardEl);
@@ -78,6 +87,18 @@ const getBestMove = function (event) {
 
 	// prevent default form behaviour
 	event.preventDefault();
+
+	// form validation
+	if (usernameInput.val() === '') {
+		usernameInput.attr('placeholder', 'Please input a username');
+		return;
+	}
+
+	// reset placeholder for usernameInput to default
+	usernameInput.attr('placeholder', 'Enter Chess.com username..');
+
+	// loading graphic for submit button
+	submitBtn.addClass('is-loading');
 
 	// empty result-container before printing fresh results
 	// resultsContainer.empty();
@@ -118,12 +139,12 @@ const getBestMove = function (event) {
 				// encode FEN for URL
 				const encodedFen = encodeURI(game.fen);
 
-				// set up request URL for best move
+				// set up request URL for best move 
 				const requestBestMoveUrl = `https://stockfish.online/api/s/v2.php?fen=${encodedFen}&depth=${depth}`;
 
 				// create abort controller for timeout
 				const abortController = new AbortController();
-				const timoutId = setTimeout(() => abortController.abort(), 10000);
+				setTimeout(() => abortController.abort(), 10000);
 
 				// async fetch funtion for best move
 				const fetchBestMove = async function () {
@@ -142,7 +163,23 @@ const getBestMove = function (event) {
 
 						// print best move data to results container  
 						printBestMoves(data, game);
-					}).catch(error => printErrorCard(error, game));
+
+						// remove loading graphic from submit button
+						submitBtn.removeClass('is-loading');
+
+						// hide modal once results have been printed
+						modal.removeClass('is-active');
+
+					}).catch(error => {
+						printErrorCard(error, game);
+
+						// remove loading graphic from submit button
+						submitBtn.removeClass('is-loading');
+
+						// hide modal once results have been printed
+						modal.removeClass('is-active');
+
+					});
 			}
 		});
 
@@ -152,3 +189,21 @@ const getBestMove = function (event) {
 
 // event handler for submit button
 submitBtn.on('click', getBestMove);
+
+// event handler for disclaimer checkbox
+disclaimerCheckbox.on('change', () => {
+	if (disclaimerCheckbox.prop('checked')) {
+		requestBtn.removeClass('is-hidden');
+	} else {
+		requestBtn.addClass('is-hidden');
+	}
+});
+
+// modal event handlers
+requestBtn.on('click', () => {
+	modal.addClass('is-active');
+});
+
+modalBg.on('click', () => {
+	modal.removeClass('is-active');
+});
