@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   
     // Close the dropdown when clicking outside of it
+    
     window.addEventListener('click', function(event) {
       if (!event.target.matches('.dropbtn')) {
         dropdownContent.style.display = 'none';
