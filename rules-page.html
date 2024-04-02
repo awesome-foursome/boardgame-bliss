@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,48 +12,45 @@
 <body>
     <header>
         <h1 class="header">Rules Page</h1>
+    </header>
+
+    <header class="Flex">
+        <!-- Dropdown -->
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Menu
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Homepage</a></li>
-                <li><a class="dropdown-item" href="#">Chesspage</a></li>
-                <li><a class="dropdown-item" href="#">Rules</a></li>
-            </ul>
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-content" id="myDropdown">
+                <a class="dropdown-item" href="#">Homepage</a>
+                <a class="dropdown-item" href="#">Chesspage</a>
+                <a class="dropdown-item" href="#">Rules</a>
+            </div>
+        </div>
+
+        <!-- Theme selector -->
+        <div>
+            <button class="theme-selector">Theme Selector</button>
         </div>
     </header>
 
     <article>
         <main id="main">
-
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Heres What You Will Learn</h5>
-                        </div>
-                        <div class="modal-body">
-                            <p>The difference between check and checkmate.</p>
-                            <p>How to move the pieces.</p>
-                            <p>Chessboard Setup.</p>
-                            <p>Pawn promotion.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                        </div>
-                    </div>
+            <!-- Modal -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h1>Here's What You Will Learn</h1>
+                    <p>The difference between check and checkmate.</p>
+                    <p>How to move the pieces.</p>
+                    <p>Chessboard setup.</p>
+                    <p>Pawn promotion.</p>
                 </div>
             </div>
 
+            <!-- Cards -->
             <div class="cards">
                 <h1>How To Pay Chess</h1>
-                <p>Every square in chess has a name, with vertical files from a-h and horizontal ranks from 1-8. Chess is won when your 
-                    opponent is in check and cannot escape. That is called checkmate!</p>
-                <p>Check means that a king is being threatened. A king can never actually be captured, so the other 
+                <p>Chess is won when your opponent is in check and cannot escape. That is called checkmate!
+                    Every square in chess has a name, with vertical files from a-h and horizontal ranks from 1-8.
+                    Check means that a king is being threatened. A king can never actually be captured, so the other
                     side must get out of check by moving, blocking, or capturing the checking piece.</p>
 
             </div>
