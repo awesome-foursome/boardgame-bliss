@@ -1,0 +1,27 @@
+CSS
+*{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.dropdown{
+    display: flex;
+    justify-content: flex-end;
+}
+
+h1{
+    text-align: center;
+}
+
+.cards{
+    border-width: 20px;
+    border: groove;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
