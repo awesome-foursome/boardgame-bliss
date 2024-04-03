@@ -63,7 +63,7 @@ const printHistory = function () {
 	// loop through history elements and print buttons to historyConatiner
 	for (const searchObj of history) {
 		const historyBtn = $('<button>')
-			.addClass('button is-warning history-btn')
+			.addClass('button is-warning history-btn mx-1 my-1')
 			.text(`${searchObj.username} | ${searchObj.depth}`)
 			.attr('data-username', searchObj.username)
 			.attr('data-depth', searchObj.depth);
