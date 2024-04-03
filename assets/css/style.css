@@ -60,13 +60,13 @@ html {
 }
 
 /* settings for the entire document (1 step below root/html) */
-*{
+* {
     padding: 0;
     margin: 0;
 }
 
 /* Other settings for the whole document */
-body{
+body {
     /* decide as a group */
     /* font-family: ; */
     font-size: 1.6rem;
@@ -112,7 +112,7 @@ h6 {
 
 /* just so everyone knows explaining the earlier bit */
 /* p { */
-    /* font-size: 1.6rem; -DON'T NEED TO SPECIFY- */
+/* font-size: 1.6rem; -DON'T NEED TO SPECIFY- */
 /* } */
 
 /* always wrap images in div */

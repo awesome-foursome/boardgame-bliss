@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boardgame Bliss</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boardgame Bliss</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+  <link rel="stylesheet" href="./assets/css/index.css">
 </head>
+
 <body>
-
-    <!-- Zadok feel free to add/ammend this how you see fit to the header -->
-    <label for="theme">Theme:</label> 
-    <select name="theme" id="theme"> 
-        <option value="light">Light</option> 
-        <option value="dark">Dark</option> 
-        <!-- when you change the value=" " and textcontent you'll also have to change
+  <!-- Zadok feel free to add/ammend this how you see fit to the header -->
+  <label for="theme">Theme:</label>
+  <select name="theme" id="theme">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <!-- when you change the value=" " and textcontent you'll also have to change
         the data-theme=" " on line 22 of style.css to match -->
-        <option value="abdikarim">Abdikarim</option> 
-        <option value="jiske">Jiske</option> 
-          <!-- when you change the value=" " and textcontent you'll also have to change
+    <option value="abdikarim">Abdikarim</option>
+    <option value="jiske">Jiske</option>
+    <!-- when you change the value=" " and textcontent you'll also have to change
         the data-theme=" " on line 40 of style.css to match -->
-        <option value="simon">Simon</option> 
-          <!-- when you change the value=" " and textcontent you'll also have to change
+    <option value="simon">Simon</option>
+    <!-- when you change the value=" " and textcontent you'll also have to change
         the data-theme=" " on line 50 of style.css to match -->
-        <option value="zadok">Zadok</option> 
-    </select>
-    
+    <option value="zadok">Zadok</option>
+  </select>
 
-    <main>
-      <article>
-        <h3>Introduction</h3>
-        <p>Introduction/description Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga fugit ea, ullam totam quam voluptatum nemo minus fugiat. Harum illo ab molestiae amet qui temporibus iusto. Repellat voluptate architecto distinctio?</p>
-      </article>
-      <div id="row">
-      <section id="left">
-        <h3>Resources</h3>
-        <ol>
-          <li id="chess-page"><a href="./chess-page.html">Chess Move Generator</a></li>
-          <li id="rules-page"><a href="./rules-page.html">Chess Rules</li>
-        </ol>
-      </section>
-      <section id="right">
-        <img src="./assets/images/index.html/html-background.jpg" alt="">
-      </section>
+
+  <main>
+    <div class="section" id="hero">
     </div>
-    </main>
-    <script src="./assets/js/script.js"></script>
+    <div class="section">
+      <article class="content container">
+        <h2 class="is-size-2-desktop title">Introduction</h2>
+        <p>Introduction/description Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga fugit ea, ullam totam
+          quam voluptatum nemo minus fugiat. Harum illo ab molestiae amet qui temporibus iusto. Repellat voluptate
+          architecto distinctio?</p>
+      </article>
+    </div>
+    <div class="section">
+      <div class="content container">
+        <div class="columns" id="row">
+          <section class="column is-12-mobile is-7-tablet is-5-desktop content" id="left">
+            <h2 class="is-size-2-desktop title">Resources</h2>
+            <div class="block" id="move-generator" data-target="chess-img">
+              <h5 class="is-size-4-desktop subtitle" id="chess-page">Chess Move Generator</h5>
+              <p>See suggested moves and an indicator of current board state to get an idea of how you're progressing
+                and
+                what moves might be more optimal.</p>
+            </div>
+            <div class="block" id="rules-page" data-target="rules-img">
+              <h5 class="is-size-4-desktop subtitle" id="rules-page">Chess Rules</h5>
+              <p>See a breakdown of the basic chess rules. Including object of the game, how the different pieces move
+                and
+                some video tutorials.</p>
+            </div>
+          </section>
+          <section class="column is-hidden-mobile is-5-tablet is-7-desktop" id="right">
+            <img id="index-img" src="./project-planning/wireframe-homepage.png" alt="">
+            <img id="chess-img" class="is-hidden" src="./project-planning/wireframe-chess-page.png" alt="">
+            <img id="rules-img" class="is-hidden" src="./project-planning/Wireframe-rules-page.png" alt="">
+          </section>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <script src="./assets/js/index-page.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
+
+<!-- 
+  padding py-3 = padding y axis
+ mx-3 = margin x axis
+mt-1 mr-6 pb-1 pl-6 = padding/margin in top right bottom left -->
