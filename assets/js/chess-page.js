@@ -147,38 +147,6 @@ const printBestMoves = function (data, game) {
 // function for form submit
 const getBestMove = function (username, depth) {
 
-	// // prevent default form behaviour
-	// event.preventDefault();
-
-	// // form validation
-	// if (usernameInput.val() === '') {
-	// 	usernameInput.attr('placeholder', 'Please input a username');
-	// 	return;
-	// }
-
-	// // reset placeholder for usernameInput to default
-	// usernameInput.attr('placeholder', 'Enter Chess.com username..');
-
-	// // loading graphic for submit button
-	// submitBtn.addClass('is-loading');
-
-	// // empty result-container before printing fresh results
-	// // resultsContainer.empty();
-
-	// // pull username and depth from form
-	// const username = usernameInput.val();
-	// const depth = depthInput.val();
-
-	// // debug log
-	// console.log('username:', username);
-	// console.log('depth:', depth);
-
-	// // add new search to localStorage
-	// handleHistory(username, depth);
-
-	// // print uodated history buttons
-	// printHistory();
-
 	// set up request URL with username
 	const requestGameStateUrl = `https://api.chess.com/pub/player/${username}/games`
 
@@ -250,9 +218,6 @@ const getBestMove = function (username, depth) {
 					});
 			}
 		});
-
-	// // clear form inputs
-	// chessForm[0].reset();
 };
 
 // function to handle form submit
