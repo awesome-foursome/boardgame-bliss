@@ -1,6 +1,7 @@
 const pages = document.querySelectorAll('#left div');
-const pageImages = document.querySelectorAll('#right > img');
+const pageImages = document.querySelectorAll('#right > div');
 
+// make card image match card on mouseover
 pages.forEach((page) => {
     page.addEventListener('mouseover', () => {
 
@@ -16,6 +17,7 @@ pages.forEach((page) => {
     })
 });
 
+// revert image to default on mouseout
 pages.forEach((page) => {
     page.addEventListener('mouseout', () => {
 
@@ -27,5 +29,14 @@ pages.forEach((page) => {
                 document.querySelector('#index-img').classList.remove('is-hidden')
             }
         })
+    })
+});
+
+// max page cards into links
+pages.forEach((page) => {
+    page.addEventListener('click', () => {
+        const target = page.id;
+
+        location.href = `./${target}.html`;
     })
 });
