@@ -1,4 +1,6 @@
-const requestBtn = $('#request-btn')
+const requestContainer = $('#request-container');
+const requestBtn = $('#request-btn');
+const historyContainer = $('#history-container');
 const formContainer = $('#form-container');
 const chessForm = $('#chess-form');
 const submitBtn = $('#submit-btn');
@@ -8,6 +10,66 @@ const resultsContainer = $('#results-container');
 const disclaimerCheckbox = $('#disclaimer-checkbox');
 const modal = $('.modal');
 const modalBg = $('.modal-background');
+
+// function to add new item to search history
+const handleHistory = function (username, depth) {
+
+	// retrieve existing history from local storage
+	let history = JSON.parse(localStorage.getItem('history'));
+
+	// if no history exists assign empty array
+	if (!history) {
+		history = [];
+	}
+
+	// create new history object from provided data
+	const newHistoryObject = {
+		username: username,
+		depth: depth,
+	}
+
+	// loop through existing history to check for identical searches
+	for (const searchObj of history) {
+		const searchObjUsername = searchObj.username;
+		const searchObjDepth = searchObj.depth;
+
+		if (searchObjUsername === username && searchObjDepth === depth) {
+			return;
+		}
+	}
+
+	// add new object to history array
+	history.push(newHistoryObject);
+
+	// store updated history array
+	localStorage.setItem('history', JSON.stringify(history));
+
+};
+
+// function to print history buttons
+const printHistory = function () {
+
+	// empty existing history buttons
+	historyContainer.empty();
+
+	// retrieve existing history 
+	let history = JSON.parse(localStorage.getItem('history'));
+
+	// if no hsitory exist stop function
+	if (!history) {
+		return;
+	}
+
+	// loop through history elements and print buttons to historyConatiner
+	for (const searchObj of history) {
+		const historyBtn = $('<button>')
+			.addClass('button is-warning history-btn mx-1 my-1')
+			.text(`${searchObj.username} | ${searchObj.depth}`)
+			.attr('data-username', searchObj.username)
+			.attr('data-depth', searchObj.depth);
+		historyContainer.append(historyBtn);
+	}
+};
 
 // function to print error card
 const printErrorCard = function (error, game) {
@@ -83,33 +145,7 @@ const printBestMoves = function (data, game) {
 };
 
 // function for form submit
-const getBestMove = function (event) {
-
-	// prevent default form behaviour
-	event.preventDefault();
-
-	// form validation
-	if (usernameInput.val() === '') {
-		usernameInput.attr('placeholder', 'Please input a username');
-		return;
-	}
-
-	// reset placeholder for usernameInput to default
-	usernameInput.attr('placeholder', 'Enter Chess.com username..');
-
-	// loading graphic for submit button
-	submitBtn.addClass('is-loading');
-
-	// empty result-container before printing fresh results
-	// resultsContainer.empty();
-
-	// pull username and depth from form
-	const username = usernameInput.val();
-	const depth = depthInput.val();
-
-	// debug log
-	console.log('username:', username);
-	console.log('depth:', depth);
+const getBestMove = function (username, depth) {
 
 	// set up request URL with username
 	const requestGameStateUrl = `https://api.chess.com/pub/player/${username}/games`
@@ -182,20 +218,78 @@ const getBestMove = function (event) {
 					});
 			}
 		});
+};
+
+// function to handle form submit
+const handleFormSubmit = function (event) {
+
+	// prevent default form behaviour
+	event.preventDefault();
+
+	// form validation
+	if (usernameInput.val() === '') {
+		usernameInput.attr('placeholder', 'Please input a username');
+		return;
+	}
+
+	// reset placeholder for usernameInput to default
+	usernameInput.attr('placeholder', 'Enter Chess.com username..');
+
+	// loading graphic for submit button
+	submitBtn.addClass('is-loading');
+
+	// empty result-container before printing fresh results
+	// resultsContainer.empty();
+
+	// pull username and depth from form
+	const username = usernameInput.val();
+	const depth = depthInput.val();
+
+	// debug log
+	console.log('username:', username);
+	console.log('depth:', depth);
+
+	// add new search to localStorage
+	handleHistory(username, depth);
+
+	// print uodated history buttons
+	printHistory();
+
+	// get best moves
+	getBestMove(username, depth);
 
 	// clear form inputs
 	chessForm[0].reset();
 };
 
+// prepare history request data for getBestMove parameters
+const getHistoryRequest = function (event) {
+
+	// prevent default form behaviour
+	event.preventDefault();
+
+	// retrieve username and depth from button element data-attributes
+	const username = event.target.dataset.username;
+	const depth = event.target.dataset.depth;
+
+	// debug log
+	console.log('history username:', username);
+	console.log('history depth:', depth);
+
+	getBestMove(username, depth);
+
+};
+
+// EVENT HANDLERS
 // event handler for submit button
-submitBtn.on('click', getBestMove);
+submitBtn.on('click', handleFormSubmit);
 
 // event handler for disclaimer checkbox
 disclaimerCheckbox.on('change', () => {
 	if (disclaimerCheckbox.prop('checked')) {
-		requestBtn.removeClass('is-hidden');
+		requestContainer.removeClass('is-hidden');
 	} else {
-		requestBtn.addClass('is-hidden');
+		requestContainer.addClass('is-hidden');
 	}
 });
 
@@ -207,3 +301,9 @@ requestBtn.on('click', () => {
 modalBg.on('click', () => {
 	modal.removeClass('is-active');
 });
+
+// event handler for printing history on page load
+$(document).ready(printHistory);
+
+// event handler for history buttons
+historyContainer.on('click', '.history-btn', getHistoryRequest);
