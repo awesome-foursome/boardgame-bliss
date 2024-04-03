@@ -55,21 +55,21 @@ the value and option text content on the html to match */
 }
 
 /* set 1rem to 10px to easily find values for the rest of the page (ie. 1.5rem is 15px, 2.0rem is 20px, etc.) */
-html {
+/* html {
     font-size: 62.5%;
-}
+} */
 
 /* settings for the entire document (1 step below root/html) */
-*{
+/* * {
     padding: 0;
     margin: 0;
-}
+} */
 
 /* Other settings for the whole document */
-body{
+body {
     /* decide as a group */
     /* font-family: ; */
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
     color: var(--text-color-main);
     background-color: var(--background-color-main);
 }
@@ -82,11 +82,11 @@ h4,
 h5,
 h6 {
     color: var(--text-color-main);
-    font-weight: 700;
+    /* font-weight: 700; */
 }
 
 /* specific text values */
-h1 {
+/* h1 {
     font-size: 4rem;
 }
 
@@ -108,14 +108,14 @@ h5 {
 
 h6 {
     font-size: 1.5rem;
-}
+} */
 
 /* just so everyone knows explaining the earlier bit */
 /* p { */
-    /* font-size: 1.6rem; -DON'T NEED TO SPECIFY- */
+/* font-size: 1.6rem; -DON'T NEED TO SPECIFY- */
 /* } */
 
 /* always wrap images in div */
-img {
+/* img {
     width: 100%;
-}
+} */
