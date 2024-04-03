@@ -63,7 +63,7 @@ const printHistory = function () {
 	// loop through history elements and print buttons to historyConatiner
 	for (const searchObj of history) {
 		const historyBtn = $('<button>')
-			.addClass('button is-warning')
+			.addClass('button is-warning history-btn')
 			.text(`${searchObj.username} | ${searchObj.depth}`)
 			.attr('data-username', searchObj.username)
 			.attr('data-depth', searchObj.depth);
@@ -145,39 +145,39 @@ const printBestMoves = function (data, game) {
 };
 
 // function for form submit
-const getBestMove = function (event) {
+const getBestMove = function (username, depth) {
 
-	// prevent default form behaviour
-	event.preventDefault();
+	// // prevent default form behaviour
+	// event.preventDefault();
 
-	// form validation
-	if (usernameInput.val() === '') {
-		usernameInput.attr('placeholder', 'Please input a username');
-		return;
-	}
+	// // form validation
+	// if (usernameInput.val() === '') {
+	// 	usernameInput.attr('placeholder', 'Please input a username');
+	// 	return;
+	// }
 
-	// reset placeholder for usernameInput to default
-	usernameInput.attr('placeholder', 'Enter Chess.com username..');
+	// // reset placeholder for usernameInput to default
+	// usernameInput.attr('placeholder', 'Enter Chess.com username..');
 
-	// loading graphic for submit button
-	submitBtn.addClass('is-loading');
+	// // loading graphic for submit button
+	// submitBtn.addClass('is-loading');
 
-	// empty result-container before printing fresh results
-	// resultsContainer.empty();
+	// // empty result-container before printing fresh results
+	// // resultsContainer.empty();
 
-	// pull username and depth from form
-	const username = usernameInput.val();
-	const depth = depthInput.val();
+	// // pull username and depth from form
+	// const username = usernameInput.val();
+	// const depth = depthInput.val();
 
-	// debug log
-	console.log('username:', username);
-	console.log('depth:', depth);
+	// // debug log
+	// console.log('username:', username);
+	// console.log('depth:', depth);
 
-	// add new search to localStorage
-	handleHistory(username, depth);
+	// // add new search to localStorage
+	// handleHistory(username, depth);
 
-	// print uodated history buttons
-	printHistory();
+	// // print uodated history buttons
+	// printHistory();
 
 	// set up request URL with username
 	const requestGameStateUrl = `https://api.chess.com/pub/player/${username}/games`
@@ -251,12 +251,73 @@ const getBestMove = function (event) {
 			}
 		});
 
+	// // clear form inputs
+	// chessForm[0].reset();
+};
+
+// function to handle form submit
+const handleFormSubmit = function (event) {
+
+	// prevent default form behaviour
+	event.preventDefault();
+
+	// form validation
+	if (usernameInput.val() === '') {
+		usernameInput.attr('placeholder', 'Please input a username');
+		return;
+	}
+
+	// reset placeholder for usernameInput to default
+	usernameInput.attr('placeholder', 'Enter Chess.com username..');
+
+	// loading graphic for submit button
+	submitBtn.addClass('is-loading');
+
+	// empty result-container before printing fresh results
+	// resultsContainer.empty();
+
+	// pull username and depth from form
+	const username = usernameInput.val();
+	const depth = depthInput.val();
+
+	// debug log
+	console.log('username:', username);
+	console.log('depth:', depth);
+
+	// add new search to localStorage
+	handleHistory(username, depth);
+
+	// print uodated history buttons
+	printHistory();
+
+	// get best moves
+	getBestMove(username, depth);
+
 	// clear form inputs
 	chessForm[0].reset();
 };
 
+// prepare history request data for getBestMove parameters
+const getHistoryRequest = function (event) {
+
+	// prevent default form behaviour
+	event.preventDefault();
+
+	// retrieve username and depth from button element data-attributes
+	const username = event.target.dataset.username;
+	const depth = event.target.dataset.depth;
+
+	// debug log
+	console.log('history username:', username);
+	console.log('history depth:', depth);
+
+	getBestMove(username, depth);
+
+};
+
+// EVENT HANDLERS
 // event handler for submit button
-submitBtn.on('click', getBestMove);
+submitBtn.on('click', handleFormSubmit);
 
 // event handler for disclaimer checkbox
 disclaimerCheckbox.on('change', () => {
@@ -278,3 +339,6 @@ modalBg.on('click', () => {
 
 // event handler for printing history on page load
 $(document).ready(printHistory);
+
+// event handler for history buttons
+historyContainer.on('click', '.history-btn', getHistoryRequest);
