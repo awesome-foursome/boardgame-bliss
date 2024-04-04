@@ -189,6 +189,12 @@ const getBestMove = function (username, depth) {
 				throw new Error(`${username} has no ongoing Daily Games`);
 			}
 
+			// add new search to localStorage
+			handleHistory(username, depth);
+
+			// print updated history buttons
+			printHistory();
+
 			// loop through resultant games and pull FEN
 			for (const game of data.games) {
 				// debug log
@@ -273,9 +279,6 @@ const handleFormSubmit = function (event) {
 	// loading graphic for submit button
 	submitBtn.addClass('is-loading');
 
-	// empty result-container before printing fresh results
-	// resultsContainer.empty();
-
 	// pull username and depth from form
 	const username = usernameInput.val();
 	const depth = depthInput.val();
@@ -283,12 +286,6 @@ const handleFormSubmit = function (event) {
 	// debug log
 	console.log('username:', username);
 	console.log('depth:', depth);
-
-	// add new search to localStorage
-	handleHistory(username, depth);
-
-	// print uodated history buttons
-	printHistory();
 
 	// get best moves
 	getBestMove(username, depth);
