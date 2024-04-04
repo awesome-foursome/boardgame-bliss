@@ -1,0 +1,15 @@
+{
+  "name": "boardgame-bliss",
+  "version": "1.0.0",
+  "description": "## Link & Contents - [The Deployed Page](https://awesome-foursome.github.io/boardgame-bliss/) - [Further Goals](#further-goals) - [Potential Issues/Improvements](#potential-issuesimprovements) - [Key Learnings](#key-learnings) - [Contributing and Feedback](#contributing-and-feedback) - [Credits](#credits) - [Licence](#licence)",
+  "main": "./assets/js/script.js",
+  "scripts": {
+    "build-bulma": "sass --load-path=node_modules ./assets/css/my-bulma-project.scss ./assets/css/my-bulma-project.css"
+  },
+  "author": "Jiske",
+  "license": "MIT",
+  "dependencies": {
+    "bulma": "^1.0.0",
+    "sass": "^1.74.1"
+  }
+}
