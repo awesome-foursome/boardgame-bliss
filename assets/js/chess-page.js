@@ -167,6 +167,20 @@ const getBestMove = function (username, depth) {
 			// debug log
 			console.log(data)
 
+			// throw error and end function if there are no games or username is invalid
+			if (!data.games) {
+				throw new Error(`${username} is not a valid Chess.com username`);
+
+			} else if (data.games.length === 0) {
+				throw new Error(`${username} has no ongoing Daily Games`);
+			}
+
+			// add new search to localStorage
+			handleHistory(username, depth);
+
+			// print updated history buttons
+			printHistory();
+
 			// loop through resultant games and pull FEN
 			for (const game of data.games) {
 				// debug log
@@ -217,6 +231,19 @@ const getBestMove = function (username, depth) {
 
 					});
 			}
+		}).catch(error => {
+
+			// debug log
+			console.log(error.message);
+
+			// alert to inform user of error
+			window.alert(error.message);
+
+			// remove loading graphic from submit button
+			submitBtn.removeClass('is-loading');
+
+			// hide modal once results have been printed
+			modal.removeClass('is-active');
 		});
 };
 
@@ -238,9 +265,6 @@ const handleFormSubmit = function (event) {
 	// loading graphic for submit button
 	submitBtn.addClass('is-loading');
 
-	// empty result-container before printing fresh results
-	// resultsContainer.empty();
-
 	// pull username and depth from form
 	const username = usernameInput.val();
 	const depth = depthInput.val();
@@ -248,12 +272,6 @@ const handleFormSubmit = function (event) {
 	// debug log
 	console.log('username:', username);
 	console.log('depth:', depth);
-
-	// add new search to localStorage
-	handleHistory(username, depth);
-
-	// print uodated history buttons
-	printHistory();
 
 	// get best moves
 	getBestMove(username, depth);
