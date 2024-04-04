@@ -167,9 +167,8 @@ const getBestMove = function (username, depth) {
 			// debug log
 			console.log(data)
 
-			// end function if there are no games or invalid username
+			// throw error and end function if there are no games or username is invalid
 			if (!data.games) {
-				console.log(`${username} does not exist`);
 
 				// remove loading graphic from submit button
 				submitBtn.removeClass('is-loading');
@@ -177,9 +176,9 @@ const getBestMove = function (username, depth) {
 				// hide modal once results have been printed
 				modal.removeClass('is-active');
 
-				return;
+				throw new Error(`${username} is not a valid Chess.com username`);
+
 			} else if (data.games.length === 0) {
-				console.log(`${username} has no ongoing Daily Games`);
 
 				// remove loading graphic from submit button
 				submitBtn.removeClass('is-loading');
@@ -187,7 +186,7 @@ const getBestMove = function (username, depth) {
 				// hide modal once results have been printed
 				modal.removeClass('is-active');
 
-				return;
+				throw new Error(`${username} has no ongoing Daily Games`);
 			}
 
 			// loop through resultant games and pull FEN
@@ -241,7 +240,12 @@ const getBestMove = function (username, depth) {
 					});
 			}
 		}).catch(error => {
+
+			// debug log
 			console.log(error.message);
+
+			// alert to inform user of error
+			window.alert(error.message);
 
 			// remove loading graphic from submit button
 			submitBtn.removeClass('is-loading');
