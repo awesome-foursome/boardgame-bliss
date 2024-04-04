@@ -167,6 +167,29 @@ const getBestMove = function (username, depth) {
 			// debug log
 			console.log(data)
 
+			// end function if there are no games or invalid username
+			if (!data.games) {
+				console.log(`${username} does not exist`);
+
+				// remove loading graphic from submit button
+				submitBtn.removeClass('is-loading');
+
+				// hide modal once results have been printed
+				modal.removeClass('is-active');
+
+				return;
+			} else if (data.games.length === 0) {
+				console.log(`${username} has no ongoing Daily Games`);
+
+				// remove loading graphic from submit button
+				submitBtn.removeClass('is-loading');
+
+				// hide modal once results have been printed
+				modal.removeClass('is-active');
+
+				return;
+			}
+
 			// loop through resultant games and pull FEN
 			for (const game of data.games) {
 				// debug log
@@ -217,6 +240,14 @@ const getBestMove = function (username, depth) {
 
 					});
 			}
+		}).catch(error => {
+			console.log(error.message);
+
+			// remove loading graphic from submit button
+			submitBtn.removeClass('is-loading');
+
+			// hide modal once results have been printed
+			modal.removeClass('is-active');
 		});
 };
 
