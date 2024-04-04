@@ -11,24 +11,49 @@
 </head>
 
 <body class="">
+
+
 	<header>
-		<label for="theme">Theme:</label>
-		<select name="theme" id="theme">
-			<option value="light">Light</option>
-			<option value="dark">Dark</option>
-			<!-- when you change the value=" " and textcontent you'll also have to change
-        the data-theme=" " on line 22 of style.css to match -->
-			<option value="abdikarim">Abdikarim</option>
-			<option value="jiske">Jiske</option>
-			<!-- when you change the value=" " and textcontent you'll also have to change
-        the data-theme=" " on line 40 of style.css to match -->
-			<option value="simon">Simon</option>
-			<!-- when you change the value=" " and textcontent you'll also have to change
-        the data-theme=" " on line 50 of style.css to match -->
-			<option value="zadok">Zadok</option>
-		</select>
-		<a href="index.html">Home</a>
-		<a href="rules-page.html">Rules Page</a>
+		<nav class="navbar">
+			<div class="navbar-brand">
+
+				<!-- group icon -->
+				<a href="https://github.com/awesome-foursome" class="navbar-item">
+					<img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
+				</a>
+
+				<!-- toggle for dark mode -->
+				<div class="navbar-item has-dropdown is-hoverable">
+					<label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
+					<div class="navbar-dropdown" name="theme" id="theme">
+						<option class="navbar-item" value="light">Light</option>
+						<hr class="navbar-divider">
+						<option class="navbar-item" value="dark">Dark</option>
+					</div>
+				</div>
+
+				<div class="navbar-item pl-6">
+					<h1 class="is-centered is-size-1-desktop title">Move Generator</h1>
+				</div>
+
+				<!-- icon to display navbar menu on mobile -->
+				<a class="navbar-burger" id="burger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+			</div>
+
+
+			<!-- nav links to other pages -->
+			<div class="navbar-menu" id="nav-links">
+				<div class="navbar-end">
+					<a href="./index.html" class="navbar-item">Homepage</a>
+					<a href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
+				</div>
+			</div>
+		</nav>
 	</header>
 
 	<section class="section" id="main-body">

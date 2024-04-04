@@ -11,36 +11,45 @@
 </head>
 
 <body>
-	<nav class="navbar">
-		<div class="navbar-brand">
-			<a href="https://github.com/awesome-foursome" class="navbar-item">
-				<img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
-			</a>
-			<div class="navbar-item has-dropdown is-hoverable">
-				<label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
-				<div class="navbar-dropdown" name="theme" id="theme">
-					<option class="navbar-item" value="light">Light</option>
-					<hr class="navbar-divider">
-					<option class="navbar-item" value="dark">Dark</option>
+
+	<header>
+		<nav class="navbar">
+			<div class="navbar-brand">
+
+				<!-- group icon -->
+				<a href="https://github.com/awesome-foursome" class="navbar-item">
+					<img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
+				</a>
+
+				<!-- toggle for dark mode -->
+				<div class="navbar-item has-dropdown is-hoverable">
+					<label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
+					<div class="navbar-dropdown" name="theme" id="theme">
+						<option class="navbar-item" value="light">Light</option>
+						<hr class="navbar-divider">
+						<option class="navbar-item" value="dark">Dark</option>
+					</div>
+				</div>
+
+				<!-- icon to display navbar menu on mobile -->
+				<a class="navbar-burger" id="burger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+			</div>
+
+
+			<!-- nav links to other pages -->
+			<div class="navbar-menu" id="nav-links">
+				<div class="navbar-end">
+					<a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
+					<a href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
 				</div>
 			</div>
-			<a class="navbar-burger" id="burger">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-			</a>
-		</div>
-
-
-		<div class="navbar-menu" id="nav-links">
-			<div class="navbar-end">
-				<a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
-				<a href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
-			</div>
-		</div>
-	</nav>
-
+		</nav>
+	</header>
 
 
 
