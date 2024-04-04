@@ -21,3 +21,12 @@ function savedTheme() {
 
 // potentially put this into an on ready function at a later date
 savedTheme();
+
+
+// mobile burger menu
+const burgerIcon = document.querySelector('#burger');
+const navbarMenu = document.querySelector('#nav-links');
+
+burgerIcon.addEventListener('click', () => {
+    navbarMenu.classList.toggle('is-active');
+});
