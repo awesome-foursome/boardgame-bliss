@@ -169,23 +169,9 @@ const getBestMove = function (username, depth) {
 
 			// throw error and end function if there are no games or username is invalid
 			if (!data.games) {
-
-				// remove loading graphic from submit button
-				submitBtn.removeClass('is-loading');
-
-				// hide modal once results have been printed
-				modal.removeClass('is-active');
-
 				throw new Error(`${username} is not a valid Chess.com username`);
 
 			} else if (data.games.length === 0) {
-
-				// remove loading graphic from submit button
-				submitBtn.removeClass('is-loading');
-
-				// hide modal once results have been printed
-				modal.removeClass('is-active');
-
 				throw new Error(`${username} has no ongoing Daily Games`);
 			}
 
