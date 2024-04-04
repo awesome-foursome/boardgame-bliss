@@ -1,20 +1,20 @@
 /* variables for colour scheme affecting html element in place of :root */
 
 /* light theme */
-[data-theme="light"] {
+/* [data-theme="light"] {
     --background-color-main: lightgrey;
     --background-color-secondary: black;
     --text-color-main: black;
     --text-color-secondary: white;
-}
+} */
 
 /* dark theme */
-[data-theme="dark"] {
+/* [data-theme="dark"] {
     --background-color-main: black;
     --background-color-secondary: lightgrey;
     --text-color-main: white;
     --text-color-secondary: black;
-}
+} */
 
 /* abdikarim theme pick your colours and theme name */
 /* when you change data-theme=" " you'll also have to change 
@@ -70,8 +70,8 @@ body {
     /* decide as a group */
     /* font-family: ; */
     /* font-size: 1.6rem; */
-    color: var(--text-color-main);
-    background-color: var(--background-color-main);
+    /* color: var(--text-color-main);
+    background-color: var(--background-color-main); */
 }
 
 /* base/universal h values */
@@ -81,7 +81,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--text-color-main);
+    /* color: var(--text-color-main); */
     /* font-weight: 700; */
 }
 
@@ -119,3 +119,6 @@ h6 {
 /* img {
     width: 100%;
 } */
+.card {
+    --bulma-card-background-color: var(--background-color-secondary);
+}
