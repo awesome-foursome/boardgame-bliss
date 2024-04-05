@@ -2,154 +2,172 @@
 <html lang="en" data-theme="light">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-	<link rel="stylesheet" href="assets/css/rules-page.css">
-	<script defer src="assets/js/rules-page.js"></script>
-	<title>Boardgame Bliss</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/css/rules-page.css">
+    <script defer src="assets/js/rules-page.js"></script>
+    <title>Boardgame Bliss</title>
 </head>
 
 <body>
-	<header>
-		<nav class="navbar">
-			<div class="navbar-brand">
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
 
-				<!-- group icon -->
-				<a href="https://github.com/awesome-foursome" class="navbar-item">
-					<img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
-				</a>
+                <!-- group icon -->
+                <a href="https://github.com/awesome-foursome" class="navbar-item">
+                    <img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
+                </a>
 
-				<!-- toggle for dark mode -->
-				<div class="navbar-item has-dropdown is-hoverable pl-3">
-					<label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
-					<div class="navbar-dropdown" name="theme" id="theme">
-						<option class="navbar-item" value="light">Light</option>
-						<hr class="navbar-divider">
-						<option class="navbar-item" value="dark">Dark</option>
-					</div>
-				</div>
+                <!-- toggle for dark mode -->
+                <div class="navbar-item has-dropdown is-hoverable pl-3">
+                    <label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
+                    <div class="navbar-dropdown" name="theme" id="theme">
+                        <option class="navbar-item" value="light">Light</option>
+                        <hr class="navbar-divider">
+                        <option class="navbar-item" value="dark">Dark</option>
+                    </div>
+                </div>
 
-				<div class="navbar-item pl-6 is-hidden-mobile">
-					<h1 class="is-centered is-size-1-desktop title">Rules Page</h1>
-				</div>
+                <div class="navbar-item pl-6 is-hidden-mobile">
+                    <h1 class="is-centered is-size-1-desktop title">Rules Page</h1>
+                </div>
 
-				<!-- icon to display navbar menu on mobile -->
-				<a class="navbar-burger" id="burger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</a>
-			</div>
+                <!-- icon to display navbar menu on mobile -->
+                <a class="navbar-burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
 
 
-			<!-- nav links to other pages -->
-			<div class="navbar-menu pr-6" id="nav-links">
-				<div class="navbar-end">
-					<a href="./index.html" class="navbar-item">Homepage</a>
-					<a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
-				</div>
-			</div>
-		</nav>
-	</header>
+            <!-- nav links to other pages -->
+            <div class="navbar-menu pr-6" id="nav-links">
+                <div class="navbar-end">
+                    <a href="./index.html" class="navbar-item">Homepage</a>
+                    <a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-	<article>
-		<main id="main">
-			<!-- Modal -->
-			<div id="modal" class="modal">
-				<div class="modal-content">
-					<span class="close">&times;</span>
-					<h1>Here's What You Will Learn</h1>
-					<p>The difference between check and checkmate.</p>
-					<p>How to move the pieces.</p>
-					<p>Chessboard setup.</p>
-					<p>Pawn promotion.</p>
-				</div>
-			</div>
+    <main id="main">
+        <article>
+            <section>
+                <!-- Modal -->
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h1 class="title">Here's What You Will Learn</h1>
+                        <p class="subtitle">Difference between check and checkmate.</p>
+                        <p class="subtitle">How to move the pieces.</p>
+                        <p class="subtitle">Chessboard setup.</p>
+                        <p class="subtitle">Pawn promotion.</p>
+                    </div>
+                </div>
 
-			<!-- Cards -->
-			<div class="cards">
-				<h1>How To Pay Chess</h1>
-				<p>Chess is won when your opponent is in check and cannot escape. That is called checkmate!
-					Every square in chess has a name, with vertical files from a-h and horizontal ranks from 1-8.
-					Check means that a king is being threatened. A king can never actually be captured, so the other
-					side must get out of check by moving, blocking, or capturing the checking piece.</p>
+                <!-- Cards -->
+                <div class="cards">
+                    <h1 class="title">How To Pay Chess</h1>
+                    <p class="subtitle">Chess is won when your opponent is in check and cannot escape. That is called
+                        checkmate!
+                        Every square in chess has a name, with vertical files from a-h and horizontal ranks from 1-8.
+                        Check means that a king is being threatened. A king can never actually be captured, so the other
+                        side must get out of check by moving, blocking, or capturing the checking piece.</p>
 
-			</div>
+                </div>
 
-			<div class="cards">
-				<h1>How To Move The Pieces</h1>
-			</div>
+                <div class="cards">
+                    <h1 class="title">How To Move The Pieces</h1>
+                </div>
 
-			<div class="cards">
-				<h3>The King</h3>
-				<p>The king can only move to any square that's directly next to it: up, down, sideways, or diagonal</p>
-			</div>
+                <div class="cards">
+                    <h3 class="title">The King</h3>
+                    <p class="subtitle">The king can only move to any square that's directly next to it: up, down,
+                        sideways, or diagonal
+                    </p>
+                </div>
 
-			<div class="cards">
-				<h3>The Queen</h3>
-				<p>The queen can move forwards, backward, sideways, and diagonally like a king. However, unlike the
-					king, the queen can move
-					as far as it wants to in each of these directions but cant jump over other peices.</p>
-			</div>
+                <div class="cards">
+                    <h3 class="title">The Queen</h3>
+                    <p class="subtitle">The queen can move forwards, backward, sideways, and diagonally like a king.
+                        However, unlike the
+                        king, the queen can move
+                        as far as it wants to in each of these directions but cant jump over other peices.</p>
+                </div>
 
-			<div class="cards">
-				<h3>The Rook</h3>
-				<p>The rook can move forwards, backward, and sideways as far as it wants but can't jump over other
-					peices.</p>
-			</div>
+                <div class="cards">
+                    <h3 class="title">The Rook</h3>
+                    <p class="subtitle">The rook can move forwards, backward, and sideways as far as it wants but can't
+                        jump over other
+                        peices.</p>
+                </div>
 
-			<div class="cards">
-				<h3>The Bishop</h3>
-				<p>The bishop can move diagonally like a queen, but not forward, backward, or sideways. Each side starts
-					with two bishops,
-					one on a light square and one on a dark square and can only move on its allocated square color.</p>
-			</div>
+                <div class="cards">
+                    <h3 class="title">The Bishop</h3>
+                    <p class="subtitle">The bishop can move diagonally like a queen, but not forward, backward, or
+                        sideways. Each side
+                        starts
+                        with two bishops,
+                        one on a light square and one on a dark square and can only move on its allocated square color.
+                    </p>
+                </div>
 
-			<div class="cards">
-				<h3>The Knight</h3>
-				<p>The knight is the only chess piece that doesn't go in a straight line. The knight moves two squares
-					in one direction and then turns
-					and goes one square to the side. Usally he would move to a dark squre then to a light and so on.</p>
-			</div>
+                <div class="cards">
+                    <h3 class="title">The Knight</h3>
+                    <p class="subtitle">The knight is the only chess piece that doesn't go in a straight line. The
+                        knight moves two
+                        squares
+                        in one direction and then turns
+                        and goes one square to the side. Usally he would move to a dark squre then to a light and so on.
+                    </p>
+                </div>
 
-			<div class="cards">
-				<h3>The Pawn</h3>
-				<p>Pawns move one square forward and cannot move back. A pawn may advance two squares on its first move.
-					Pawns can only capture one square diagonally ahead.</p>
-			</div>
+                <div class="cards">
+                    <h3 class="title">The Pawn</h3>
+                    <p class="subtitle">Pawns move one square forward and cannot move back. A pawn may advance two
+                        squares on its first
+                        move.
+                        Pawns can only capture one square diagonally ahead.</p>
+                </div>
 
-			<div class="cards">
-				<h1>Additional Rules</h1>
-			</div>
+                <div class="cards">
+                    <h1 class="title">Additional Rules</h1>
+                </div>
 
-			<div class="cards">
-				<h3>Chessboard Setup</h3>
-				<p>Rooks are in the corners, with knights next to them, followed by bishops. Kings and queens take the
-					center squares with the
-					queen on her own color. All pawns go on the 2nd and 7th ranks.</p>
-			</div>
+                <div class="cards">
+                    <h3 class="title">Chessboard Setup</h3>
+                    <p>Rooks are in the corners, with knights next to them, followed by bishops. Kings and queens take
+                        the
+                        center squares with the
+                        queen on her own color. All pawns go on the 2nd and 7th ranks.</p>
+                </div>
 
-			<div class="cards">
-				<h3>Pawn Promotion</h3>
-				<p>When a pawn reaches the end of the board it “promotes”, it turns into another piece. Most of the time
-					players promote
-					to a queen, but a rook, knight, or bishop is also possible but not a king.</p>
-			</div>
-		</main>
-	</article>
+                <div class="cards">
+                    <h3 class="title">Pawn Promotion</h3>
+                    <p class="subtitle">When a pawn reaches the end of the board it “promotes”, it turns into another
+                        piece. Most of the
+                        time
+                        players promote
+                        to a queen, but a rook, knight, or bishop is also possible but not a king.</p>
+                </div>
+            </section>
+        </article>
+    </main>
 
-	<footer class="footer">
-		<div class="content has-text-centered">
-			<p class="has-text-weight-bold">Made with Blood, Sweat and Tears 😭 By:</p>
-			<div class="container is-flex is-flex-direction-column">
-				<a href="https://github.com/abdihun">abdihun</a>
-				<a href="https://github.com/Jiske-N">Jiske-N</a>
-				<a href="https://github.com/simonjbr">simonjbr</a>
-			</div>
-		</div>
-	</footer>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p class="has-text-weight-bold">Made with Blood, Sweat and Tears 😭 By:</p>
+            <div class="container is-flex is-flex-direction-column">
+                <a href="https://github.com/abdihun">abdihun</a>
+                <a href="https://github.com/Jiske-N">Jiske-N</a>
+                <a href="https://github.com/simonjbr">simonjbr</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
