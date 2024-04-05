@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Other Games</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+
+                <!-- group icon -->
+                <a href="https://github.com/awesome-foursome" class="navbar-item">
+                    <img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
+                </a>
+
+                <!-- toggle for dark mode -->
+                <div class="navbar-item has-dropdown is-hoverable pl-3">
+                    <label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
+                    <div class="navbar-dropdown" name="theme" id="theme">
+                        <option class="navbar-item" value="light">Light</option>
+                        <hr class="navbar-divider">
+                        <option class="navbar-item" value="dark">Dark</option>
+                    </div>
+                </div>
+
+                <div class="navbar-item pl-6 is-hidden-mobile">
+                    <h1 class="is-centered is-size-1-desktop title">Discover New Games</h1>
+                </div>
+
+                <!-- icon to display navbar menu on mobile -->
+                <a class="navbar-burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+
+            <!-- nav links to other pages -->
+            <div class="navbar-menu pr-6" id="nav-links">
+                <div class="navbar-end">
+                    <a href="./index.html" class="navbar-item">Homepage</a>
+                    <a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
+                    <a href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+    <main>
+        <div class="section">
+            <article class="content container">
+                <h2 class="is-size-2-desktop title">A Whole World Awaits</h2>
+                <p>Just getting into boardgames? Want to try something else besides chess? Good news there is a myriad
+                    of other options available.
+                </p>
+                <p>You can check out the current top rated games in the world right now here. This list is based upon a
+                    mix of popularity(number of reviews) and user rating.</p>
+                <p>If you're looking for a something a bit more off the beaten trail you can also click one of the cards
+                    below to see other suggestions, past number ones and review and tutorial links.</p>
+            </article>
+        </div>
+        <div class="section">
+            <div class="content container">
+                <div class="columns" id="row">
+                    <section class="column is-12-mobile is-6-tablet is-5-desktop content" id="left">
+                        <!-- <h2 class="is-size-2-desktop title">Resources</h2> -->
+                        <div class="card" id="review-rank">
+                            <h5 class="card-header-title is-size-4-desktop pb-0">Top Games by Reviewer Ranking
+                            </h5>
+                            <p class="card-content pt-0">See the top games as calculated by the aggregate from the top
+                                100 lists of
+                                reviewers from multiple sources such as The Dice Tower.</p>
+                        </div>
+                        <div class="card" id="number1">
+                            <h5 class="card-header-title is-size-4-desktop pb-0">Past and Present #1's
+                            </h5>
+                            <p class="card-content pt-0">Check out the #1 ranked games since rankings began over 20
+                                years ago.</p>
+                        </div>
+                        <div class="card" id="reviews-tutorials">
+                            <h5 class="card-header-title is-size-4-desktop pb-0">Review and Tutorial Videos
+                            </h5>
+                            <p class="card-content pt-0">Have a look through this list of popular review and tutorial
+                                sites around the world.</p>
+                        </div>
+                    </section>
+                    <section class="column is-6-tablet is-7-desktop" id="right">
+
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p class="has-text-weight-bold">Made with Blood, Sweat and Tears 😭 By:</p>
+            <div class="container is-flex is-flex-direction-column">
+                <a href="https://github.com/abdihun">abdihun</a>
+                <a href="https://github.com/Jiske-N">Jiske-N</a>
+                <a href="https://github.com/simonjbr">simonjbr</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/other-games.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
