@@ -1,29 +1,30 @@
-/* light theme */
-[data-theme="light"] {
-    --background-color-main: lightgrey;
-    --background-color-secondary: black;
-    --text-color-main: black;
-    --text-color-secondary: white;
-}
+/* #hero {
+    background-image: url(../images/index.html/hero-img.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
 
+/* 
 #row {
     display: flex;
 }
 
-#left, #right {
+#left,
+#right {
     box-sizing: border-box;
     width: 50vw;
     background-color: var(--background-color-main);
     padding: 2rem;
     border: solid var(--background-color-secondary) .5rem;
-     /* change in future to fit with header and footer */
     height: 70vh;
 }
 
 #left {
     text-decoration: none;
-}
+} */
 
-#right {
+
+/* #right {
     background-image: url(../images/index.html/html-background.jpg);
-}
+} */

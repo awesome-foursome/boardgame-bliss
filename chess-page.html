@@ -6,17 +6,57 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Boardgame Bliss</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-	<!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
-	<!-- <link rel="stylesheet" href="./assets/css/chess-page.css"> -->
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/chess-page.css">
 </head>
 
 <body class="">
+
+
 	<header>
-		<a href="index.html">Home</a>
-		<a href="rules-page.html">Rules Page</a>
+		<nav class="navbar">
+			<div class="navbar-brand">
+
+				<!-- group icon -->
+				<a href="https://github.com/awesome-foursome" class="navbar-item">
+					<img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
+				</a>
+
+				<!-- toggle for dark mode -->
+				<div class="navbar-item has-dropdown is-hoverable pl-3">
+					<label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
+					<div class="navbar-dropdown" name="theme" id="theme">
+						<option class="navbar-item" value="light">Light</option>
+						<hr class="navbar-divider">
+						<option class="navbar-item" value="dark">Dark</option>
+					</div>
+				</div>
+
+				<div class="navbar-item pl-6 is-hidden-mobile">
+					<h1 class="is-centered is-size-1-desktop title">Move Generator</h1>
+				</div>
+
+				<!-- icon to display navbar menu on mobile -->
+				<a class="navbar-burger" id="burger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+			</div>
+
+
+			<!-- nav links to other pages -->
+			<div class="navbar-menu pr-6" id="nav-links">
+				<div class="navbar-end">
+					<a href="./index.html" class="navbar-item">Homepage</a>
+					<a href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
+				</div>
+			</div>
+		</nav>
 	</header>
 
-	<section class="section">
+	<section class="section" id="main-body">
 		<div class="container">
 			<h3 class="title">Description</h3>
 			<p>Here you can enter a Chess.com username belonging to anyone (including yourself!) and receive the best
@@ -43,10 +83,11 @@
 			</div>
 		</div>
 
-		<div class="container mt-4">
+		<div class="container mt-4 is-hidden" id="request-container">
 			<div class="has-text-centered">
-				<button class="button is-hidden has-background-primary" id="request-btn">Request Analysis</button>
+				<button class="button has-background-primary" id="request-btn">Request Analysis</button>
 			</div>
+			<div class="container mt-4" id="history-container"></div>
 		</div>
 
 		<div class="modal">
@@ -95,8 +136,20 @@
 		<div class="container mt-4" id="results-container"></div>
 	</section>
 
+	<footer class="footer">
+		<div class="content has-text-centered">
+			<p class="has-text-weight-bold">Made with Blood, Sweat and Tears 😭 By:</p>
+			<div class="container is-flex is-flex-direction-column">
+				<a href="https://github.com/abdihun">abdihun</a>
+				<a href="https://github.com/Jiske-N">Jiske-N</a>
+				<a href="https://github.com/simonjbr">simonjbr</a>
+			</div>
+		</div>
+	</footer>
+
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="./assets/js/script.js"></script>
 	<script src="./assets/js/chess-page.js"></script>
 </body>
 
