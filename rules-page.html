@@ -11,25 +11,64 @@
 
 <body>
 	<header>
-		<h1 class="header">Rules Page</h1>
+		<nav class="navbar">
+			<div class="navbar-brand">
+
+				<!-- group icon -->
+				<a href="https://github.com/awesome-foursome" class="navbar-item">
+					<img src="./assets/images/awesome4some.png" alt="awesome4some logo" style="max-height: 120px">
+				</a>
+
+				<!-- toggle for dark mode -->
+				<div class="navbar-item has-dropdown is-hoverable pl-3">
+					<label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
+					<div class="navbar-dropdown" name="theme" id="theme">
+						<option class="navbar-item" value="light">Light</option>
+						<hr class="navbar-divider">
+						<option class="navbar-item" value="dark">Dark</option>
+					</div>
+				</div>
+
+				<div class="navbar-item pl-6 is-hidden-mobile">
+					<h1 class="is-centered is-size-1-desktop title">Rules Page</h1>
+				</div>
+
+				<!-- icon to display navbar menu on mobile -->
+				<a class="navbar-burger" id="burger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+			</div>
+
+
+			<!-- nav links to other pages -->
+			<div class="navbar-menu pr-6" id="nav-links">
+				<div class="navbar-end">
+					<a href="./index.html" class="navbar-item">Homepage</a>
+					<a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
+				</div>
+			</div>
+		</nav>
 	</header>
 
-	<header class="Flex">
-		<!-- Dropdown -->
-		<div class="dropdown">
+	<!-- <header class="Flex"> -->
+	<!-- Dropdown -->
+	<!-- <div class="dropdown">
 			<button class="dropbtn">Dropdown</button>
 			<div class="dropdown-content" id="myDropdown">
 				<a class="dropdown-item" href="#">Homepage</a>
 				<a class="dropdown-item" href="#">Chesspage</a>
 				<a class="dropdown-item" href="#">Rules</a>
 			</div>
-		</div>
+		</div> -->
 
-		<!-- Theme selector -->
-		<div>
+	<!-- Theme selector -->
+	<!-- <div>
 			<button class="theme-selector">Theme Selector</button>
 		</div>
-	</header>
+	</header> -->
 
 	<article>
 		<main id="main">

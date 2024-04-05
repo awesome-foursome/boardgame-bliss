@@ -19,40 +19,40 @@
 /* abdikarim theme pick your colours and theme name */
 /* when you change data-theme=" " you'll also have to change 
 the value and option text content on the html to match */
-[data-theme="abdikarim"] {
+/* [data-theme="abdikarim"] {
     --background-color-main: rgb(60, 204, 17);
     --background-color-secondary: rgb(14, 27, 207);
     --text-color-main: white;
     --text-color-secondary: black;
-}
+} */
 
 /* jiske theme I'll choose proper colours later */
-[data-theme="jiske"] {
+/* [data-theme="jiske"] {
     --background-color-main: rgb(205, 24, 221);
     --background-color-secondary: rgb(9, 241, 21);
     --text-color-main: white;
     --text-color-secondary: black;
-}
+} */
 
 /* simon theme pick your colours and theme name */
 /* when you change data-theme=" " you'll also have to change 
 the value and option text content on the html to match */
-[data-theme="simon"] {
+/* [data-theme="simon"] {
     --background-color-main: rgb(15, 206, 240);
     --background-color-secondary: rgb(204, 247, 49);
     --text-color-main: white;
     --text-color-secondary: black;
-}
+} */
 
 /* zadok theme pick your colours and theme name */
 /* when you change data-theme=" " you'll also have to change 
 the value and option text content on the html to match */
-[data-theme="zadok"] {
+/* [data-theme="zadok"] {
     --background-color-main: rgb(91, 10, 240);
     --background-color-secondary: rgb(187, 184, 184);
     --text-color-main: white;
     --text-color-secondary: black;
-}
+} */
 
 /* set 1rem to 10px to easily find values for the rest of the page (ie. 1.5rem is 15px, 2.0rem is 20px, etc.) */
 /* html {
@@ -75,15 +75,14 @@ body {
 }
 
 /* base/universal h values */
-h1,
+/* h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
     color: var(--text-color-main);
-    /* font-weight: 700; */
-}
+} */
 
 /* specific text values */
 /* h1 {
