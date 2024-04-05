@@ -1,23 +1,3 @@
-// let game =
-// let weatherIconUrl = `https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`;
-
-// const createH3 = document.createElement('h3');
-// const createImg = document.createElement('img');
-// createImg.src = weatherIconUrl;
-// const createPTemp = document.createElement('p');
-// const createPWind = document.createElement('p');
-// const createPHumidity = document.createElement('p');
-
-// createH3.textContent = `${currentWeather.name} (${dateNow.format('DD/MM/YYYY')})`;
-// createPTemp.textContent = `Temp: ${currentWeather.main.temp} °C`
-// createPWind.textContent = `Wind: ${currentWeather.wind.speed} km/h`
-// createPHumidity.textContent = `Humidity: ${currentWeather.main.humidity} %`
-
-// // remove previous contents to stop duplicating
-// document.querySelector('#current').innerHTML = '';
-
-// createH3.append(createImg);
-// document.querySelector('#current').append(createH3, createPTemp, createPWind, createPHumidity);
 
 
 function renderDisplayedLocation() {
@@ -46,15 +26,35 @@ function renderDisplayedLocation() {
                 console.log(list);
                 for (let index = 0; index < 10; index++) {
                     let item = list[index];
+                    let rank = item.getAttribute('rank');
                     let thumbnail = item.getElementsByTagName('thumbnail')[0].getAttribute('value');
                     let name = item.getElementsByTagName('name')[0].getAttribute('value');
                     let yearPublished = item.getElementsByTagName('yearpublished')[0].getAttribute('value');
 
+                    console.log(rank);
                     console.log(thumbnail);
                     console.log(name);
                     console.log(yearPublished);
-                    // renderList(xmlResponse);
 
+
+
+                    // const createH3 = document.createElement('h3');
+                    // const createImg = document.createElement('img');
+                    // createImg.src = weatherIconUrl;
+                    // const createPTemp = document.createElement('p');
+                    // const createPWind = document.createElement('p');
+                    // const createPHumidity = document.createElement('p');
+
+                    // createH3.textContent = `${currentWeather.name} (${dateNow.format('DD/MM/YYYY')})`;
+                    // createPTemp.textContent = `Temp: ${currentWeather.main.temp} °C`
+                    // createPWind.textContent = `Wind: ${currentWeather.wind.speed} km/h`
+                    // createPHumidity.textContent = `Humidity: ${currentWeather.main.humidity} %`
+
+                    // // remove previous contents to stop duplicating
+                    // document.querySelector('#current').innerHTML = '';
+
+                    // createH3.append(createImg);
+                    // document.querySelector('#current').append(createH3, createPTemp, createPWind, createPHumidity);
                 }
             }
         }
