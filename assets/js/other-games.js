@@ -243,6 +243,39 @@ function renderHotList() {
         )
 };
 
+
+
+
+
+// function retrieveIds() {
+//     fetch(searchUrl)
+//         .then(function (response) {
+//             if (response.status !== 200) {
+//                 throw searchUrl;
+//             } else {
+//                 return response.text();
+//             };
+//         })
+//         .then(function (xmlString) {
+//             if (!xmlString) {
+//                 console.log('No results found!');
+//             } else {
+//                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
+
+//                 // console.log(xmlResponse);
+
+//                 // let list = xmlResponse.getElementsByTagName('item');
+
+//                 id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
+//                 // let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
+//                 console.log(id);
+//                 return id;
+//             }
+//         })
+// }
+
+
+
 function renderAllTimeList() {
     allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
 
@@ -270,64 +303,97 @@ function renderAllTimeList() {
 
                 for (let index = 0; index < list.length; index++) {
                     let item = list[index];
-                    // console.log(item);
-                    let id = item.getAttribute('id');
+                    console.log(item);
+
+
                     // let imgId = item.getAttribute('imageid');
                     let name = item.getAttribute('objectname');
                     // let thumbnail = `https://boardgamegeek.com/image/${imgId}/${name}`;
                     let summary = item.getElementsByTagName('body')[0].textContent;
                     // let yearPublished = item.getElementsByTagName('body').textContent;
+                    searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
 
-                    const createDivCard = document.createElement('div');
-                    createDivCard.setAttribute('class', 'card');
-                    createDivCard.setAttribute('id', id);
-                    createDivCard.addEventListener('click', () => {
-                        location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                    });
+                    // retrieveIds(searchUrl);
 
-                    const createDivCardContent = document.createElement('div');
-                    createDivCardContent.setAttribute('class', 'card-content');
 
-                    const createDivMedia = document.createElement('div');
-                    createDivMedia.setAttribute('class', 'media');
+                    fetch(searchUrl)
+                        .then(function (response) {
+                            if (response.status !== 200) {
+                                throw searchUrl;
+                            } else {
+                                return response.text();
+                            };
+                        })
+                        .then(function (xmlString) {
+                            if (!xmlString) {
+                                console.log('No results found!');
+                            } else {
+                                const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-                    // const createDivMediaLeft = document.createElement('div');
-                    // createDivMediaLeft.setAttribute('class', 'media-left');
+                                // console.log(xmlResponse);
 
-                    const createDivMediaContent = document.createElement('div');
-                    createDivMediaContent.setAttribute('class', 'media-content');
+                                // let list = xmlResponse.getElementsByTagName('item');
 
-                    const createDivContentColumns = document.createElement('div');
-                    createDivContentColumns.setAttribute('class', 'content columns');
+                                let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
+                                let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
 
-                    // const createFigure = document.createElement('figure');
-                    // createFigure.setAttribute('class', 'image is-48x48');
 
-                    // const createImg = document.createElement('img');
-                    // createImg.setAttribute('src', thumbnail);
+                                const createDivCard = document.createElement('div');
+                                createDivCard.setAttribute('class', 'card');
+                                createDivCard.setAttribute('id', id);
+                                createDivCard.addEventListener('click', () => {
+                                    location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                                });
 
-                    const createPTitle = document.createElement('p');
-                    createPTitle.setAttribute('class', 'title is-4 pl-2');
-                    createPTitle.textContent = name;
+                                const createDivCardContent = document.createElement('div');
+                                createDivCardContent.setAttribute('class', 'card-content');
 
-                    // const createPRank = document.createElement('p');
-                    // createPRank.setAttribute('class', 'column');
-                    // createPRank.textContent = `Rank: ${rank}`;
+                                const createDivMedia = document.createElement('div');
+                                createDivMedia.setAttribute('class', 'media');
 
-                    const createPYear = document.createElement('p');
-                    createPYear.setAttribute('class', 'column');
-                    createPYear.textContent = `${summary}`;
+                                // const createDivMediaLeft = document.createElement('div');
+                                // createDivMediaLeft.setAttribute('class', 'media-left');
 
-                    createDivContentColumns.append(createPYear);
-                    createDivMediaContent.append(createPTitle);
-                    // createFigure.append(createImg);
-                    // createDivMediaLeft.append(createFigure);
-                    createDivMedia.append(createDivMediaContent);
-                    createDivCardContent.append(createDivMedia, createDivContentColumns);
-                    createDivCard.append(createDivCardContent);
-                    listContainer.append(createDivCard);
+                                const createDivMediaContent = document.createElement('div');
+                                createDivMediaContent.setAttribute('class', 'media-content');
+
+                                const createDivContentColumns = document.createElement('div');
+                                createDivContentColumns.setAttribute('class', 'content columns');
+
+                                // const createFigure = document.createElement('figure');
+                                // createFigure.setAttribute('class', 'image is-48x48');
+
+                                // const createImg = document.createElement('img');
+                                // createImg.setAttribute('src', thumbnail);
+
+                                const createPTitle = document.createElement('p');
+                                createPTitle.setAttribute('class', 'title is-4 pl-2');
+                                createPTitle.textContent = `${name} - ${yearPublished}`;
+
+                                // const createPRank = document.createElement('p');
+                                // createPRank.setAttribute('class', 'column');
+                                // createPRank.textContent = `Rank: ${rank}`;
+
+                                const createPSummary = document.createElement('p');
+                                createPSummary.setAttribute('class', 'column is-8');
+                                createPSummary.textContent = `${summary}`;
+
+                                // const createPYear = document.createElement('p');
+                                // createPYear.setAttribute('class', 'column is-4');
+                                // createPYear.textContent = `Year published: ${yearPublished}`;
+
+                                createDivContentColumns.append(createPSummary);
+                                createDivMediaContent.append(createPTitle);
+                                // createFigure.append(createImg);
+                                // createDivMediaLeft.append(createFigure);
+                                createDivMedia.append(createDivMediaContent);
+                                createDivCardContent.append(createDivMedia, createDivContentColumns);
+                                createDivCard.append(createDivCardContent);
+                                listContainer.append(createDivCard);
+
+                            }
+                        })
                 }
-                // addEventListeners();
             }
         }
             // .catch(function (error) {
@@ -347,26 +413,3 @@ document.querySelector('#review-rank').addEventListener('click', () => {
 document.querySelector('#number1').addEventListener('click', () => {
     renderAllTimeList();
 });
-
-
-
-// function addEventListeners() {
-//     listItems.forEach((item) => {
-//         item.addEventListener('click', () => {
-//             const id = item.id;
-//             console.log(id);
-//         })
-//     });
-
-// }
-
-
-
-// const listItems = document.querySelectorAll('.card');
-
-// listItems.forEach((item) => {
-//     item.addEventListener('click', () => {
-//         const id = item.id;
-//         console.log(id);
-//     })
-// });
