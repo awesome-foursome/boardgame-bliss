@@ -1,17 +1,23 @@
+// note all api responses for this page are xml not json so the syntax is different
+// also note there are 2 different apis used:
+// https://boardgamegeek.com/xmlapi/ (old - stable) and
+// https://boardgamegeek.com/xmlapi2/ (new - beta), the paramaters and documentation are different for each:
+// documentation for 1: https://boardgamegeek.com/wiki/page/BGG_XML_API&redirectedfrom=XML_API#
+// documentation for 2: https://boardgamegeek.com/wiki/page/BGG_XML_API2
+
 const listTitle = document.querySelector('#list-title');
 const listContainer = document.querySelector('#list-parent');
-const listItems = document.querySelectorAll('.card');
 
+// possibly used later to add a 4th list
+// tutsReviews = `https://boardgamegeek.com/xmlapi/geeklist/23763?pagesize=10`;
 
-// allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
-tutsReviews = `https://boardgamegeek.com/xmlapi/geeklist/23763?pagesize=10`;
-// searchUrl = `https://boardgamegeek.com/xmlapi/boardgame/342942/`;
-// searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=Cascadia&exact=1`;
-
+// used to assign a rank to appended cards
 let rankValue = 1;
 
+// retrieve data and print card based on the title received from aggregate list
+// not used for the other 2 lists as they provide data needed that isn't provided by this api
+// unfortunately there are no images to retreive for this list
 function renderGame() {
-
     fetch(searchUrl)
         .then(function (response) {
             if (response.status !== 200) {
@@ -26,19 +32,14 @@ function renderGame() {
             } else {
                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-                // console.log(xmlResponse);
-
-                // let list = xmlResponse.getElementsByTagName('item');
-
                 let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
                 let name = xmlResponse.getElementsByTagName('name')[0].getAttribute('value');
                 let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
 
-                // console.log(rank, id, name, yearPublished);
-
                 const createDivCard = document.createElement('div');
                 createDivCard.setAttribute('class', 'card');
                 createDivCard.setAttribute('id', id);
+                // link to corresponding page on BGG
                 createDivCard.addEventListener('click', () => {
                     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
                 });
@@ -58,18 +59,13 @@ function renderGame() {
                 const createDivContentColumns = document.createElement('div');
                 createDivContentColumns.setAttribute('class', 'content columns');
 
-                // const createFigure = document.createElement('figure');
-                // createFigure.setAttribute('class', 'image is-48x48');
-
-                // const createImg = document.createElement('img');
-                // createImg.setAttribute('src', thumbnail);
-
                 const createPTitle = document.createElement('p');
                 createPTitle.setAttribute('class', 'title is-4');
                 createPTitle.textContent = name;
 
                 const createPRank = document.createElement('p');
                 createPRank.setAttribute('class', 'column');
+                // create an artificial rank value as it isn't provided by fetch
                 createPRank.textContent = `Rank: ${rankValue++}`;
 
                 const createPYear = document.createElement('p');
@@ -79,24 +75,23 @@ function renderGame() {
                 createDivContentColumns.append(createPRank, createPYear);
                 createDivMediaContent.append(createPTitle);
 
-                // createDivMediaLeft.append(createFigure);
                 createDivMedia.append(createDivMediaLeft, createDivMediaContent);
                 createDivCardContent.append(createDivMedia, createDivContentColumns);
                 createDivCard.append(createDivCardContent);
                 listContainer.append(createDivCard);
-
             }
         }
         )
 };
 
+// pull the names of the games from the list
+// list doesn't provide details on the games so the names are sent to the function above to pull details and render cards
 function renderAggregateList() {
     aggregateList = `https://boardgamegeek.com/xmlapi/geeklist/334409?pagesize=10`;
 
     fetch(aggregateList)
         .then(function (response) {
             if (response.status !== 200) {
-
                 throw aggregateList;
             } else {
                 return response.text();
@@ -107,51 +102,32 @@ function renderAggregateList() {
                 console.log('No results found!');
             } else {
                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
-                console.log(xmlResponse);
+
                 let list = xmlResponse.getElementsByTagName('item');
+
+                // clear container and adjust title
                 listTitle.textContent = "Top Games by Reviewer Ranking:";
                 listContainer.innerHTML = '';
 
                 rankValue = 1;
-                // Start the loop from the end of the list
+
+                // send off name from each list(item) to render
                 for (let index = list.length - 1; index >= list.length - 10; index--) {
                     let item = list[index];
                     let name = item.getAttribute('objectname');
-                    // console.log(name);
                     searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
                     renderGame(searchUrl);
                 }
-                // addEventListeners();
-
-                // const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
-
-                // console.log(xmlResponse);
-
-                // let list = xmlResponse.getElementsByTagName('item');
-
-                // listTitle.textContent = "Top Games by Reviewer Ranking:"
-                // listContainer.innerHTML = '';
-
-                // for (let index = 0; index < 10; index++) {
-                //     let item = list[index];
-                //     let name = item.getAttribute('objectname');
-
-                //     console.log(name);
-
-                //     searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
-
-                //     renderGame(searchUrl);
             }
         }
-
             // .catch(function (error) {
             //     console.error(error);
             // })
         )
 };
 
-function renderHotList() {
 
+function renderHotList() {
     hotList = `https://boardgamegeek.com/xmlapi2/hot?boardgame&pagesize=10`;
 
     fetch(hotList)
@@ -169,16 +145,14 @@ function renderHotList() {
             } else {
                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-                // console.log(xmlResponse);
-
                 let list = xmlResponse.getElementsByTagName('item');
 
+                // reset and adjust content container
                 listTitle.textContent = "Trending Now:"
                 listContainer.innerHTML = '';
 
                 for (let index = 0; index < 10; index++) {
                     let item = list[index];
-                    // console.log(item);
                     let rank = item.getAttribute('rank');
                     let thumbnail = item.getElementsByTagName('thumbnail')[0].getAttribute('value');
                     let name = item.getElementsByTagName('name')[0].getAttribute('value');
@@ -188,6 +162,7 @@ function renderHotList() {
                     const createDivCard = document.createElement('div');
                     createDivCard.setAttribute('class', 'card');
                     createDivCard.setAttribute('id', id);
+                    // links to external BGG site
                     createDivCard.addEventListener('click', () => {
                         location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
                     });
@@ -234,7 +209,6 @@ function renderHotList() {
                     createDivCard.append(createDivCardContent);
                     listContainer.append(createDivCard);
                 }
-                // addEventListeners();
             }
         }
             // .catch(function (error) {
@@ -243,39 +217,7 @@ function renderHotList() {
         )
 };
 
-
-
-
-
-// function retrieveIds() {
-//     fetch(searchUrl)
-//         .then(function (response) {
-//             if (response.status !== 200) {
-//                 throw searchUrl;
-//             } else {
-//                 return response.text();
-//             };
-//         })
-//         .then(function (xmlString) {
-//             if (!xmlString) {
-//                 console.log('No results found!');
-//             } else {
-//                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
-
-//                 // console.log(xmlResponse);
-
-//                 // let list = xmlResponse.getElementsByTagName('item');
-
-//                 id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
-//                 // let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
-//                 console.log(id);
-//                 return id;
-//             }
-//         })
-// }
-
-
-
+// unfortunately neither of the apis below supply images.
 function renderAllTimeList() {
     allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
 
@@ -294,8 +236,6 @@ function renderAllTimeList() {
             } else {
                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-                console.log(xmlResponse);
-
                 let list = xmlResponse.getElementsByTagName('item');
 
                 listTitle.textContent = "Past and Present #1's:"
@@ -303,18 +243,11 @@ function renderAllTimeList() {
 
                 for (let index = 0; index < list.length; index++) {
                     let item = list[index];
-                    console.log(item);
-
-
-                    // let imgId = item.getAttribute('imageid');
                     let name = item.getAttribute('objectname');
-                    // let thumbnail = `https://boardgamegeek.com/image/${imgId}/${name}`;
                     let summary = item.getElementsByTagName('body')[0].textContent;
-                    // let yearPublished = item.getElementsByTagName('body').textContent;
+
+                    // retrieve id from second api in order to enable links to BGG
                     searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
-
-                    // retrieveIds(searchUrl);
-
 
                     fetch(searchUrl)
                         .then(function (response) {
@@ -330,17 +263,14 @@ function renderAllTimeList() {
                             } else {
                                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-                                // console.log(xmlResponse);
-
-                                // let list = xmlResponse.getElementsByTagName('item');
-
+                                // name and summary are provided by previous call
                                 let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
                                 let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
-
 
                                 const createDivCard = document.createElement('div');
                                 createDivCard.setAttribute('class', 'card');
                                 createDivCard.setAttribute('id', id);
+                                // link to external bgg page
                                 createDivCard.addEventListener('click', () => {
                                     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
                                 });
@@ -351,46 +281,26 @@ function renderAllTimeList() {
                                 const createDivMedia = document.createElement('div');
                                 createDivMedia.setAttribute('class', 'media');
 
-                                // const createDivMediaLeft = document.createElement('div');
-                                // createDivMediaLeft.setAttribute('class', 'media-left');
-
                                 const createDivMediaContent = document.createElement('div');
                                 createDivMediaContent.setAttribute('class', 'media-content');
 
                                 const createDivContentColumns = document.createElement('div');
                                 createDivContentColumns.setAttribute('class', 'content columns');
 
-                                // const createFigure = document.createElement('figure');
-                                // createFigure.setAttribute('class', 'image is-48x48');
-
-                                // const createImg = document.createElement('img');
-                                // createImg.setAttribute('src', thumbnail);
-
                                 const createPTitle = document.createElement('p');
                                 createPTitle.setAttribute('class', 'title is-4 pl-2');
                                 createPTitle.textContent = `${name} - ${yearPublished}`;
-
-                                // const createPRank = document.createElement('p');
-                                // createPRank.setAttribute('class', 'column');
-                                // createPRank.textContent = `Rank: ${rank}`;
 
                                 const createPSummary = document.createElement('p');
                                 createPSummary.setAttribute('class', 'column is-8');
                                 createPSummary.textContent = `${summary}`;
 
-                                // const createPYear = document.createElement('p');
-                                // createPYear.setAttribute('class', 'column is-4');
-                                // createPYear.textContent = `Year published: ${yearPublished}`;
-
                                 createDivContentColumns.append(createPSummary);
                                 createDivMediaContent.append(createPTitle);
-                                // createFigure.append(createImg);
-                                // createDivMediaLeft.append(createFigure);
                                 createDivMedia.append(createDivMediaContent);
                                 createDivCardContent.append(createDivMedia, createDivContentColumns);
                                 createDivCard.append(createDivCardContent);
                                 listContainer.append(createDivCard);
-
                             }
                         })
                 }
