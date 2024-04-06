@@ -1,7 +1,8 @@
 const listTitle = document.querySelector('#list-title');
 const listContainer = document.querySelector('#list-parent');
+const listItems = document.querySelectorAll('.card');
 
-aggregateList = `https://boardgamegeek.com/xmlapi/geeklist/334409?pagesize=10`;
+
 // allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
 tutsReviews = `https://boardgamegeek.com/xmlapi/geeklist/23763?pagesize=10`;
 // searchUrl = `https://boardgamegeek.com/xmlapi/boardgame/342942/`;
@@ -38,6 +39,9 @@ function renderGame() {
                 const createDivCard = document.createElement('div');
                 createDivCard.setAttribute('class', 'card');
                 createDivCard.setAttribute('id', id);
+                createDivCard.addEventListener('click', () => {
+                    location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                });
 
                 const createDivCardContent = document.createElement('div');
                 createDivCardContent.setAttribute('class', 'card-content');
@@ -86,37 +90,8 @@ function renderGame() {
         )
 };
 
-// renderGame();
-
-// async function renderGame() {
-//     try {
-//         const response = await fetch(searchUrl, { mode: 'no-cors' });
-
-//         // if (!response.status !== 200) {
-//         if (!response.ok) {
-//             // throw new Error(response.status);
-//             throw new Error('Network response was not ok.');
-//         }
-
-//         const xmlString = await response.text();
-
-//         if (!xmlString) {
-//             console.log('No results found!');
-//         } else {
-//             const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
-//             console.log(xmlResponse);
-
-//             let list = xmlResponse.getElementsByTagName('item');
-//             console.log(list);
-//         }
-//     } catch (error) {
-//         console.error('Error fetching data:', error);
-//     }
-// }
-
-// renderGame();
-
 function renderAggregateList() {
+    aggregateList = `https://boardgamegeek.com/xmlapi/geeklist/334409?pagesize=10`;
 
     fetch(aggregateList)
         .then(function (response) {
@@ -132,28 +107,43 @@ function renderAggregateList() {
                 console.log('No results found!');
             } else {
                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
-
                 console.log(xmlResponse);
-
                 let list = xmlResponse.getElementsByTagName('item');
-
-                // console.log(list);
-                // let rankValue = 1;
-                listTitle.textContent = "Top Games by Reviewer Ranking:"
+                listTitle.textContent = "Top Games by Reviewer Ranking:";
                 listContainer.innerHTML = '';
 
-                for (let index = 0; index < 10; index++) {
+                rankValue = 1;
+                // Start the loop from the end of the list
+                for (let index = list.length - 1; index >= list.length - 10; index--) {
                     let item = list[index];
                     let name = item.getAttribute('objectname');
-
-                    console.log(name);
-
+                    // console.log(name);
                     searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
-
                     renderGame(searchUrl);
                 }
+                // addEventListeners();
+
+                // const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
+
+                // console.log(xmlResponse);
+
+                // let list = xmlResponse.getElementsByTagName('item');
+
+                // listTitle.textContent = "Top Games by Reviewer Ranking:"
+                // listContainer.innerHTML = '';
+
+                // for (let index = 0; index < 10; index++) {
+                //     let item = list[index];
+                //     let name = item.getAttribute('objectname');
+
+                //     console.log(name);
+
+                //     searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
+
+                //     renderGame(searchUrl);
             }
         }
+
             // .catch(function (error) {
             //     console.error(error);
             // })
@@ -179,7 +169,7 @@ function renderHotList() {
             } else {
                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-                console.log(xmlResponse);
+                // console.log(xmlResponse);
 
                 let list = xmlResponse.getElementsByTagName('item');
 
@@ -188,13 +178,19 @@ function renderHotList() {
 
                 for (let index = 0; index < 10; index++) {
                     let item = list[index];
+                    // console.log(item);
                     let rank = item.getAttribute('rank');
                     let thumbnail = item.getElementsByTagName('thumbnail')[0].getAttribute('value');
                     let name = item.getElementsByTagName('name')[0].getAttribute('value');
                     let yearPublished = item.getElementsByTagName('yearpublished')[0].getAttribute('value');
+                    let id = item.getAttribute('id');
 
                     const createDivCard = document.createElement('div');
                     createDivCard.setAttribute('class', 'card');
+                    createDivCard.setAttribute('id', id);
+                    createDivCard.addEventListener('click', () => {
+                        location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                    });
 
                     const createDivCardContent = document.createElement('div');
                     createDivCardContent.setAttribute('class', 'card-content');
@@ -238,6 +234,7 @@ function renderHotList() {
                     createDivCard.append(createDivCardContent);
                     listContainer.append(createDivCard);
                 }
+                // addEventListeners();
             }
         }
             // .catch(function (error) {
@@ -284,6 +281,9 @@ function renderAllTimeList() {
                     const createDivCard = document.createElement('div');
                     createDivCard.setAttribute('class', 'card');
                     createDivCard.setAttribute('id', id);
+                    createDivCard.addEventListener('click', () => {
+                        location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                    });
 
                     const createDivCardContent = document.createElement('div');
                     createDivCardContent.setAttribute('class', 'card-content');
@@ -327,6 +327,7 @@ function renderAllTimeList() {
                     createDivCard.append(createDivCardContent);
                     listContainer.append(createDivCard);
                 }
+                // addEventListeners();
             }
         }
             // .catch(function (error) {
@@ -334,10 +335,6 @@ function renderAllTimeList() {
             // })
         )
 };
-
-// renderAllTimeList();
-// renderHotList();
-// renderAggregateList();
 
 document.querySelector('#trending').addEventListener('click', () => {
     renderHotList();
@@ -351,3 +348,25 @@ document.querySelector('#number1').addEventListener('click', () => {
     renderAllTimeList();
 });
 
+
+
+// function addEventListeners() {
+//     listItems.forEach((item) => {
+//         item.addEventListener('click', () => {
+//             const id = item.id;
+//             console.log(id);
+//         })
+//     });
+
+// }
+
+
+
+// const listItems = document.querySelectorAll('.card');
+
+// listItems.forEach((item) => {
+//     item.addEventListener('click', () => {
+//         const id = item.id;
+//         console.log(id);
+//     })
+// });
