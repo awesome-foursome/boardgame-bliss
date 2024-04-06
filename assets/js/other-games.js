@@ -1,4 +1,5 @@
-const listContainer = document.querySelector('#right');
+const listTitle = document.querySelector('#list-title');
+const listContainer = document.querySelector('#list-parent');
 
 aggregateList = `https://boardgamegeek.com/xmlapi/geeklist/334409?pagesize=10`;
 // allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
@@ -115,139 +116,135 @@ function renderGame() {
 
 // renderGame();
 
-// function renderAggregateList() {
+function renderAggregateList() {
 
-//     fetch(aggregateList)
-//         .then(function (response) {
-//             if (response.status !== 200) {
+    fetch(aggregateList)
+        .then(function (response) {
+            if (response.status !== 200) {
 
-//                 throw aggregateList;
-//             } else {
-//                 return response.text();
-//             };
-//         })
-//         .then(function (xmlString) {
-//             if (!xmlString) {
-//                 console.log('No results found!');
-//             } else {
-//                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
+                throw aggregateList;
+            } else {
+                return response.text();
+            };
+        })
+        .then(function (xmlString) {
+            if (!xmlString) {
+                console.log('No results found!');
+            } else {
+                const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-//                 console.log(xmlResponse);
+                console.log(xmlResponse);
 
-//                 let list = xmlResponse.getElementsByTagName('item');
+                let list = xmlResponse.getElementsByTagName('item');
 
-//                 // console.log(list);
-//                 // let rankValue = 1;
+                // console.log(list);
+                // let rankValue = 1;
+                listTitle.textContent = "Top Games by Reviewer Ranking:"
+                listContainer.innerHTML = '';
 
-//                 listContainer.innerHTML = '';
+                for (let index = 0; index < 10; index++) {
+                    let item = list[index];
+                    let name = item.getAttribute('objectname');
 
-//                 for (let index = 0; index < 10; index++) {
-//                     let item = list[index];
-//                     let name = item.getAttribute('objectname');
+                    console.log(name);
 
-//                     console.log(name);
+                    searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
 
-//                     searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=${name}&exact=1`;
+                    renderGame(searchUrl);
+                }
+            }
+        }
+            // .catch(function (error) {
+            //     console.error(error);
+            // })
+        )
+};
 
-//                     renderGame(searchUrl);
-//                 }
-//             }
-//         }
-//             // .catch(function (error) {
-//             //     console.error(error);
-//             // })
-//         )
-// };
+function renderHotList() {
 
-// renderAggregateList();
+    hotList = `https://boardgamegeek.com/xmlapi2/hot?boardgame&pagesize=10`;
 
+    fetch(hotList)
+        .then(function (response) {
+            if (response.status !== 200) {
 
-// function renderHotList() {
+                throw hotList;
+            } else {
+                return response.text();
+            };
+        })
+        .then(function (xmlString) {
+            if (!xmlString) {
+                console.log('No results found!');
+            } else {
+                const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-//     hotList = `https://boardgamegeek.com/xmlapi2/hot?boardgame&pagesize=10`;
+                console.log(xmlResponse);
 
-//     fetch(hotList)
-//         .then(function (response) {
-//             if (response.status !== 200) {
+                let list = xmlResponse.getElementsByTagName('item');
 
-//                 throw hotList;
-//             } else {
-//                 return response.text();
-//             };
-//         })
-//         .then(function (xmlString) {
-//             if (!xmlString) {
-//                 console.log('No results found!');
-//             } else {
-//                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
+                listTitle.textContent = "Trending Now:"
+                listContainer.innerHTML = '';
 
-//                 console.log(xmlResponse);
+                for (let index = 0; index < 10; index++) {
+                    let item = list[index];
+                    let rank = item.getAttribute('rank');
+                    let thumbnail = item.getElementsByTagName('thumbnail')[0].getAttribute('value');
+                    let name = item.getElementsByTagName('name')[0].getAttribute('value');
+                    let yearPublished = item.getElementsByTagName('yearpublished')[0].getAttribute('value');
 
-//                 let list = xmlResponse.getElementsByTagName('item');
+                    const createDivCard = document.createElement('div');
+                    createDivCard.setAttribute('class', 'card');
 
-//                 listContainer.innerHTML = '';
+                    const createDivCardContent = document.createElement('div');
+                    createDivCardContent.setAttribute('class', 'card-content');
 
-//                 for (let index = 0; index < 10; index++) {
-//                     let item = list[index];
-//                     let rank = item.getAttribute('rank');
-//                     let thumbnail = item.getElementsByTagName('thumbnail')[0].getAttribute('value');
-//                     let name = item.getElementsByTagName('name')[0].getAttribute('value');
-//                     let yearPublished = item.getElementsByTagName('yearpublished')[0].getAttribute('value');
+                    const createDivMedia = document.createElement('div');
+                    createDivMedia.setAttribute('class', 'media');
 
-//                     const createDivCard = document.createElement('div');
-//                     createDivCard.setAttribute('class', 'card');
+                    const createDivMediaLeft = document.createElement('div');
+                    createDivMediaLeft.setAttribute('class', 'media-left');
 
-//                     const createDivCardContent = document.createElement('div');
-//                     createDivCardContent.setAttribute('class', 'card-content');
+                    const createDivMediaContent = document.createElement('div');
+                    createDivMediaContent.setAttribute('class', 'media-content');
 
-//                     const createDivMedia = document.createElement('div');
-//                     createDivMedia.setAttribute('class', 'media');
+                    const createDivContentColumns = document.createElement('div');
+                    createDivContentColumns.setAttribute('class', 'content columns');
 
-//                     const createDivMediaLeft = document.createElement('div');
-//                     createDivMediaLeft.setAttribute('class', 'media-left');
+                    const createFigure = document.createElement('figure');
+                    createFigure.setAttribute('class', 'image is-48x48');
 
-//                     const createDivMediaContent = document.createElement('div');
-//                     createDivMediaContent.setAttribute('class', 'media-content');
+                    const createImg = document.createElement('img');
+                    createImg.setAttribute('src', thumbnail);
 
-//                     const createDivContentColumns = document.createElement('div');
-//                     createDivContentColumns.setAttribute('class', 'content columns');
+                    const createPTitle = document.createElement('p');
+                    createPTitle.setAttribute('class', 'title is-4 pl-2');
+                    createPTitle.textContent = name;
 
-//                     const createFigure = document.createElement('figure');
-//                     createFigure.setAttribute('class', 'image is-48x48');
+                    const createPRank = document.createElement('p');
+                    createPRank.setAttribute('class', 'column');
+                    createPRank.textContent = `Rank: ${rank}`;
 
-//                     const createImg = document.createElement('img');
-//                     createImg.setAttribute('src', thumbnail);
+                    const createPYear = document.createElement('p');
+                    createPYear.setAttribute('class', 'column');
+                    createPYear.textContent = `Year published: ${yearPublished}`;
 
-//                     const createPTitle = document.createElement('p');
-//                     createPTitle.setAttribute('class', 'title is-4 pl-2');
-//                     createPTitle.textContent = name;
-
-//                     const createPRank = document.createElement('p');
-//                     createPRank.setAttribute('class', 'column');
-//                     createPRank.textContent = `Rank: ${rank}`;
-
-//                     const createPYear = document.createElement('p');
-//                     createPYear.setAttribute('class', 'column');
-//                     createPYear.textContent = `Year published: ${yearPublished}`;
-
-//                     createDivContentColumns.append(createPRank, createPYear);
-//                     createDivMediaContent.append(createPTitle);
-//                     createFigure.append(createImg);
-//                     createDivMediaLeft.append(createFigure);
-//                     createDivMedia.append(createDivMediaLeft, createDivMediaContent);
-//                     createDivCardContent.append(createDivMedia, createDivContentColumns);
-//                     createDivCard.append(createDivCardContent);
-//                     listContainer.append(createDivCard);
-//                 }
-//             }
-//         }
-//             // .catch(function (error) {
-//             //     console.error(error);
-//             // })
-//         )
-// };
-
-// renderHotList();
+                    createDivContentColumns.append(createPRank, createPYear);
+                    createDivMediaContent.append(createPTitle);
+                    createFigure.append(createImg);
+                    createDivMediaLeft.append(createFigure);
+                    createDivMedia.append(createDivMediaLeft, createDivMediaContent);
+                    createDivCardContent.append(createDivMedia, createDivContentColumns);
+                    createDivCard.append(createDivCardContent);
+                    listContainer.append(createDivCard);
+                }
+            }
+        }
+            // .catch(function (error) {
+            //     console.error(error);
+            // })
+        )
+};
 
 function renderAllTimeList() {
     allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
@@ -271,6 +268,7 @@ function renderAllTimeList() {
 
                 let list = xmlResponse.getElementsByTagName('item');
 
+                listTitle.textContent = "Past and Present #1's:"
                 listContainer.innerHTML = '';
 
                 for (let index = 0; index < list.length; index++) {
@@ -337,4 +335,19 @@ function renderAllTimeList() {
         )
 };
 
-renderAllTimeList();
+// renderAllTimeList();
+// renderHotList();
+// renderAggregateList();
+
+document.querySelector('#trending').addEventListener('click', () => {
+    renderHotList();
+});
+
+document.querySelector('#review-rank').addEventListener('click', () => {
+    renderAggregateList();
+});
+
+document.querySelector('#number1').addEventListener('click', () => {
+    renderAllTimeList();
+});
+
