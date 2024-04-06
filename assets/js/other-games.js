@@ -1,7 +1,7 @@
 const listContainer = document.querySelector('#right');
 
 aggregateList = `https://boardgamegeek.com/xmlapi/geeklist/334409?pagesize=10`;
-allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
+// allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
 tutsReviews = `https://boardgamegeek.com/xmlapi/geeklist/23763?pagesize=10`;
 // searchUrl = `https://boardgamegeek.com/xmlapi/boardgame/342942/`;
 // searchUrl = `https://boardgamegeek.com/xmlapi2/search?query=Cascadia&exact=1`;
@@ -249,15 +249,14 @@ function renderGame() {
 
 // renderHotList();
 
-function renderHotList() {
+function renderAllTimeList() {
+    allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
 
-    hotList = `https://boardgamegeek.com/xmlapi2/hot?boardgame&pagesize=10`;
-
-    fetch(hotList)
+    fetch(allTimeList)
         .then(function (response) {
             if (response.status !== 200) {
 
-                throw hotList;
+                throw allTimeList;
             } else {
                 return response.text();
             };
@@ -274,15 +273,19 @@ function renderHotList() {
 
                 listContainer.innerHTML = '';
 
-                for (let index = 0; index < 10; index++) {
+                for (let index = 0; index < list.length; index++) {
                     let item = list[index];
-                    let rank = item.getAttribute('rank');
-                    let thumbnail = item.getElementsByTagName('thumbnail')[0].getAttribute('value');
-                    let name = item.getElementsByTagName('name')[0].getAttribute('value');
-                    let yearPublished = item.getElementsByTagName('yearpublished')[0].getAttribute('value');
+                    // console.log(item);
+                    let id = item.getAttribute('id');
+                    // let imgId = item.getAttribute('imageid');
+                    let name = item.getAttribute('objectname');
+                    // let thumbnail = `https://boardgamegeek.com/image/${imgId}/${name}`;
+                    let summary = item.getElementsByTagName('body')[0].textContent;
+                    // let yearPublished = item.getElementsByTagName('body').textContent;
 
                     const createDivCard = document.createElement('div');
                     createDivCard.setAttribute('class', 'card');
+                    createDivCard.setAttribute('id', id);
 
                     const createDivCardContent = document.createElement('div');
                     createDivCardContent.setAttribute('class', 'card-content');
@@ -290,8 +293,8 @@ function renderHotList() {
                     const createDivMedia = document.createElement('div');
                     createDivMedia.setAttribute('class', 'media');
 
-                    const createDivMediaLeft = document.createElement('div');
-                    createDivMediaLeft.setAttribute('class', 'media-left');
+                    // const createDivMediaLeft = document.createElement('div');
+                    // createDivMediaLeft.setAttribute('class', 'media-left');
 
                     const createDivMediaContent = document.createElement('div');
                     createDivMediaContent.setAttribute('class', 'media-content');
@@ -299,29 +302,29 @@ function renderHotList() {
                     const createDivContentColumns = document.createElement('div');
                     createDivContentColumns.setAttribute('class', 'content columns');
 
-                    const createFigure = document.createElement('figure');
-                    createFigure.setAttribute('class', 'image is-48x48');
+                    // const createFigure = document.createElement('figure');
+                    // createFigure.setAttribute('class', 'image is-48x48');
 
-                    const createImg = document.createElement('img');
-                    createImg.setAttribute('src', thumbnail);
+                    // const createImg = document.createElement('img');
+                    // createImg.setAttribute('src', thumbnail);
 
                     const createPTitle = document.createElement('p');
                     createPTitle.setAttribute('class', 'title is-4 pl-2');
                     createPTitle.textContent = name;
 
-                    const createPRank = document.createElement('p');
-                    createPRank.setAttribute('class', 'column');
-                    createPRank.textContent = `Rank: ${rank}`;
+                    // const createPRank = document.createElement('p');
+                    // createPRank.setAttribute('class', 'column');
+                    // createPRank.textContent = `Rank: ${rank}`;
 
                     const createPYear = document.createElement('p');
                     createPYear.setAttribute('class', 'column');
-                    createPYear.textContent = `Year published: ${yearPublished}`;
+                    createPYear.textContent = `${summary}`;
 
-                    createDivContentColumns.append(createPRank, createPYear);
+                    createDivContentColumns.append(createPYear);
                     createDivMediaContent.append(createPTitle);
-                    createFigure.append(createImg);
-                    createDivMediaLeft.append(createFigure);
-                    createDivMedia.append(createDivMediaLeft, createDivMediaContent);
+                    // createFigure.append(createImg);
+                    // createDivMediaLeft.append(createFigure);
+                    createDivMedia.append(createDivMediaContent);
                     createDivCardContent.append(createDivMedia, createDivContentColumns);
                     createDivCard.append(createDivCardContent);
                     listContainer.append(createDivCard);
@@ -334,4 +337,4 @@ function renderHotList() {
         )
 };
 
-renderHotList();
+renderAllTimeList();
