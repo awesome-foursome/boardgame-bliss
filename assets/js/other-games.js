@@ -20,10 +20,10 @@ function renderDisplayedLocation() {
             } else {
                 // console.log(xmlString);
                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
-                console.log(xmlResponse);
+                // console.log(xmlResponse);
                 let list = xmlResponse.getElementsByTagName('item');
 
-                console.log(list);
+                // console.log(list);
                 for (let index = 0; index < 10; index++) {
                     let item = list[index];
                     let rank = item.getAttribute('rank');
@@ -31,30 +31,95 @@ function renderDisplayedLocation() {
                     let name = item.getElementsByTagName('name')[0].getAttribute('value');
                     let yearPublished = item.getElementsByTagName('yearpublished')[0].getAttribute('value');
 
-                    console.log(rank);
-                    console.log(thumbnail);
-                    console.log(name);
-                    console.log(yearPublished);
+                    // console.log(rank);
+                    // console.log(thumbnail);
+                    // console.log(name);
+                    // console.log(yearPublished);
 
+                    const createDivCard = document.createElement('div');
+                    createDivCard.setAttribute('class', 'card');
 
+                    const createDivCardContent = document.createElement('div');
+                    createDivCardContent.setAttribute('class', 'card-content');
 
-                    // const createH3 = document.createElement('h3');
+                    const createDivMedia = document.createElement('div');
+                    createDivMedia.setAttribute('class', 'media');
+
+                    const createDivMediaLeft = document.createElement('div');
+                    createDivMediaLeft.setAttribute('class', 'media-left');
+
+                    const createDivMediaContent = document.createElement('div');
+                    createDivMediaContent.setAttribute('class', 'media-content');
+
+                    const createDivContentColumns = document.createElement('div');
+                    createDivContentColumns.setAttribute('class', 'content columns');
+
+                    const createFigure = document.createElement('figure');
+                    createFigure.setAttribute('class', 'image is-48x48');
+
+                    const createImg = document.createElement('img');
+                    createImg.setAttribute('src', thumbnail);
+
+                    const createPTitle = document.createElement('p');
+                    createPTitle.setAttribute('class', 'title is-4 pl-2');
+                    createPTitle.textContent = name;
+
+                    const createPRank = document.createElement('p');
+                    createPRank.setAttribute('class', 'column');
+                    createPRank.textContent = `Rank: ${rank}`;
+
+                    const createPYear = document.createElement('p');
+                    createPYear.setAttribute('class', 'column');
+                    createPYear.textContent = `Year published: ${yearPublished}`;
+
+                    // document.querySelector('#right').innerHTML = '';
+
+                    createDivContentColumns.append(createPRank, createPYear);
+                    createDivMediaContent.append(createPTitle);
+                    createFigure.append(createImg);
+                    createDivMediaLeft.append(createFigure);
+                    createDivMedia.append(createDivMediaLeft, createDivMediaContent);
+                    createDivCardContent.append(createDivMedia, createDivContentColumns);
+                    createDivCard.append(createDivCardContent);
+                    document.querySelector('#right').append(createDivCard);
+
+                    // const createDivCard = document.createElement('div');
+                    // createDivCard.setAttribute('class', 'card');
+                    // const createDivCardContent = document.createElement('div');
+                    // createDivCardContent.setAttribute('class', 'card-content');
+                    // const createDivMedia = document.createElement('div');
+                    // createDivMediaLeft.setAttribute('class', 'media');
+                    // const createDivMediaLeft = document.createElement('div');
+                    // createDivMediaLeft.setAttribute('class', 'media-left');
+                    // const createDivMediaContent = document.createElement('div');
+                    // createDivMediaContent.setAttribute('class', 'media-content');
+                    // const createDivContentColumns = document.createElement('div');
+                    // createDivContentColumns.setAttribute('class', 'content columns');
+                    // const createFigure = document.createElement('figure');
+                    // createFigure.setAttribute('class', 'image is-48x48');
                     // const createImg = document.createElement('img');
-                    // createImg.src = weatherIconUrl;
-                    // const createPTemp = document.createElement('p');
-                    // const createPWind = document.createElement('p');
-                    // const createPHumidity = document.createElement('p');
+                    // createImg.setAttribute('src', thumbnail);
+                    // const createPTitle = document.createElement('p');
+                    // createPTitle.setAttribute('title is-4 pl-2');
+                    // const createPRank = document.createElement('p');
+                    // createPRank.setAttribute('class', 'column');
+                    // const createPYear = document.createElement('p');
+                    // createPYear.setAttribute('class', 'column');
 
-                    // createH3.textContent = `${currentWeather.name} (${dateNow.format('DD/MM/YYYY')})`;
-                    // createPTemp.textContent = `Temp: ${currentWeather.main.temp} °C`
-                    // createPWind.textContent = `Wind: ${currentWeather.wind.speed} km/h`
-                    // createPHumidity.textContent = `Humidity: ${currentWeather.main.humidity} %`
+                    // createPTitle.textContent = name;
+                    // createPRank.textContent = `Rank: ${rank}`;
+                    // createPYear.textContent = `Year published: ${yearPublished}`;
 
-                    // // remove previous contents to stop duplicating
-                    // document.querySelector('#current').innerHTML = '';
+                    // document.querySelector('#right').innerHTML = '';
 
-                    // createH3.append(createImg);
-                    // document.querySelector('#current').append(createH3, createPTemp, createPWind, createPHumidity);
+                    // createDivContentColumns.append(createPRank, createPYear);
+                    // createDivMediaContent.append(createPTitle);
+                    // createFigure.append(createImg);
+                    // createDivMediaLeft.append(createFigure);
+                    // createDivMedia.append(createDivMediaLeft, createDivMediaContent);
+                    // createDivCardContent.append(createDivMedia, createDivContentColumns);
+                    // createDivCard.append(createDivCardContent);
+                    // document.querySelector('#right').append(createDivCard);
                 }
             }
         }
