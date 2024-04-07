@@ -94,13 +94,12 @@ function displayComments() {
 
 displayComments();
 
-fetch('https://www.tronalddump.io/random/quote')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('quote').textContent = data.value;
-            })
-            .catch(error => console.error('Error fetching quote:', error));
-
-
+            fetch('https://www.tronalddump.io/random/quote')
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('quote').textContent = data.value;
+                        })
+                        .catch(error => console.error('Error fetching quote:', error));
+            
 
 
