@@ -6,14 +6,6 @@ h1{
     text-align: center;
 }
 
-.comments {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-
 /* Modal */
 .modal {
     display: none;
@@ -53,5 +45,21 @@ h1{
     border: groove;
     margin: 10px;
     padding: 10px;
+
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#comments{
+    display: flex;
+    border: groove;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
 
 }
