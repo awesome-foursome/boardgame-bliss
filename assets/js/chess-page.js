@@ -1,7 +1,6 @@
 const requestContainer = $('#request-container');
 const requestBtn = $('#request-btn');
 const historyContainer = $('#history-container');
-const formContainer = $('#form-container');
 const chessForm = $('#chess-form');
 const submitBtn = $('#submit-btn');
 const usernameInput = $('#username-input');
