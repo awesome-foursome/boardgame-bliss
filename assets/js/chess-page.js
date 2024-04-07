@@ -81,12 +81,6 @@ const printErrorCard = function (error, game) {
 	const gameTitle = `${gameWhite} vs ${gameBlack}`;
 	const gameUrl = game.url;
 
-	// debug log
-	console.log('gameTitle:', gameTitle);
-
-	// log error to console
-	console.log(error);
-
 	// create card elements
 	const cardEl = $('<div>').addClass('card');
 	const cardHeaderEl = $('<div>').addClass('card-header');
@@ -113,9 +107,6 @@ const printBestMoves = function (data, game) {
 
 	const gameTitle = `${gameWhite} vs ${gameBlack}`;
 	const gameUrl = game.url;
-
-	// debug log
-	console.log('gameTitle:', gameTitle);
 
 	// pull relevent information from 'data'
 	const bestMove = data.bestmove.replace('bestmove', 'Best Move:');
@@ -148,10 +139,7 @@ const printBestMoves = function (data, game) {
 const getBestMove = function (username, depth) {
 
 	// set up request URL with username
-	const requestGameStateUrl = `https://api.chess.com/pub/player/${username}/games`
-
-	// debug log
-	console.log('requestGameStateUrl:', requestGameStateUrl);
+	const requestGameStateUrl = `https://api.chess.com/pub/player/${username}/games`;
 
 	// async fetch function for current game states
 	const fetchCurrentGames = async function () {
@@ -164,8 +152,6 @@ const getBestMove = function (username, depth) {
 	// execute async fetch function
 	fetchCurrentGames()
 		.then((data) => {
-			// debug log
-			console.log(data)
 
 			// throw error and end function if there are no games or username is invalid
 			if (!data.games) {
@@ -183,9 +169,6 @@ const getBestMove = function (username, depth) {
 
 			// loop through resultant games and pull FEN
 			for (const game of data.games) {
-				// debug log
-				console.log(game.fen);
-
 				// encode FEN for URL
 				const encodedFen = encodeURI(game.fen);
 
@@ -199,7 +182,6 @@ const getBestMove = function (username, depth) {
 				// async fetch funtion for best move
 				const fetchBestMove = async function () {
 					const response = await fetch(requestBestMoveUrl, { signal: abortController.signal });
-					console.log(response);
 					const data = await response.json();
 
 					return data;
@@ -208,8 +190,6 @@ const getBestMove = function (username, depth) {
 				// execute async fetch function
 				fetchBestMove()
 					.then((data) => {
-						// debug log
-						console.log(data);
 
 						// print best move data to results container  
 						printBestMoves(data, game);
@@ -232,9 +212,6 @@ const getBestMove = function (username, depth) {
 					});
 			}
 		}).catch(error => {
-
-			// debug log
-			console.log(error.message);
 
 			// alert to inform user of error
 			window.alert(error.message);
@@ -269,10 +246,6 @@ const handleFormSubmit = function (event) {
 	const username = usernameInput.val();
 	const depth = depthInput.val();
 
-	// debug log
-	console.log('username:', username);
-	console.log('depth:', depth);
-
 	// get best moves
 	getBestMove(username, depth);
 
@@ -289,10 +262,6 @@ const getHistoryRequest = function (event) {
 	// retrieve username and depth from button element data-attributes
 	const username = event.target.dataset.username;
 	const depth = event.target.dataset.depth;
-
-	// debug log
-	console.log('history username:', username);
-	console.log('history depth:', depth);
 
 	getBestMove(username, depth);
 
