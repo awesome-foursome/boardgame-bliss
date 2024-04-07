@@ -4,6 +4,10 @@ body {
 	flex-direction: column;
 }
 
+.card {
+	overflow: hidden;
+}
+
 .card:hover {
 	transition: 0.3s;
 	box-shadow: 0 4px 8px 0 var(--background-color-secondary);
