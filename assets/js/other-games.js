@@ -39,10 +39,13 @@ function renderGame() {
                 const createDivCard = document.createElement('div');
                 createDivCard.setAttribute('class', 'card');
                 createDivCard.setAttribute('id', id);
+
                 // link to corresponding page on BGG
-                createDivCard.addEventListener('click', () => {
-                    location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                });
+                const createA = document.createElement('a');
+                createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                // createDivCard.addEventListener('click', () => {
+                //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                // });
 
                 const createDivCardContent = document.createElement('div');
                 createDivCardContent.setAttribute('class', 'card-content');
@@ -77,7 +80,8 @@ function renderGame() {
 
                 createDivMedia.append(createDivMediaLeft, createDivMediaContent);
                 createDivCardContent.append(createDivMedia, createDivContentColumns);
-                createDivCard.append(createDivCardContent);
+                createA.append(createDivCardContent);
+                createDivCard.append(createA);
                 listContainer.append(createDivCard);
             }
         }
@@ -162,10 +166,13 @@ function renderHotList() {
                     const createDivCard = document.createElement('div');
                     createDivCard.setAttribute('class', 'card');
                     createDivCard.setAttribute('id', id);
+
+                    const createA = document.createElement('a');
+                    createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
                     // links to external BGG site
-                    createDivCard.addEventListener('click', () => {
-                        location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                    });
+                    // createDivCard.addEventListener('click', () => {
+                    //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                    // });
 
                     const createDivCardContent = document.createElement('div');
                     createDivCardContent.setAttribute('class', 'card-content');
@@ -206,7 +213,8 @@ function renderHotList() {
                     createDivMediaLeft.append(createFigure);
                     createDivMedia.append(createDivMediaLeft, createDivMediaContent);
                     createDivCardContent.append(createDivMedia, createDivContentColumns);
-                    createDivCard.append(createDivCardContent);
+                    createA.append(createDivCardContent);
+                    createDivCard.append(createA);
                     listContainer.append(createDivCard);
                 }
             }
@@ -270,10 +278,13 @@ function renderAllTimeList() {
                                 const createDivCard = document.createElement('div');
                                 createDivCard.setAttribute('class', 'card');
                                 createDivCard.setAttribute('id', id);
+
                                 // link to external bgg page
-                                createDivCard.addEventListener('click', () => {
-                                    location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                                });
+                                const createA = document.createElement('a');
+                                createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                                // createDivCard.addEventListener('click', () => {
+                                //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                                // });
 
                                 const createDivCardContent = document.createElement('div');
                                 createDivCardContent.setAttribute('class', 'card-content');
@@ -299,7 +310,8 @@ function renderAllTimeList() {
                                 createDivMediaContent.append(createPTitle);
                                 createDivMedia.append(createDivMediaContent);
                                 createDivCardContent.append(createDivMedia, createDivContentColumns);
-                                createDivCard.append(createDivCardContent);
+                                createA.append(createDivCardContent);
+                                createDivCard.append(createA);
                                 listContainer.append(createDivCard);
                             }
                         })
