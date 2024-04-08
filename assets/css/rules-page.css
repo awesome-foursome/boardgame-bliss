@@ -56,4 +56,9 @@ display: flex;
 
 #quote{
     text-align: center;
+
     }
+
+.comment-card {
+    width: 100%;
+}
