@@ -50,10 +50,10 @@ commentForm.addEventListener('submit', function (event) {
 
     // Creates an empty array for the comments variable in localStorage
     let comments = JSON.parse(localStorage.getItem('comments')) || [];
-    
+
     // Add the new comment to the array
     comments.push({ username, comment });
-    
+
     // Save the updated comments array back to local storage
     localStorage.setItem('comments', JSON.stringify(comments));
 
@@ -70,7 +70,7 @@ commentForm.addEventListener('submit', function (event) {
 
 //Displays the comments 
 function displayComments() {
-  
+
   // clear out existing content before adding new content dynamically.
   commentsSection.innerHTML = '';
 
@@ -80,26 +80,48 @@ function displayComments() {
   //forEach method iterates over each item in the comments and performs the following actions:
   comments.forEach((item) => {
 
-    //Creates a new div element
-    const div = document.createElement('div');
+    //Creates card elements for comments
+    const commentCard = document.createElement('div');
+    commentCard.classList.add('card', 'is-full');
+
+    const commentCardHeader = document.createElement('div');
+    commentCardHeader.classList.add('card-header');
+
+    const commentCardHeaderTitle = document.createElement('div');
+    commentCardHeaderTitle.classList.add('card-header-title');
+    commentCardHeaderTitle.innerText = item.username;
+
+    const commentCardContent = document.createElement('div');
+    commentCardContent.classList.add('card-content');
+
+    const commentCardComment = document.createElement('p');
+    commentCardComment.classList.add('content');
+    commentCardComment.innerText = item.comment;
+
+    // Construct card
+    commentCardHeader.appendChild(commentCardHeaderTitle);
+    commentCardContent.appendChild(commentCardComment);
+    commentCard.appendChild(commentCardHeader);
+    commentCard.appendChild(commentCardContent);
+
 
     // ${item.username and comment} inserts the username and comment property of the current item in the comments array.
     // <strong>${item.username}:</strong>: wraps the username in <strong> tags to make it bold.
-    div.innerHTML = `<strong>${item.username}:</strong> ${item.comment}`;
+    // div.innerHTML = `<strong>${item.username}:</strong> ${item.comment}`;
 
     // This action effectively displays the comment on the webpage within the designated commentsSection container.
-    commentsSection.appendChild(div);
+    commentsSection.appendChild(commentCard);
   });
 }
 
 displayComments();
 
-            fetch('https://www.tronalddump.io/random/quote')
-                        .then(response => response.json())
-                        .then(data => {
-                            document.getElementById('quote').textContent = data.value;
-                        })
-                        .catch(error => console.error('Error fetching quote:', error));
-            
+fetch('https://www.tronalddump.io/random/quote')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('quote').textContent = data.value;
+  })
+  .catch(error => console.error('Error fetching quote:', error));
+
 
 
