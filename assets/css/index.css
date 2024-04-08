@@ -28,3 +28,30 @@
 /* #right {
     background-image: url(../images/index.html/html-background.jpg);
 } */
+
+.card:hover {
+    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 var(--background-color-secondary);
+    cursor: pointer;
+}
+
+/* option:hover {
+    cursor: pointer;
+} */
+#right {
+    position: relative;
+}
+
+
+.box {
+    position: absolute;
+    transition-duration: 1s;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}

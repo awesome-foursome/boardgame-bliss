@@ -39,10 +39,13 @@ function renderGame() {
                 const createDivCard = document.createElement('div');
                 createDivCard.setAttribute('class', 'card');
                 createDivCard.setAttribute('id', id);
+
                 // link to corresponding page on BGG
-                createDivCard.addEventListener('click', () => {
-                    location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                });
+                const createA = document.createElement('a');
+                createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                // createDivCard.addEventListener('click', () => {
+                //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                // });
 
                 const createDivCardContent = document.createElement('div');
                 createDivCardContent.setAttribute('class', 'card-content');
@@ -50,8 +53,8 @@ function renderGame() {
                 const createDivMedia = document.createElement('div');
                 createDivMedia.setAttribute('class', 'media');
 
-                const createDivMediaLeft = document.createElement('div');
-                createDivMediaLeft.setAttribute('class', 'media-left');
+                // const createDivMediaLeft = document.createElement('div');
+                // createDivMediaLeft.setAttribute('class', 'media-left');
 
                 const createDivMediaContent = document.createElement('div');
                 createDivMediaContent.setAttribute('class', 'media-content');
@@ -75,9 +78,10 @@ function renderGame() {
                 createDivContentColumns.append(createPRank, createPYear);
                 createDivMediaContent.append(createPTitle);
 
-                createDivMedia.append(createDivMediaLeft, createDivMediaContent);
+                createDivMedia.append(createDivMediaContent);
                 createDivCardContent.append(createDivMedia, createDivContentColumns);
-                createDivCard.append(createDivCardContent);
+                createA.append(createDivCardContent);
+                createDivCard.append(createA);
                 listContainer.append(createDivCard);
             }
         }
@@ -162,10 +166,13 @@ function renderHotList() {
                     const createDivCard = document.createElement('div');
                     createDivCard.setAttribute('class', 'card');
                     createDivCard.setAttribute('id', id);
+
+                    const createA = document.createElement('a');
+                    createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
                     // links to external BGG site
-                    createDivCard.addEventListener('click', () => {
-                        location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                    });
+                    // createDivCard.addEventListener('click', () => {
+                    //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                    // });
 
                     const createDivCardContent = document.createElement('div');
                     createDivCardContent.setAttribute('class', 'card-content');
@@ -206,7 +213,8 @@ function renderHotList() {
                     createDivMediaLeft.append(createFigure);
                     createDivMedia.append(createDivMediaLeft, createDivMediaContent);
                     createDivCardContent.append(createDivMedia, createDivContentColumns);
-                    createDivCard.append(createDivCardContent);
+                    createA.append(createDivCardContent);
+                    createDivCard.append(createA);
                     listContainer.append(createDivCard);
                 }
             }
@@ -270,10 +278,13 @@ function renderAllTimeList() {
                                 const createDivCard = document.createElement('div');
                                 createDivCard.setAttribute('class', 'card');
                                 createDivCard.setAttribute('id', id);
+
                                 // link to external bgg page
-                                createDivCard.addEventListener('click', () => {
-                                    location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                                });
+                                const createA = document.createElement('a');
+                                createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                                // createDivCard.addEventListener('click', () => {
+                                //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                                // });
 
                                 const createDivCardContent = document.createElement('div');
                                 createDivCardContent.setAttribute('class', 'card-content');
@@ -288,7 +299,7 @@ function renderAllTimeList() {
                                 createDivContentColumns.setAttribute('class', 'content columns');
 
                                 const createPTitle = document.createElement('p');
-                                createPTitle.setAttribute('class', 'title is-4 pl-2');
+                                createPTitle.setAttribute('class', 'title is-4');
                                 createPTitle.textContent = `${name} - ${yearPublished}`;
 
                                 const createPSummary = document.createElement('p');
@@ -299,7 +310,8 @@ function renderAllTimeList() {
                                 createDivMediaContent.append(createPTitle);
                                 createDivMedia.append(createDivMediaContent);
                                 createDivCardContent.append(createDivMedia, createDivContentColumns);
-                                createDivCard.append(createDivCardContent);
+                                createA.append(createDivCardContent);
+                                createDivCard.append(createA);
                                 listContainer.append(createDivCard);
                             }
                         })
