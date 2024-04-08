@@ -82,7 +82,7 @@ function displayComments() {
 
     //Creates card elements for comments
     const commentCard = document.createElement('div');
-    commentCard.classList.add('card', 'is-full');
+    commentCard.classList.add('card', 'comment-card');
 
     const commentCardHeader = document.createElement('div');
     commentCardHeader.classList.add('card-header');

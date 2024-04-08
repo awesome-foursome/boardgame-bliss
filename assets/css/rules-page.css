@@ -66,4 +66,9 @@ h1{
 
 #quote{
     text-align: center;
+
     }
+
+.comment-card {
+    width: 100%;
+}
