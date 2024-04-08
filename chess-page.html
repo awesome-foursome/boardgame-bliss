@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" id="chess-page">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Boardgame Bliss</title>
+	<title id="chess-page">Boardgame Bliss</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<link rel="stylesheet" href="./assets/css/chess-page.css">
@@ -32,9 +32,9 @@
 					</div>
 				</div>
 
-				<div class="navbar-item pl-6 is-hidden-mobile">
+				<!-- <div class="navbar-item pl-6 is-hidden-mobile">
 					<h1 class="is-centered is-size-1-desktop title">Move Generator</h1>
-				</div>
+				</div> -->
 
 				<!-- icon to display navbar menu on mobile -->
 				<a class="navbar-burger" id="burger">
@@ -49,9 +49,10 @@
 			<!-- nav links to other pages -->
 			<div class="navbar-menu pr-6" id="nav-links">
 				<div class="navbar-end">
-					<a href="./index.html" class="navbar-item">Homepage</a>
-					<a href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
-					<a href="./other-games.html" class="navbar-item">Discover More Games</a>
+					<a id="index" href="./index.html" class="navbar-item">Homepage</a>
+					<a id="chess-page" href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
+					<a id="rules-page" href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
+					<a id="other-games" href="./other-games.html" class="navbar-item">Discover More Games</a>
 				</div>
 			</div>
 		</nav>
