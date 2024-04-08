@@ -1,43 +1,9 @@
-/* #hero {
-    background-image: url(../images/index.html/hero-img.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
-
-/* 
-#row {
-    display: flex;
-}
-
-#left,
-#right {
-    box-sizing: border-box;
-    width: 50vw;
-    background-color: var(--background-color-main);
-    padding: 2rem;
-    border: solid var(--background-color-secondary) .5rem;
-    height: 70vh;
-}
-
-#left {
-    text-decoration: none;
-} */
-
-
-/* #right {
-    background-image: url(../images/index.html/html-background.jpg);
-} */
-
 .card:hover {
     transition: 0.3s;
     box-shadow: 0 4px 8px 0 var(--background-color-secondary);
     cursor: pointer;
 }
 
-/* option:hover {
-    cursor: pointer;
-} */
 #right {
     position: relative;
 }

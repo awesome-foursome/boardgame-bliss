@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" id="rules-page">
 
 <head>
     <meta charset="UTF-8">
@@ -30,9 +30,9 @@
                     </div>
                 </div>
 
-                <div class="navbar-item pl-6 is-hidden-mobile">
+                <!-- <div class="navbar-item pl-6 is-hidden-mobile">
                     <h1 class="is-centered is-size-1-desktop title">Rules Page</h1>
-                </div>
+                </div> -->
 
                 <!-- icon to display navbar menu on mobile -->
                 <a class="navbar-burger" id="burger">
@@ -47,9 +47,10 @@
             <!-- nav links to other pages -->
             <div class="navbar-menu pr-6" id="nav-links">
                 <div class="navbar-end">
-                    <a href="./index.html" class="navbar-item">Homepage</a>
-                    <a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
-                    <a href="./other-games.html" class="navbar-item">Discover More Games</a>
+                    <a id="index" href="./index.html" class="navbar-item">Homepage</a>
+                    <a id="chess-page" href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
+                    <a id="rules-page" href="./rules-page.html" class="navbar-item">Chess Rules Page</a>
+                    <a id="other-games" href="./other-games.html" class="navbar-item">Discover More Games</a>
                 </div>
             </div>
         </nav>
@@ -86,53 +87,116 @@
                 </div>
 
                 <div class="cards">
-                    <h3 class="title">The King</h3>
-                    <p class="subtitle">The king can only move to any square that's directly next to it: up, down,
-                        sideways, or diagonal
-                    </p>
+
+                    <div class="columns">
+                        <div class="column is-1">
+                            <img src="./assets/images/rules-page.html/LightKing.webp" alt="king icon"
+                                style="max-height: 70px">
+                        </div>
+                        <div class="column">
+
+                            <h3 class="title">The King</h3>
+                            <p class="subtitle">The king can only move to any square that's directly next to it: up,
+                                down,
+                                sideways, or diagonal
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="cards">
-                    <h3 class="title">The Queen</h3>
-                    <p class="subtitle">The queen can move forwards, backward, sideways, and diagonally like a king.
-                        However, unlike the
-                        king, the queen can move
-                        as far as it wants to in each of these directions but cant jump over other peices.</p>
+                    <div class="columns">
+                        <div class="column is-1">
+                            <img src="./assets/images/rules-page.html/LightQueen.webp" alt="queen icon"
+                                style="max-height: 70px">
+                        </div>
+                        <div class="column">
+                            <h3 class="title">The Queen</h3>
+                            <p class="subtitle">The queen can move forwards, backward, sideways, and diagonally
+                                like a
+                                king.
+                                However, unlike the
+                                king, the queen can move
+                                as far as it wants to in each of these directions but cant jump over other
+                                peices.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="cards">
-                    <h3 class="title">The Rook</h3>
-                    <p class="subtitle">The rook can move forwards, backward, and sideways as far as it wants but can't
-                        jump over other
-                        peices.</p>
+                    <div class="columns">
+                        <div class="column is-1">
+                            <img src="./assets/images/rules-page.html/LightRook.webp" alt="rook icon"
+                                style="max-height: 70px">
+                        </div>
+                        <div class="column">
+                            <h3 class="title">The Rook</h3>
+                            <p class="subtitle">The rook can move forwards, backward, and sideways as far as
+                                it wants but
+                                can't
+                                jump over other
+                                peices.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="cards">
-                    <h3 class="title">The Bishop</h3>
-                    <p class="subtitle">The bishop can move diagonally like a queen, but not forward, backward, or
-                        sideways. Each side
-                        starts
-                        with two bishops,
-                        one on a light square and one on a dark square and can only move on its allocated square color.
-                    </p>
+                    <div class="columns">
+                        <div class="column is-1">
+                            <img src="./assets/images/rules-page.html/LightBishop.webp" alt="bishop icon"
+                                style="max-height: 70px">
+                        </div>
+                        <div class="column">
+                            <h3 class="title">The Bishop</h3>
+                            <p class="subtitle">The bishop can move diagonally like a queen, but not
+                                forward, backward, or
+                                sideways. Each side
+                                starts
+                                with two bishops,
+                                one on a light square and one on a dark square and can only move on its
+                                allocated square
+                                color.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="cards">
-                    <h3 class="title">The Knight</h3>
-                    <p class="subtitle">The knight is the only chess piece that doesn't go in a straight line. The
-                        knight moves two
-                        squares
-                        in one direction and then turns
-                        and goes one square to the side. Usally he would move to a dark squre then to a light and so on.
-                    </p>
+                    <div class="columns">
+                        <div class="column is-1">
+                            <img src="./assets/images/rules-page.html/LightKnight.webp" alt="knight icon"
+                                style="max-height: 70px">
+                        </div>
+                        <div class="column">
+                            <h3 class="title">The Knight</h3>
+                            <p class="subtitle">The knight is the only chess piece that doesn't go
+                                in a straight line. The
+                                knight moves two
+                                squares
+                                in one direction and then turns
+                                and goes one square to the side. Usally he would move to a dark
+                                squre then to a light and so
+                                on.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="cards">
-                    <h3 class="title">The Pawn</h3>
-                    <p class="subtitle">Pawns move one square forward and cannot move back. A pawn may advance two
-                        squares on its first
-                        move.
-                        Pawns can only capture one square diagonally ahead.</p>
+                    <div class="columns">
+                        <div class="column is-1">
+                            <img src="./assets/images/rules-page.html/LightPawn.webp" alt="pawn icon"
+                                style="max-height: 70px">
+                        </div>
+                        <div class="column">
+                            <h3 class="title">The Pawn</h3>
+                            <p class="subtitle">Pawns move one square forward and cannot move
+                                back. A pawn may advance two
+                                squares on its first
+                                move.
+                                Pawns can only capture one square diagonally ahead.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="cards">
@@ -141,7 +205,9 @@
 
                 <div class="cards">
                     <h3 class="title">Chessboard Setup</h3>
-                    <p>Rooks are in the corners, with knights next to them, followed by bishops. Kings and queens take
+                    <p>Rooks are in the corners, with knights next to them, followed by
+                        bishops. Kings and queens
+                        take
                         the
                         center squares with the
                         queen on her own color. All pawns go on the 2nd and 7th ranks.</p>
@@ -149,11 +215,14 @@
 
                 <div class="cards">
                     <h3 class="title">Pawn Promotion</h3>
-                    <p class="subtitle">When a pawn reaches the end of the board it “promotes”, it turns into another
+                    <p class="subtitle">When a pawn reaches the end of the board it
+                        “promotes”, it turns into
+                        another
                         piece. Most of the
                         time
                         players promote
-                        to a queen, but a rook, knight, or bishop is also possible but not a king.</p>
+                        to a queen, but a rook, knight, or bishop is also possible but not a
+                        king.</p>
                 </div>
             </section>
         </article>
