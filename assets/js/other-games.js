@@ -53,8 +53,8 @@ function renderGame() {
                 const createDivMedia = document.createElement('div');
                 createDivMedia.setAttribute('class', 'media');
 
-                const createDivMediaLeft = document.createElement('div');
-                createDivMediaLeft.setAttribute('class', 'media-left');
+                // const createDivMediaLeft = document.createElement('div');
+                // createDivMediaLeft.setAttribute('class', 'media-left');
 
                 const createDivMediaContent = document.createElement('div');
                 createDivMediaContent.setAttribute('class', 'media-content');
@@ -78,7 +78,7 @@ function renderGame() {
                 createDivContentColumns.append(createPRank, createPYear);
                 createDivMediaContent.append(createPTitle);
 
-                createDivMedia.append(createDivMediaLeft, createDivMediaContent);
+                createDivMedia.append(createDivMediaContent);
                 createDivCardContent.append(createDivMedia, createDivContentColumns);
                 createA.append(createDivCardContent);
                 createDivCard.append(createA);
@@ -299,7 +299,7 @@ function renderAllTimeList() {
                                 createDivContentColumns.setAttribute('class', 'content columns');
 
                                 const createPTitle = document.createElement('p');
-                                createPTitle.setAttribute('class', 'title is-4 pl-2');
+                                createPTitle.setAttribute('class', 'title is-4');
                                 createPTitle.textContent = `${name} - ${yearPublished}`;
 
                                 const createPSummary = document.createElement('p');

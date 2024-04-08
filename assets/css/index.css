@@ -38,3 +38,20 @@
 /* option:hover {
     cursor: pointer;
 } */
+#right {
+    position: relative;
+}
+
+
+.box {
+    position: absolute;
+    transition-duration: 1s;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
