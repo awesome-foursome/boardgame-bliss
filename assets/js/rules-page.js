@@ -92,11 +92,6 @@ function displayComments() {
     commentCard.appendChild(commentCardHeader);
     commentCard.appendChild(commentCardContent);
 
-
-    // ${item.username and comment} inserts the username and comment property of the current item in the comments array.
-    // <strong>${item.username}:</strong>: wraps the username in <strong> tags to make it bold.
-    // div.innerHTML = `<strong>${item.username}:</strong> ${item.comment}`;
-
     // This action effectively displays the comment on the webpage within the designated commentsSection container.
     commentsSection.appendChild(commentCard);
   });

@@ -6,33 +6,16 @@ h1{
     text-align: center;
 }
 
-/* .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-} */
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover {
-    /* color: black; */
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .cards {
     border-width: 20px;
     border: groove;
     margin: 10px;
     padding: 10px;
 
+}
+
+#display{
+    display: flex;
 }
 
 .comments {
@@ -50,9 +33,6 @@ h1{
     margin: 10px;
 
 }
-#donald{
-display: flex;
-}
 
 #quote{
     text-align: center;
@@ -61,4 +41,8 @@ display: flex;
 
 .comment-card {
     width: 100%;
+}
+
+#Trump{
+display: flex;
 }

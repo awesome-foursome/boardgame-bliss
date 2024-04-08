@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" href="assets/css/rules-page.css"> -->
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script defer src="assets/js/rules-page.js"></script>
     <title>Boardgame Bliss</title>
 </head>
@@ -58,17 +59,6 @@
     <main id="main">
         <article class="content container">
             <section>
-                <div>
-                    <div class="modal-content box">
-                        <span class="close">&times;</span>
-                        <h1 class="title">Here's What You Will Learn</h1>
-                        <p class="subtitle">Difference between check and checkmate.</p>
-                        <p class="subtitle">How to move the pieces.</p>
-                        <p class="subtitle">Chessboard setup.</p>
-                        <p class="subtitle">Pawn promotion.</p>
-                    </div>
-                </div>
-
                 <!-- box -->
                 <div class="box">
                     <h1 class="title">How To Pay Chess</h1>
@@ -159,7 +149,8 @@
     </main>
 
     <!-- comment section -->
-    <section class="content container">
+    <div class="columns content container">
+    <section id="display" class="content container column is-8">
         <h1 class="title">Comments</h1>
         <div class="comments">
             <form id="commentForm">
@@ -171,21 +162,20 @@
 
                 <button type="submit" class="subtitle button has-background-primary">Submit</button>
             </form>
-
-        </div>
         <div id="comments" class="subtitle box"></div>
-    </section>
 
-    <div>
-        <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-        </iframe>
-    </div>
+    </section>
+    <div class="column is-4">
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/S5GIpAM-aWQ"></iframe>
+</div>
     </div>
 
-    <section id="donald">
-        <h1 class="title">Random Tronald Dump Quote</h1>
-        <p class="subtitle" id="quote"></p>
+    <div class="content container">
+    <section id="Trump">
+        <h1 class="title has-text-centered">Random Tronald Dump Quote</h1>
+        <p class="subtitle has-text-centered" id="quote"></p>
     </section>
+    </div>
 
     <!-- Developers -->
     <footer class="footer">
