@@ -3,19 +3,21 @@
 /* light theme */
 [data-theme="light"] {
     --background-color-main: lightgrey;
-    --background-color-secondary: black;
+    /* --background-color-secondary: black; */
     --text-color-main: black;
-    --text-color-secondary: white;
+    /* --text-color-secondary: white; */
 }
 
 /* dark theme */
 [data-theme="dark"] {
     --background-color-main: black;
-    --background-color-secondary: lightgrey;
+    /* --background-color-secondary: lightgrey; */
     --text-color-main: white;
-    --text-color-secondary: black;
+    /* --text-color-secondary: black; */
 }
 
+
+/* could be used in the future for implementing more themes */
 /* abdikarim theme pick your colours and theme name */
 /* when you change data-theme=" " you'll also have to change 
 the value and option text content on the html to match */
@@ -54,76 +56,12 @@ the value and option text content on the html to match */
     --text-color-secondary: black;
 } */
 
-/* set 1rem to 10px to easily find values for the rest of the page (ie. 1.5rem is 15px, 2.0rem is 20px, etc.) */
-/* html {
-    font-size: 62.5%;
-} */
-
-/* settings for the entire document (1 step below root/html) */
-/* * {
-    padding: 0;
-    margin: 0;
-} */
-
 /* Other settings for the whole document */
+/* works with bulma for themes */
 body {
-    /* decide as a group */
-    /* font-family: ; */
-    /* font-size: 1.6rem; */
     color: var(--text-color-main);
     background-color: var(--background-color-main);
 }
-
-/* base/universal h values */
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: var(--text-color-main);
-} */
-
-/* specific text values */
-/* h1 {
-    font-size: 4rem;
-}
-
-h2 {
-    font-size: 3.5rem;
-}
-
-h3 {
-    font-size: 3rem;
-}
-
-h4 {
-    font-size: 2rem;
-}
-
-h5 {
-    font-size: 2rem;
-}
-
-h6 {
-    font-size: 1.5rem;
-} */
-
-/* just so everyone knows explaining the earlier bit */
-/* p { */
-/* font-size: 1.6rem; -DON'T NEED TO SPECIFY- */
-/* } */
-
-/* always wrap images in div */
-/* img {
-    width: 100%;
-} */
-
-/* .card:hover {
-    transition: 0.3s;
-    box-shadow: 0 4px 8px 0 var(--background-color-secondary);
-    cursor: pointer;
-} */
 
 .navbar-dropdown option:hover {
     cursor: pointer;

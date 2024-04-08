@@ -43,6 +43,7 @@ function renderGame() {
                 // link to corresponding page on BGG
                 const createA = document.createElement('a');
                 createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                // obsolete but may go back to
                 // createDivCard.addEventListener('click', () => {
                 //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
                 // });
@@ -169,6 +170,7 @@ function renderHotList() {
 
                     const createA = document.createElement('a');
                     createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                    // obsolete but may go back to
                     // links to external BGG site
                     // createDivCard.addEventListener('click', () => {
                     //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
@@ -282,6 +284,7 @@ function renderAllTimeList() {
                                 // link to external bgg page
                                 const createA = document.createElement('a');
                                 createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                                // obsolete but may go back to
                                 // createDivCard.addEventListener('click', () => {
                                 //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
                                 // });
