@@ -59,6 +59,10 @@ const printHistory = function () {
 		return;
 	}
 
+	// print search history title
+	const historyTitle = $('<p>').addClass('subtitle').text('Search History:');
+	historyContainer.append(historyTitle);
+
 	// loop through history elements and print buttons to historyConatiner
 	for (const searchObj of history) {
 		const historyBtn = $('<button>')
