@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/css/rules-page.css">
+    <!-- <link rel="stylesheet" href="assets/css/rules-page.css"> -->
     <script defer src="assets/js/rules-page.js"></script>
     <title>Boardgame Bliss</title>
 </head>
@@ -44,23 +44,22 @@
             </div>
 
 
-			<!-- nav links to other pages -->
-			<div class="navbar-menu pr-6" id="nav-links">
-				<div class="navbar-end">
-					<a href="./index.html" class="navbar-item">Homepage</a>
-					<a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
-					<a href="./other-games.html" class="navbar-item">Discover More Games</a>
-				</div>
-			</div>
-		</nav>
-	</header>
+            <!-- nav links to other pages -->
+            <div class="navbar-menu pr-6" id="nav-links">
+                <div class="navbar-end">
+                    <a href="./index.html" class="navbar-item">Homepage</a>
+                    <a href="./chess-page.html" class="navbar-item">Chess Move Generator</a>
+                    <a href="./other-games.html" class="navbar-item">Discover More Games</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main id="main">
-        <article>
+        <article class="content container">
             <section>
-                <!-- Modal -->
-                <div id="modal" class="modal">
-                    <div class="modal-content">
+                <div>
+                    <div class="modal-content box">
                         <span class="close">&times;</span>
                         <h1 class="title">Here's What You Will Learn</h1>
                         <p class="subtitle">Difference between check and checkmate.</p>
@@ -70,8 +69,8 @@
                     </div>
                 </div>
 
-                <!-- Cards -->
-                <div class="cards">
+                <!-- box -->
+                <div class="box">
                     <h1 class="title">How To Pay Chess</h1>
                     <p class="subtitle">Chess is won when your opponent is in check and cannot escape. That is called
                         checkmate!
@@ -81,18 +80,18 @@
 
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h1 class="title">How To Move The Pieces</h1>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">The King</h3>
                     <p class="subtitle">The king can only move to any square that's directly next to it: up, down,
                         sideways, or diagonal
                     </p>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">The Queen</h3>
                     <p class="subtitle">The queen can move forwards, backward, sideways, and diagonally like a king.
                         However, unlike the
@@ -100,14 +99,14 @@
                         as far as it wants to in each of these directions but cant jump over other peices.</p>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">The Rook</h3>
                     <p class="subtitle">The rook can move forwards, backward, and sideways as far as it wants but can't
                         jump over other
                         peices.</p>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">The Bishop</h3>
                     <p class="subtitle">The bishop can move diagonally like a queen, but not forward, backward, or
                         sideways. Each side
@@ -117,7 +116,7 @@
                     </p>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">The Knight</h3>
                     <p class="subtitle">The knight is the only chess piece that doesn't go in a straight line. The
                         knight moves two
@@ -127,7 +126,7 @@
                     </p>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">The Pawn</h3>
                     <p class="subtitle">Pawns move one square forward and cannot move back. A pawn may advance two
                         squares on its first
@@ -135,11 +134,11 @@
                         Pawns can only capture one square diagonally ahead.</p>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h1 class="title">Additional Rules</h1>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">Chessboard Setup</h3>
                     <p>Rooks are in the corners, with knights next to them, followed by bishops. Kings and queens take
                         the
@@ -147,7 +146,7 @@
                         queen on her own color. All pawns go on the 2nd and 7th ranks.</p>
                 </div>
 
-                <div class="cards">
+                <div class="box">
                     <h3 class="title">Pawn Promotion</h3>
                     <p class="subtitle">When a pawn reaches the end of the board it “promotes”, it turns into another
                         piece. Most of the
@@ -160,7 +159,7 @@
     </main>
 
     <!-- comment section -->
-    <section>
+    <section class="content container">
         <h1 class="title">Comments</h1>
         <div class="comments">
             <form id="commentForm">
@@ -170,16 +169,21 @@
                 <label for="comment" class="subtitle">Comment:</label><br>
                 <textarea id="comment" rows="5" cols="37" required></textarea><br><br>
 
-                <button type="submit" class="subtitle">Submit</button>
+                <button type="submit" class="subtitle button has-background-primary">Submit</button>
             </form>
 
-        </div>
-        <div id="comments" class="subtitle"></div>
+            <div id="comments" class="subtitle"></div>
     </section>
 
-    <section>
+    <div>
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+        </iframe>
+    </div>
+    </div>
+
+    <section id="donald">
         <h1 class="title">Random Tronald Dump Quote</h1>
-    <p class="subtitle" id="quote"></p>
+        <p class="subtitle" id="quote"></p>
     </section>
 
     <!-- Developers -->

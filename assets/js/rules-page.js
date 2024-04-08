@@ -1,15 +1,3 @@
-// Modal
-document.addEventListener('DOMContentLoaded', function () {
-  const modal = document.getElementById('modal');
-  const closeBtn = document.getElementsByClassName('close')[0];
-
-  modal.style.display = 'block'; // Open the modal automatically when the page loads
-
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-});
-
 // Theme selctor
 const themeSelector = document.querySelectorAll('option');
 const html = document.querySelector('html');
