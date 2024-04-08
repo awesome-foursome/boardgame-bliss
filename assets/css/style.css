@@ -118,3 +118,13 @@ h6 {
 /* img {
     width: 100%;
 } */
+
+/* .card:hover {
+    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 var(--background-color-secondary);
+    cursor: pointer;
+} */
+
+.navbar-dropdown option:hover {
+    cursor: pointer;
+}
