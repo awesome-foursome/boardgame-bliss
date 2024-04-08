@@ -16,3 +16,7 @@ body {
 footer {
 	margin-top: auto;
 }
+
+.footer-logo {
+	max-height: 70px;
+}
