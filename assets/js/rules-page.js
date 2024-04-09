@@ -1,44 +1,8 @@
-// Modal
-document.addEventListener('DOMContentLoaded', function () {
-  const modal = document.getElementById('modal');
-  const closeBtn = document.getElementsByClassName('close')[0];
-
-  modal.style.display = 'block'; // Open the modal automatically when the page loads
-
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-});
-
-// Theme selctor
-const themeSelector = document.querySelectorAll('option');
-const html = document.querySelector('html');
-
-// // toggle theme
-themeSelector.forEach((theme) => {
-  theme.addEventListener('click', () => {
-    const toggleState = theme.value;
-
-    html.dataset.theme = toggleState;
-    localStorage.setItem('theme', toggleState);
-  })
-});
-
-// Implement theme depending on saved preferences in local storage
-function savedTheme() {
-  const localStorageTheme = localStorage.getItem('theme');
-
-  if (localStorageTheme !== null) {
-    html.dataset.theme = localStorageTheme;
-  }
-};
-
 // Comment section
 const commentForm = document.getElementById('commentForm');
 const usernameInput = document.getElementById('username');
 const commentInput = document.getElementById('comment');
 const commentsSection = document.getElementById('comments');
-
 
 commentForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -103,11 +67,6 @@ function displayComments() {
     commentCardContent.appendChild(commentCardComment);
     commentCard.appendChild(commentCardHeader);
     commentCard.appendChild(commentCardContent);
-
-
-    // ${item.username and comment} inserts the username and comment property of the current item in the comments array.
-    // <strong>${item.username}:</strong>: wraps the username in <strong> tags to make it bold.
-    // div.innerHTML = `<strong>${item.username}:</strong> ${item.comment}`;
 
     // This action effectively displays the comment on the webpage within the designated commentsSection container.
     commentsSection.appendChild(commentCard);
