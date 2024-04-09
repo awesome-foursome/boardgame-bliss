@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- id is used to highlight the current page on the navbar (script.js) -->
 <html lang="en" data-theme="light" id="other-games">
 
 <head>
@@ -30,10 +31,6 @@
 					</div>
 				</div>
 
-				<!-- <div class="navbar-item pl-6 is-hidden-mobile">
-					<h1 class="is-centered is-size-1-desktop title">Discover More Games</h1>
-				</div> -->
-
 				<!-- icon to display navbar menu on mobile -->
 				<a class="navbar-burger" id="burger">
 					<span></span>
@@ -42,7 +39,6 @@
 					<span></span>
 				</a>
 			</div>
-
 
 			<!-- nav links to other pages -->
 			<div class="navbar-menu pr-6" id="nav-links">
@@ -55,10 +51,6 @@
 			</div>
 		</nav>
 	</header>
-
-
-
-
 
 	<main>
 		<div class="section">
@@ -76,9 +68,11 @@
 					games.</p>
 			</article>
 		</div>
+
 		<div class="section">
 			<div class="content container">
 				<div class="columns" id="row">
+					<!-- left hand panel -->
 					<section class="column is-12-mobile is-6-tablet is-5-desktop content" id="left">
 						<h2 class="is-size-2-desktop title">Check out these lists:</h2>
 						<div class="card" id="trending">
@@ -101,44 +95,22 @@
 								years ago.</p>
 						</div>
 					</section>
+
+					<!-- right hand panel -->
 					<section class="column is-6-tablet is-7-desktop" id="right">
 						<h2 class="is-size-2-desktop title" id="list-title"></h2>
 						<div class="container" id="list-parent">
+							<!-- this is replaced by lists when/if they are generated -->
+							<!-- api generated lists appear here -->
 							<div class="box" id="index-img">
 								<img class="image is-3by2" src="./assets/images/index.html/other-games-background.jpg"
 									alt="image of assorted board games on shelves">
 							</div>
-							<!-- _______________________________________________________________________________________________ -->
-							<!-- <div class="card">
-								<a href="">
-									<div class="card-content">
-										<div class="media">
-											<div class="media-left">
-												<figure class="image is-48x48">
-													<img src="https://cf.geekdo-images.com/XX-1reQpdOJzwgTbic-x4w__thumb/img/mpFyAprLv6Nkp7Dv19AM8qBDWD8=/fit-in/200x150/filters:strip_icc()/pic8080321.jpg"
-														alt="Game thumbnail" />
-												</figure>
-											</div>
-											<div class="media-content">
-												<p class="title is-4 pl-2">Horror on the Orient Express: The Board Game
-												</p>
-											</div>
-										</div>
-
-										<div class="content columns">
-											<p class="column">Rank: 1</p>
-											<p class="column">Year published: 2025</p>
-										</div>
-									</div>
-								</a>
-							</div> -->
-							<!-- ______________________________________________________________________________________________________________________________________ -->
 						</div>
 					</section>
 				</div>
 			</div>
 		</div>
-
 	</main>
 
 	<footer class="footer">
@@ -149,11 +121,11 @@
 				<a href="https://github.com/Jiske-N">Jiske-N</a>
 				<a href="https://github.com/simonjbr">simonjbr</a>
 			</div>
+			<!-- logo for BGG require to use api -->
 			<div>
 				<img src="./assets/images/BGG Logo.webp" alt="powered by BGG" style="max-height: 70px">
 			</div>
 		</div>
-
 	</footer>
 
 	<script src="./assets/js/other-games.js"></script>
