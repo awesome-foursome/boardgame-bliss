@@ -54,9 +54,6 @@ function renderGame() {
                 const createDivMedia = document.createElement('div');
                 createDivMedia.setAttribute('class', 'media');
 
-                // const createDivMediaLeft = document.createElement('div');
-                // createDivMediaLeft.setAttribute('class', 'media-left');
-
                 const createDivMediaContent = document.createElement('div');
                 createDivMediaContent.setAttribute('class', 'media-content');
 
@@ -131,7 +128,7 @@ function renderAggregateList() {
         )
 };
 
-
+// currently trending list
 function renderHotList() {
     hotList = `https://boardgamegeek.com/xmlapi2/hot?boardgame&pagesize=10`;
 
@@ -228,6 +225,7 @@ function renderHotList() {
 };
 
 // unfortunately neither of the apis below supply images.
+// all time #1s list
 function renderAllTimeList() {
     allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
 
@@ -274,6 +272,9 @@ function renderAllTimeList() {
                                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
                                 // name and summary are provided by previous call
+                                if (xmlResponse.getElementsByTagName('item')[0].getAttribute('id')) {
+                                    let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
+                                }
                                 let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
                                 let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
 

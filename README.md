@@ -19,16 +19,24 @@ This page was designed for a user to be able to input a Chess.com username in or
 - If a forced `Mate` is available the user is told how many moves it will take (positive values for white's checkmate, negative values for black). This will be `null` if not mate is available
 
 If the user is just starting out then they can access the rules page in order to receive a detailed breakdown on the obect of the game, how pieces move, other rules and introductory videos. 
+
+If the user wants to discover more board games they can also use the discover more games page to generate lists with various suggestions and popular trends. List items also link to external sources providing additional information about the games.
+
+Goals included, having pages function without errors, consistent appearance throughout and using a third party css library for the bulk of styling.
+
 Other features include:
 - Saving various data to local storage for quick future access.
 - An interactive GUI including modals, hover effects and themes.
 - Disclaimers to prevent automatic access to sections of content.
 
-Goals included, having pages function without errors, consistent appearance throughout and using a third party css library for the bulk of styling.
-
-![placeholder Picture of the Home Page](./project-planning/wireframe-homepage.png)
-![placeholder Picture of the Chess Page](./assets/images/chess-page-deployment-screenshot.png)
-![placeholder Picture of the Rules Page](./project-planning/Wireframe-rules-page.png)
+## Homepage
+![Picture of the Home Page](./assets/images/homepage-deployment-screenshot.png)
+## Chess Move Generator
+![Picture of the Chess Move Generator](./assets/images/chess-page-deployment-screenshot.png)
+## Chess Rules Page
+![Picture of the Chess Rules Page](./assets/images/rules-page-deployment-screenshot.png)
+## Discover More Games
+![Picture of Discover More Games](./assets/images/other-games-deployment-screenshot.png)
 - [The Deployed Page](https://awesome-foursome.github.io/boardgame-bliss/)
 
 ## Further Goals
@@ -75,6 +83,10 @@ Made use of the Xpert learning assistant, AskBcs and our instructor with trouble
 
 [Stockfish](https://stockfish.online) for providing the third party API with suggested moves.
 
+[BGG](https://boardgamegeek.com) for providing the third party APIs with content on games.
+
+[Tronald Dump](https://www.tronalddump.io) for providing the third party API with dump quotes.
+
 [Net Ninja](https://www.youtube.com/@NetNinja) for Bulma CSS tutorial.
 
 [Bulma CSS](https://bulma.io/) for providing the CSS framework.
@@ -84,10 +96,15 @@ Made use of the Xpert learning assistant, AskBcs and our instructor with trouble
 Images are from the following sources:
 - Tima Miroshnichenko: https://www.pexels.com/photo/person-reading-book-on-table-beside-chess-game-10626014/
 - https://commons.wikimedia.org/wiki/File:Chess_Banner.jpg
-- https://commons.wikimedia.org/wiki/File:Board_Games_in_North_America_01.JPG
 - Cristian V.'s photo, licensed as Attribution-NoDerivs: https://www.flickr.com/photos/shyald/409601105
+- https://chess.fandom.com/wiki/Main_Page
+- https://commons.wikimedia.org/wiki/File:Board_Games_for_Family_Fun.png - index-default
+- https://www.pexels.com/photo/black-and-gray-dice-on-white-board-game-7150646/ - other-games-link
+- https://www.flickr.com/photos/sidkid/6921601618/in/photostream/ - other-games
+- https://m.facebook.com/atawesomefoursome
 
-Videos are from:
+Video is from:
+- Chess.com on youtube https://www.youtube.com/watch?v=S5GIpAM-aWQ&t=7s
 
 ## Licence
 
