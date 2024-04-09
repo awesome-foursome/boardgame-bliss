@@ -272,51 +272,55 @@ function renderAllTimeList() {
                                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
                                 // name and summary are provided by previous call
-                                if (xmlResponse.getElementsByTagName('item')[0].getAttribute('id')) {
+                                // don't fully understand why but removing this if statement throws an error after displaying the last item (doesn't affect functionality)
+                                if (xmlResponse.getElementsByTagName('item')[0]) {
+
                                     let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
+
+                                    let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
+
+                                    const createDivCard = document.createElement('div');
+                                    createDivCard.setAttribute('class', 'card');
+                                    createDivCard.setAttribute('id', id);
+
+                                    // link to external bgg page
+                                    const createA = document.createElement('a');
+                                    createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                                    // obsolete but may go back to
+                                    // createDivCard.addEventListener('click', () => {
+                                    //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                                    // });
+
+                                    const createDivCardContent = document.createElement('div');
+                                    createDivCardContent.setAttribute('class', 'card-content');
+
+                                    const createDivMedia = document.createElement('div');
+                                    createDivMedia.setAttribute('class', 'media');
+
+                                    const createDivMediaContent = document.createElement('div');
+                                    createDivMediaContent.setAttribute('class', 'media-content');
+
+                                    const createDivContentColumns = document.createElement('div');
+                                    createDivContentColumns.setAttribute('class', 'content columns');
+
+                                    const createPTitle = document.createElement('p');
+                                    createPTitle.setAttribute('class', 'title is-4');
+                                    createPTitle.textContent = `${name} - ${yearPublished}`;
+
+                                    const createPSummary = document.createElement('p');
+                                    createPSummary.setAttribute('class', 'column is-8');
+                                    createPSummary.textContent = `${summary}`;
+
+                                    createDivContentColumns.append(createPSummary);
+                                    createDivMediaContent.append(createPTitle);
+                                    createDivMedia.append(createDivMediaContent);
+                                    createDivCardContent.append(createDivMedia, createDivContentColumns);
+                                    createA.append(createDivCardContent);
+                                    createDivCard.append(createA);
+                                    listContainer.append(createDivCard);
                                 }
-                                let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
-                                let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
 
-                                const createDivCard = document.createElement('div');
-                                createDivCard.setAttribute('class', 'card');
-                                createDivCard.setAttribute('id', id);
 
-                                // link to external bgg page
-                                const createA = document.createElement('a');
-                                createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
-                                // obsolete but may go back to
-                                // createDivCard.addEventListener('click', () => {
-                                //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                                // });
-
-                                const createDivCardContent = document.createElement('div');
-                                createDivCardContent.setAttribute('class', 'card-content');
-
-                                const createDivMedia = document.createElement('div');
-                                createDivMedia.setAttribute('class', 'media');
-
-                                const createDivMediaContent = document.createElement('div');
-                                createDivMediaContent.setAttribute('class', 'media-content');
-
-                                const createDivContentColumns = document.createElement('div');
-                                createDivContentColumns.setAttribute('class', 'content columns');
-
-                                const createPTitle = document.createElement('p');
-                                createPTitle.setAttribute('class', 'title is-4');
-                                createPTitle.textContent = `${name} - ${yearPublished}`;
-
-                                const createPSummary = document.createElement('p');
-                                createPSummary.setAttribute('class', 'column is-8');
-                                createPSummary.textContent = `${summary}`;
-
-                                createDivContentColumns.append(createPSummary);
-                                createDivMediaContent.append(createPTitle);
-                                createDivMedia.append(createDivMediaContent);
-                                createDivCardContent.append(createDivMedia, createDivContentColumns);
-                                createA.append(createDivCardContent);
-                                createDivCard.append(createA);
-                                listContainer.append(createDivCard);
                             }
                         })
                 }
