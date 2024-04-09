@@ -1,32 +1,8 @@
-// Theme selctor
-const themeSelector = document.querySelectorAll('option');
-const html = document.querySelector('html');
-
-// // toggle theme
-themeSelector.forEach((theme) => {
-  theme.addEventListener('click', () => {
-    const toggleState = theme.value;
-
-    html.dataset.theme = toggleState;
-    localStorage.setItem('theme', toggleState);
-  })
-});
-
-// Implement theme depending on saved preferences in local storage
-function savedTheme() {
-  const localStorageTheme = localStorage.getItem('theme');
-
-  if (localStorageTheme !== null) {
-    html.dataset.theme = localStorageTheme;
-  }
-};
-
 // Comment section
 const commentForm = document.getElementById('commentForm');
 const usernameInput = document.getElementById('username');
 const commentInput = document.getElementById('comment');
 const commentsSection = document.getElementById('comments');
-
 
 commentForm.addEventListener('submit', function (event) {
   event.preventDefault();
