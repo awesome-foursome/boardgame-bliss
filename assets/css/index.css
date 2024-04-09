@@ -4,11 +4,13 @@
     cursor: pointer;
 }
 
+/* the follow works in conjunction with the js on index-page.js to transition which images are visible */
+/* create reference for images */
 #right {
     position: relative;
 }
 
-
+/* stack images on top of one another */
 .box {
     position: absolute;
     transition-duration: 1s;

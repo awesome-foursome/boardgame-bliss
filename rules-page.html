@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- id is used to highlight the current page on the navbar (script.js) -->
 <html lang="en" data-theme="light" id="rules-page">
 
 <head>
@@ -22,7 +23,7 @@
 
 				<!-- toggle for dark mode -->
 				<div class="navbar-item has-dropdown is-hoverable pl-3">
-					<label class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</label>
+					<div class="navbar-link is-hidden-mobile is-active-desktop" for="theme">Theme:</div>
 					<div class="navbar-dropdown" name="theme" id="theme">
 						<option class="navbar-item" value="light">Light</option>
 						<hr class="navbar-divider">
@@ -54,7 +55,6 @@
 	<main id="main">
 		<article class="content container mt-5">
 			<section>
-				<!-- box -->
 				<div class="box">
 					<h1 class="title">How To Play Chess</h1>
 					<p class="subtitle">Chess is won when your opponent is in check and cannot escape. This is called
@@ -68,7 +68,6 @@
 				</div>
 
 				<div class="box">
-
 					<div class="columns">
 						<div class="column is-1">
 							<img src="./assets/images/rules-page.html/LightKing.webp" alt="king icon"
@@ -180,25 +179,21 @@
 			</section>
 		</article>
 
-		<!-- comment section -->
 		<div class="container mb-5">
 			<div class="columns">
 				<!-- left section containing video and tronald dump -->
 				<div class="column is-flex is-flex-direction-column is-6">
 					<iframe class="box" width="auto" height="315"
 						src="https://www.youtube.com/embed/S5GIpAM-aWQ"></iframe>
-
 					<div class="content container">
 						<section class="box" id="Trump">
 							<h1 class="title has-text-centered mb-4">Todays Dumb Donald Trump Quote</h1>
 							<p class="subtitle has-text-centered" id="quote"></p>
 						</section>
 					</div>
-
 				</div>
 				<!-- right section containing comments box -->
 				<section id="display" class="column is-6">
-
 					<div class="comments">
 						<form class="box" id="commentForm">
 							<h1 class="title mb-2">Comments</h1>
@@ -221,9 +216,6 @@
 
 		</div>
 	</main>
-
-
-
 
 	<!-- Developers -->
 	<footer class="footer">

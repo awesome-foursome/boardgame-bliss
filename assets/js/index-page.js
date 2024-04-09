@@ -32,7 +32,7 @@ pages.forEach((page) => {
     })
 });
 
-// max page cards into links
+// make page cards into links
 pages.forEach((page) => {
     page.addEventListener('click', () => {
         const target = page.id;

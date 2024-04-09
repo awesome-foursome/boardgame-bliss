@@ -54,9 +54,6 @@ function renderGame() {
                 const createDivMedia = document.createElement('div');
                 createDivMedia.setAttribute('class', 'media');
 
-                // const createDivMediaLeft = document.createElement('div');
-                // createDivMediaLeft.setAttribute('class', 'media-left');
-
                 const createDivMediaContent = document.createElement('div');
                 createDivMediaContent.setAttribute('class', 'media-content');
 
@@ -131,7 +128,7 @@ function renderAggregateList() {
         )
 };
 
-
+// currently trending list
 function renderHotList() {
     hotList = `https://boardgamegeek.com/xmlapi2/hot?boardgame&pagesize=10`;
 
@@ -228,6 +225,7 @@ function renderHotList() {
 };
 
 // unfortunately neither of the apis below supply images.
+// all time #1s list
 function renderAllTimeList() {
     allTimeList = `https://boardgamegeek.com/xmlapi/geeklist/256388`;
 
@@ -274,48 +272,55 @@ function renderAllTimeList() {
                                 const xmlResponse = new DOMParser().parseFromString(xmlString, 'text/xml');
 
                                 // name and summary are provided by previous call
-                                let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
-                                let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
+                                // don't fully understand why but removing this if statement throws an error after displaying the last item (doesn't affect functionality)
+                                if (xmlResponse.getElementsByTagName('item')[0]) {
 
-                                const createDivCard = document.createElement('div');
-                                createDivCard.setAttribute('class', 'card');
-                                createDivCard.setAttribute('id', id);
+                                    let id = xmlResponse.getElementsByTagName('item')[0].getAttribute('id');
 
-                                // link to external bgg page
-                                const createA = document.createElement('a');
-                                createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
-                                // obsolete but may go back to
-                                // createDivCard.addEventListener('click', () => {
-                                //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
-                                // });
+                                    let yearPublished = xmlResponse.getElementsByTagName('yearpublished')[0].getAttribute('value');
 
-                                const createDivCardContent = document.createElement('div');
-                                createDivCardContent.setAttribute('class', 'card-content');
+                                    const createDivCard = document.createElement('div');
+                                    createDivCard.setAttribute('class', 'card');
+                                    createDivCard.setAttribute('id', id);
 
-                                const createDivMedia = document.createElement('div');
-                                createDivMedia.setAttribute('class', 'media');
+                                    // link to external bgg page
+                                    const createA = document.createElement('a');
+                                    createA.setAttribute('href', `https://boardgamegeek.com/boardgame/${id}/${name}`);
+                                    // obsolete but may go back to
+                                    // createDivCard.addEventListener('click', () => {
+                                    //     location.href = `https://boardgamegeek.com/boardgame/${id}/${name}`
+                                    // });
 
-                                const createDivMediaContent = document.createElement('div');
-                                createDivMediaContent.setAttribute('class', 'media-content');
+                                    const createDivCardContent = document.createElement('div');
+                                    createDivCardContent.setAttribute('class', 'card-content');
 
-                                const createDivContentColumns = document.createElement('div');
-                                createDivContentColumns.setAttribute('class', 'content columns');
+                                    const createDivMedia = document.createElement('div');
+                                    createDivMedia.setAttribute('class', 'media');
 
-                                const createPTitle = document.createElement('p');
-                                createPTitle.setAttribute('class', 'title is-4');
-                                createPTitle.textContent = `${name} - ${yearPublished}`;
+                                    const createDivMediaContent = document.createElement('div');
+                                    createDivMediaContent.setAttribute('class', 'media-content');
 
-                                const createPSummary = document.createElement('p');
-                                createPSummary.setAttribute('class', 'column is-8');
-                                createPSummary.textContent = `${summary}`;
+                                    const createDivContentColumns = document.createElement('div');
+                                    createDivContentColumns.setAttribute('class', 'content columns');
 
-                                createDivContentColumns.append(createPSummary);
-                                createDivMediaContent.append(createPTitle);
-                                createDivMedia.append(createDivMediaContent);
-                                createDivCardContent.append(createDivMedia, createDivContentColumns);
-                                createA.append(createDivCardContent);
-                                createDivCard.append(createA);
-                                listContainer.append(createDivCard);
+                                    const createPTitle = document.createElement('p');
+                                    createPTitle.setAttribute('class', 'title is-4');
+                                    createPTitle.textContent = `${name} - ${yearPublished}`;
+
+                                    const createPSummary = document.createElement('p');
+                                    createPSummary.setAttribute('class', 'column is-8');
+                                    createPSummary.textContent = `${summary}`;
+
+                                    createDivContentColumns.append(createPSummary);
+                                    createDivMediaContent.append(createPTitle);
+                                    createDivMedia.append(createDivMediaContent);
+                                    createDivCardContent.append(createDivMedia, createDivContentColumns);
+                                    createA.append(createDivCardContent);
+                                    createDivCard.append(createA);
+                                    listContainer.append(createDivCard);
+                                }
+
+
                             }
                         })
                 }

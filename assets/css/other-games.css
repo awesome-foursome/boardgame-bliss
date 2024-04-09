@@ -1,3 +1,4 @@
+/* remove hyperlink text colour from suggestion lists */
 .card a {
     color: var(--bulma-text);
 }
