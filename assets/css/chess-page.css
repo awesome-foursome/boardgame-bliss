@@ -13,6 +13,10 @@ body {
 	box-shadow: 0 4px 8px 0 var(--background-color-secondary);
 }
 
+.chessboard-image {
+	max-height: 300px;
+}
+
 footer {
 	margin-top: auto;
 }

@@ -140,7 +140,7 @@ const printBestMoves = function (data, game, encodedFen, username) {
 	
 	// create chessboard image
 	const imageRequestUrl = `https://fen2image.chessvision.ai/${encodedFen}?turn=${game.turn}&pov=${pov}`;
-	const cardImageEl = $('<img>').attr('src', imageRequestUrl).attr('alt', 'Chessboard image');
+	const cardImageEl = $('<img>').addClass('chessboard-image').attr('src', imageRequestUrl).attr('alt', 'Chessboard image');
 
 	// construct card
 	cardHeaderEl.append(cardTitleEl);
