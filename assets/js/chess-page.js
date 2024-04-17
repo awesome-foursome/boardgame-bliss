@@ -131,9 +131,13 @@ const printBestMoves = function (data, game, encodedFen) {
 	const evaluationEl = $('<p>').text(`Evaluation: ${evaluation}`);
 	const mateEl = $('<p>').text(`Mate: ${mate}`);
 
+	// create chessboard image
+	const imageRequestUrl = `https://fen2image.chessvision.ai/${encodedFen}`;
+	const cardImageEl = $('<img>').attr('src', imageRequestUrl).attr('alt', 'Chessboard image');
+
 	// construct card
 	cardHeaderEl.append(cardTitleEl);
-	cardBodyEl.append(cardUrlEl, bestMoveEl, continuationEl, evaluationEl, mateEl);
+	cardBodyEl.append(cardUrlEl, bestMoveEl, continuationEl, evaluationEl, mateEl, cardImageEl);
 	cardEl.append(cardHeaderEl, cardBodyEl);
 
 	// append card to results-container
