@@ -102,7 +102,10 @@ const printErrorCard = function (error, game) {
 };
 
 // function to print best moves to results-container (below gameTitle and gameUrl)
-const printBestMoves = function (data, game) {
+const printBestMoves = function (data, game, encodedFen) {
+
+	// debug log
+	console.log('printBestMove: encodedFen:', encodedFen)
 
 	// create game title
 	const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
@@ -195,7 +198,7 @@ const getBestMove = function (username, depth) {
 					.then((data) => {
 
 						// print best move data to results container  
-						printBestMoves(data, game);
+						printBestMoves(data, game, encodedFen);
 
 						// remove loading graphic from submit button
 						submitBtn.removeClass('is-loading');
