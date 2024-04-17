@@ -102,7 +102,7 @@ const printErrorCard = function (error, game) {
 };
 
 // function to print best moves to results-container (below gameTitle and gameUrl)
-const printBestMoves = function (data, game, encodedFen) {
+const printBestMoves = function (data, game, encodedFen, username) {
 
 	// debug log
 	console.log('printBestMove: encodedFen:', encodedFen);
@@ -132,8 +132,14 @@ const printBestMoves = function (data, game, encodedFen) {
 	const evaluationEl = $('<p>').text(`Evaluation: ${evaluation}`);
 	const mateEl = $('<p>').text(`Mate: ${mate}`);
 
+	// work out point of view of user
+	let pov = 'white';
+	if (gameBlack === username) {
+		pov = 'black';
+	}
+	
 	// create chessboard image
-	const imageRequestUrl = `https://fen2image.chessvision.ai/${encodedFen}?turn=${game.turn}`;
+	const imageRequestUrl = `https://fen2image.chessvision.ai/${encodedFen}?turn=${game.turn}&pov=${pov}`;
 	const cardImageEl = $('<img>').attr('src', imageRequestUrl).attr('alt', 'Chessboard image');
 
 	// construct card
@@ -203,7 +209,7 @@ const getBestMove = function (username, depth) {
 					.then((data) => {
 
 						// print best move data to results container  
-						printBestMoves(data, game, encodedFen);
+						printBestMoves(data, game, encodedFen, username);
 
 						// remove loading graphic from submit button
 						submitBtn.removeClass('is-loading');
