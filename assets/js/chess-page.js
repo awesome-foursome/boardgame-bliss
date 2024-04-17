@@ -104,10 +104,6 @@ const printErrorCard = function (error, game) {
 // function to print best moves to results-container (below gameTitle and gameUrl)
 const printBestMoves = function (data, game, encodedFen, username) {
 
-	// debug log
-	console.log('printBestMove: encodedFen:', encodedFen);
-	console.log('printBestMove: game:', game);
-
 	// create game title
 	const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
 	const gameBlack = game.black.replace('https://api.chess.com/pub/player/', '');
