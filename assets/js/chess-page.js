@@ -105,7 +105,8 @@ const printErrorCard = function (error, game) {
 const printBestMoves = function (data, game, encodedFen) {
 
 	// debug log
-	console.log('printBestMove: encodedFen:', encodedFen)
+	console.log('printBestMove: encodedFen:', encodedFen);
+	console.log('printBestMove: game:', game);
 
 	// create game title
 	const gameWhite = game.white.replace('https://api.chess.com/pub/player/', '');
@@ -132,7 +133,7 @@ const printBestMoves = function (data, game, encodedFen) {
 	const mateEl = $('<p>').text(`Mate: ${mate}`);
 
 	// create chessboard image
-	const imageRequestUrl = `https://fen2image.chessvision.ai/${encodedFen}`;
+	const imageRequestUrl = `https://fen2image.chessvision.ai/${encodedFen}?turn=${game.turn}`;
 	const cardImageEl = $('<img>').attr('src', imageRequestUrl).attr('alt', 'Chessboard image');
 
 	// construct card
